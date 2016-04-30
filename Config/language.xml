@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="gb2312"?>
+<language>
+  <node name="user">
+    <login>
+	  <errverifycode>验证码有误，请重新输入！</errverifycode>
+	  <erruser>用户名不存在</erruser>
+	  <errpass>密码不正确</errpass>
+	  <erruserlocked>对不起，该账号被锁定!</erruserlocked>
+	  <erruserverify>对不起，该账号还没有通过后台认证!</erruserverify>
+	  <erremailverify>对不起,该账号还没有激活,请登录您的邮箱激活!</erremailverify>
+	  <errtimeslimit>对不起，您输入的错误次数超过系统限制，请{0}分钟后再尝试!</errtimeslimit>
+	</login>
+	<reg>
+	  <errclose>对不起，本站已关闭会员系统!</errclose>
+	  <errreg>对不起，本站不允许新会员注册!</errreg>
+	  <errcommon>注册失败！请检查您的输入!</errcommon>
+	  <errexisits>对不起，该用户名已存在!</errexisits>
+	  <erremail>对不起，该邮箱已被注册!</erremail>
+	  <erremail1>请输入电子邮箱!</erremail1>
+	  <errusername>用户名必须输入!</errusername>
+	  <errverifycode>请输入验证码!</errverifycode>
+	  <errmobilecode>请输入手机验证码!</errmobilecode>
+	  <errmobilecode1>手机验证码失效，请重新验证!</errmobilecode1>
+	  <errmobilecode2>对不起，您输入的手机验证码有误，请重新输入!</errmobilecode2>
+	  <errmobilecode3>对不起，必须输入获取验证码的手机号码!</errmobilecode3>
+	  <errusername1><![CDATA[ 用户名长度应{0}-{1}在之间! ]]></errusername1>
+	  <errusername2><![CDATA[ 用户名含有非法字符! ]]></errusername2>
+	  <errusername3><![CDATA[ 您输入的用户名为系统禁止注册的用户名! ]]></errusername3>
+	  <errpassword>密码必须输入!</errpassword>
+	  <errpassword1>密码长度不能少于6位!</errpassword1>
+	  <errpassword2>两次输入的密码不致，请重输!</errpassword2>
+	  <errquestion>请选择提示问题!</errquestion>
+	  <errquestionanswer>请输入提示问题的答案!</errquestionanswer>
+	  <regsuccess>恭喜，注册成功!</regsuccess>
+	</reg>
+	<payonline>
+	  <platiderr>出错啦,您没有选择支付接口！</platiderr>
+	  <paysuccess>恭喜，支付成功完成！</paysuccess>
+	  <payerror>对不起,验证失败！</payerror>
+	  <paynobackparam>对不起,无返回参数！</paynobackparam>
+	  <payremark>通过{0}在线充值</payremark>
+	  <allowmoney><![CDATA[您当前可用预存款余额<span style='color:red'>{0}</span>元。]]></allowmoney>
+	</payonline>
+	<accountapi>
+	  <errorexpire>会话超时了，请重新授权!</errorexpire>
+	  <errorbind>非法绑定!</errorbind>
+	  <erroraccount>对不起，您输入的账号不存在或是密码不正确，请重输!</erroraccount>
+	  <qqbindsuccess>恭喜，通过QQ账号登录成功！</qqbindsuccess>
+	  <sinabindsuccess>恭喜，通过新浪微博账号登录成功！</sinabindsuccess>
+	  <alipaybindsuccess>恭喜，通过支付宝快捷登录成功！</alipaybindsuccess>
+	  <bindsuccess>恭喜，注册绑定成功！</bindsuccess>
+	</accountapi>
+  </node>
+  
+  <node name="modelview">
+    <explainTagsdefault>
+	  <author>未知</author>
+	  <copyfrom>不详</copyfrom>
+	</explainTagsdefault>
+    <common>
+	 <addfavorite>加入收藏</addfavorite>
+	 <moodtips>您看到此{0}时的感受：</moodtips>
+	</common>
+    <showcharge>
+	  <nologin><![CDATA[
+	  <div class="chargetips">此信息需要登录后才可以查看,请先<a href="javascript:showuserlogin()">登录</a>!</div>
+	  ]]></nologin>
+	  <payerror><![CDATA[<div class="chargetips">对不起，支付失败，无法查看！ ]]></payerror>
+	  <errgroupid><![CDATA[<div class="chargetips">对不起,您的会员级别不够查看此信息!</div>]]></errgroupid>
+	  <nobalance><![CDATA[<div class="chargetips">对不起,此信息需要<span style="color:red">{0}</span>{2}{3}才可以查看,您当前可用{3}<span style="color:blue">{1}</span>{2},不足于支付此收费信息!</div>]]></nobalance>
+	  <dividedinto><![CDATA[稿件"{0}"的分成]]></dividedinto>
+	  <chargeremark><![CDATA[用于查看收费信息"{0}"]]></chargeremark>
+	  <payconfirm><![CDATA[
+	    <div class="chargetips">此信息需要扣<span style="color:red">{0}</span>个点券，您当前可用点券<span style="color:green">{1}</span>个，您确认支付查看吗？</div>
+	   <script>
+	    jQuery(document).ready(function(){{
+	    jQuery.dialog.confirm('此信息需要扣<span style="color:red">{0}</span>个点券，您当前可用点券<span style="color:green">{1}</span>个，您确认支付查看吗？',function(){{ AccessPay(); }}, function(){{}});
+		}});
+		function AccessPay(){{
+		
+		jQuery.ajax({{
+		   type: "POST",
+		   url: "{{$GetInstallDir}}plus/Ajaxs.ashx",
+		   data: "modelid={2}&infoid={3}&a=setchargestatus",
+		   success: function(data){{
+			location.reload();
+		   }}
+		}});
+
+		
+		}}
+	   </script>
+	   ]]></payconfirm>
+	</showcharge>
+	
+	<downmodel>
+	  <noprovidedownload><![CDATA[<li>暂不提供下载地址</li>]]></noprovidedownload>
+	</downmodel>
+	<shopmodel>
+	  <dynamicprice>
+	    <nologin><![CDATA[本商品按用户级别定价,请<a href="javascript:showuserlogin()">登录</a>查看您的价格。]]></nologin>
+	  </dynamicprice>
+	  <modeldefault>默认</modeldefault>
+	  <buynum>我要买：</buynum>
+	  <pleaseselect>请选择：</pleaseselect>
+	  <pleaseselectbyoption>请选择---</pleaseselectbyoption>
+	  <shoppingcart>
+	    <errbegintime>对不起，[{0}]还没有开放购买，开放时间为[{1}]。</errbegintime>
+	    <errendtime>对不起，[{0}]已结束购买,结束时间为[{1}]。</errendtime>
+	    <errcitysoldout>对不起，[{0}]您所在的城市已被买走了。</errcitysoldout>
+	    <errnosetcity>对不起，请设置好您所在的城市后再来购买。</errnosetcity>
+	    <errbookcodeempty>请输入预约码，[{0}]需要有预约码才能购买。</errbookcodeempty>
+	    <errbookcodeexists>对不起，您输入的预约码不存在或已被使用。</errbookcodeexists>
+	    <errbookcodetype>对不起，预约码不适用,本款商品需要用[{0}]的预约码,您当前输入的是[{1}]款预约码。</errbookcodetype>
+	    <errbookcodecity>对不起，您输入的预约码收货地址只能是{0}。</errbookcodecity>
+		
+	    <errminnum>对不起,本商品每人最少需要购买{0}件!</errminnum>
+	    <errmaxnum>对不起,本商品每人最多只能购买{0}件!</errmaxnum>
+	    <errbundlesale>对不起,商品[{0}]已售完!</errbundlesale>
+	    <errlimitbuyamount>对不起,商品[{0}]已被抢购完了!</errlimitbuyamount>
+	    <confirmaddress>确认收货地址：</confirmaddress>
+	    <otheraddress>使用其它收货地址</otheraddress>
+	    <address><![CDATA[ {0}(收货人：{1} 电话：{2} 邮编：{3}) <a href="javascript:;" onclick="loadModifyAddress({4},this)">编辑</a> <a href="javascript:;" onclick="loadDelAddress({4},this)">删除</a> ]]></address>
+		
+		
+		<freight1>免费</freight1>
+		<freight2>加 {$GetCurrencySymbol}{0} {$GetCurrencyUnit}</freight2>
+		<freight3><![CDATA[运费标准: <span style="color:red">{0}</span> 公斤内 <span style="color:red">{$GetCurrencySymbol}{1}</span> {$GetCurrencyUnit},超过部分每 <span style="color:red">{2}</span> 公斤加 <span style="color:red">{$GetCurrencySymbol}{3}</span> {$GetCurrencyUnit},最高不超过 <span style="color:red">{$GetCurrencySymbol}{4}</span> {$GetCurrencyUnit}。<br/><strong>本单大约重量 <span style="color:red">{5}</span> 公斤，需要加收 <span style="color:red">{$GetCurrencySymbol}{6}</span> {$GetCurrencyUnit}。</strong>]]></freight3>
+		<freightpro1>(在本商城购买满 {$GetCurrencySymbol}{0} {$GetCurrencyUnit},免运费)</freightpro1>
+		<freightpro2>(在本商城购买满 {$GetCurrencySymbol}{0} {$GetCurrencyUnit},减免 {$GetCurrencySymbol}{1} {$GetCurrencyUnit}运费)</freightpro2>
+		<freightpro3>(在本商城购买满 {$GetCurrencySymbol}{0} {$GetCurrencyUnit},并且运费总额少于 {$GetCurrencySymbol}{1} {$GetCurrencyUnit}时免运费)</freightpro3>
+		<selectpayId>---请选择支付平台---</selectpayId>
+		<changebuyname><![CDATA[<span style="color:green">(换购)</span>]]></changebuyname>
+		<bundlesalename><![CDATA[<span style="color:#ff6600">搭配减价套餐</span>]]></bundlesalename>
+		<limitbuytimename><![CDATA[<span style="color:brown"> (限时抢购)</span>]]></limitbuytimename>
+		<limitbuyamountname><![CDATA[<span style="color:brown"> (限量抢购)</span>]]></limitbuyamountname>
+		<noitemincart>对不起,您的购物车中没有商品!</noitemincart>
+		<erraddress>对不起,请先完善您的收货地址!</erraddress>
+		<errdelivery>对不起,请选择送货方式!</errdelivery>
+		<errpayment>对不起,请选择付款方式!</errpayment>
+		<errcoupon0>对不起,该优惠券不是您的,请不要非法盗用!</errcoupon0>
+		<errcoupon1>对不起,该优惠券要求订单金额必须大于等于 {$GetCurrencySymbol}{0} {$GetCurrencyUnit}才可以抵用!</errcoupon1>
+		<errcoupon2>对不起,您输入的优惠券需要{0}后才能使用!</errcoupon2>
+		<errcoupon3>很遗憾,您输入的优惠券限制在{0}之前使用,现已过期!</errcoupon3>
+		<errcoupon4>对不起,您输入的优惠券已被锁定!</errcoupon4>
+		<errcoupon5>对不起,您输入的优惠券已用完!</errcoupon5>
+		<usecouponrecord>于[{0}]在订单[{1}]中抵扣了{$GetCurrencySymbol}{2}{$GetCurrencyUnit};</usecouponrecord>
+	    <errnologin>对不起，登录后才可以购买!</errnologin>
+	    <errnologin1>对不起，积分兑换必须先登录!</errnologin1>
+	    <errnoscore>对不起，您的可用积分不足，不能兑换!</errnoscore>
+	    <errmobile>对不起，手机号码必须输入!</errmobile>
+	    <errparam>参数出错，返回重新提交!</errparam>
+	    <errjingjia>竞价商品，不能加入购物车!</errjingjia>
+	    <cartips><![CDATA[ 购物车里已有<font style="color:red">{0}</font>件商品! ]]></cartips>
+	  </shoppingcart>
+	  <orderlog>
+	   <step1>订单创建成功，请等待系统确认！</step1>
+	   <step2>
+	      <item1>订单付款成功，请等待发货！</item1>
+		  <item11>订单已付订金，请等待发货！</item11>
+	      <item2>团购订单付款成功，请持验证码[{0}]到商店消费！</item2>
+		  <item22>团购订单已付订金，请持验证码[{0}]到商店消费！</item22>
+		  <item3>剩余货款[￥{0}元]支付成功！</item3>
+	   </step2>
+	   <step3>订单已发货，请准备收货！</step3>
+	   <step4>
+	      <item1>订单已确认收货！</item1>
+	      <item2>团购订单已确认消费！</item2>
+	   </step4>
+       <step5>订单结清！</step5>
+       <step6>订单发票已经开出！</step6>
+       <step7>
+	    <item1>客户提出退货退款申请！</item1>
+	    <item2>已和客户妥协，订单恢复正常状态！</item2>
+	    <item3>已同意退货退款,处理成功！</item3>
+	   </step7>
+	    <step8>无效订单，作废！</step8>
+	  </orderlog>
+	</shopmodel>
+  </node>
+  
+  <node name="navigation">
+      <item>
+	    <index>网站首页</index>
+	    <specialindex>专题首页</specialindex>
+	    <search>全站搜索</search>
+		<taglist><![CDATA[<a href="{{=GetRewriteUrl(tags)}}">关键字TAGS</a> > {0}]]></taglist>
+		<tag>关键字TAGS</tag>
+		<showannounce><![CDATA[ <a href="{=GetRewriteUrl(announcelist)}">所有公告</a> > 显示公告 ]]></showannounce>
+		<announcelist>所有公告</announcelist>
+		<map>网站地图</map>
+		<dig>DIGG首页</dig>
+		<pkcontent>PK台</pkcontent>
+		<pkmore>更多PK观点</pkmore>
+		<friendlinkindex>友情链接首页</friendlinkindex>
+		<comment>查看所有评论</comment>
+		<shopindex>商城首页</shopindex>
+		<shoppingcart>购物车</shoppingcart>
+		<view>浏览</view>
+		<viewspecial>浏览专题</viewspecial>
+		<brandindex><![CDATA[<a href="{$GetBrandIndexUrl}">品牌中心</a> ]]></brandindex>
+		<viewbrand><![CDATA[<a href="{$GetBrandIndexUrl}">品牌中心</a> > 浏览品牌]]></viewbrand>
+		<limitbuyindex><![CDATA[<a href="{$GetLimitBuyIndexUrl}">限时限量抢购中心</a>]]></limitbuyindex>
+		<viewlimitbuy><![CDATA[<a href="{$GetLimitBuyIndexUrl}">限时限量抢购</a> > 浏览详情]]></viewlimitbuy>
+		<groupbuyindex><![CDATA[<a href="{$GetGroupBuyIndexUrl}">团购中心</a>]]></groupbuyindex>
+		<groupbuyhistory><![CDATA[<a href="{$GetGroupBuyIndexUrl}">团购中心</a> > 往期团购]]></groupbuyhistory>
+		<viewgroupbuy><![CDATA[<a href="{$GetGroupBuyIndexUrl}">团购中心</a> > 浏览团购]]></viewgroupbuy>
+		<groupbuycart><![CDATA[<a href="{$GetGroupBuyIndexUrl}">团购中心</a> > 购物车]]></groupbuycart>
+		<groupbuychangecity><![CDATA[<a href="{$GetGroupBuyIndexUrl}">团购中心</a> > 切换城市]]></groupbuychangecity>
+		<shopcompare><![CDATA[ 商品比较 ]]></shopcompare>
+		<ask>我要提问</ask>
+		<askzjlist>专家列表</askzjlist>
+		<bbspost>发表话题</bbspost>
+	  </item>
+  </node>
+  <node name="search">
+    <item>
+    <nokeytips>对不起，搜索关键字必须输入！</nokeytips>
+    <noresult><![CDATA[ <div class="norecord">对不起，您输入的关键字，没有找到任何记录！</div>]]></noresult>
+    <norecord>对不起，没有找到任何记录！</norecord>
+    <enabledsearch>对不起，本频道不允许搜索！</enabledsearch>
+	</item>
+	<shop>
+     <noresult><![CDATA[ <div class="norecord">对不起，该分类下没有找到任何商品！</div>]]></noresult>
+	</shop>
+	<ask>
+	  <noresult><![CDATA[<div class="norecord">对不起，没有找到符合条件的问题！</div>]]></noresult>
+	</ask>
+  </node>
+  
+  <node name="template">
+     <loaderr>
+	   <config>模板加载出错请检查基本信息设置的模板绑定选项!</config>
+	   <labelerr>对不起,标签参数不对,请检查!</labelerr>
+	   <paramerr>参数传递出错!</paramerr>
+	   <nopage>对不起，您访问的页面不存在！</nopage>
+	 </loaderr>
+	 <label>
+	   <emptyrelated><![CDATA[<div class="norecord">暂无相关信息！</div>]]></emptyrelated>
+	 </label>
+  </node>
+  
+  <node name="page">
+      <common>
+	   <tiao>条</tiao>
+       <homepage>首页</homepage>
+	   <prevpage>上一页</prevpage>
+	   <nextpage>下一页</nextpage>
+	   <endpage>末页</endpage>
+	   <pagetips>共{0}条记录,分{1}页</pagetips>
+	   <norecord>没有了</norecord>
+	  </common>
+	  <photo>
+	    <tipsnextpage>点击图片查看下一张</tipsnextpage>
+		<all>共</all>
+		<unit>张</unit>
+		<prevpage>上一张</prevpage>
+		<nextpage>下一张</nextpage>
+	  </photo>
+  </node>
+</language>

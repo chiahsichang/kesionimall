@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>վLogo</title>
+<script type="text/javascript">
+function OK() {
+    var Val;
+    Val = '{=ImageByThumbs('+document.myform.bgcolor.value+','+document.myform.FlashWidth.value+','+document.myform.FlashHeight.value+','+document.myform.FlashWidth2.value+','+document.myform.FlashHeight2.value+')}';  
+    parent.frames['main'].InsertLabel(Val);
+}
+</script>
+<script src="../../../ks_inc/jquery.js"></script>
+<script src="../../../ks_inc/kesion.common.js"></script>
+<link href="../../../admin/images/style.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body scroll="auto">
+<form name="myform">
+  <table  width='96%' border='0'  align='center' cellpadding='2' cellspacing='1'>
+<tr>
+<td>
+<FIELDSET align=center>
+ <LEGEND align=left>插入图片缩略图方式标签</LEGEND>
+ <table  width='100%' border='0'  align='center' cellpadding='2' cellspacing='1'>
+  <tr >
+    <td align="right"><div align="center">背 景 颜 色</div></td>
+    <td ><input name="bgcolor" type="text" class="textbox" id="bgcolor" style="width:100px;text-align:center" onBlur="CheckNumber(this,'Logo');" value="#3B0C07" size="10"></td>
+  </tr>
+  <tr >
+    <td width="40%" align="right"><div align="center">右边大图宽度</div></td>
+    <td width="60%" ><input name="FlashWidth" style="width:60px;text-align:center" class="textbox" type="text" onBlur="CheckNumber(this,'Logo');" size="6" value="500">
+      px</td>
+  </tr>
+  <tr>
+    <td align="right"><div align="center">右边大图高度</div></td>
+    <td ><input name="FlashHeight" type="text" style="width:60px;text-align:center" class="textbox" size="6" onBlur="CheckNumber(this,'Logo߶');" value="500">
+    px</td>
+  </tr>
+  <tr>
+    <td align="right"><div align="center">左边小图宽度</div></td>
+    <td ><input name="FlashWidth2" type="text" style="width:60px;text-align:center" class="textbox" onBlur="CheckNumber(this,'Logo');" size="6" value="120">
+px</td>
+  </tr>
+  <tr>
+    <td align="right"><div align="center">左边小图高度</div></td>
+    <td ><input name="FlashHeight2" type="text" style="width:60px;text-align:center" class="textbox" onBlur="CheckNumber(this,'Logo');" size="6" value="120">
+px</td>
+  </tr>
+</table>
+</FIELDSET>
+</td>
+</tr>
+<tr><td>
+<div align="center">
+<br>
+<input TYPE='button' value=' 确 定(O) ' class="button"  accesskey="O" onCLICK='OK()'>
+<input type="button" value=" 取 消(C) " class="button"  accesskey="C" onClick="parent.box.close();">
+</div></td></tr>
+</table>
+</form>
+</body>
+</html>
+ 

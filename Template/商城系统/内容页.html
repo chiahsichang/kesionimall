@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="{$GetInstallDir}images/shop/style.css" rel="stylesheet" />
+    
+	<title>{$GetSiteTitle}</title>
+	<script src="{$GetInstallDir}ks_inc/jquery.js"></script>
+	<script src="{$GetInstallDir}images/shop/new.js"></script>
+	
+	<script src="{$GetInstallDir}ks_inc/kesion.common.js"></script>
+	<script src="/shop/js/shop.detail.js"></script>
+	
+<!--商品对比-->
+<style>
+.procompare{ width:980px;height:100px;margin:0 auto;background:#fff;}
+.procompareleft{float:left;width:800px}
+.procompareleft li{width:24%;float:left;height:90px;border-right:1px solid green;margin-bottom:2px;text-align:center}
+.procompareleft li.proli{text-align:left}
+.procompareleft li span.num{width:50px;height:50px;font-size:20px;font-weight:bold;line-height:50px;margin-left:10px;display:block;background:#f1f1f1;float:left;}
+.procompareleft li font{color:#999;font-size:12px;font-weight:normal}
+.procompareright{line-height:30px;float:left;width:160px;text-align:center;}
+.procompareright span{color:#999;font-size:12px;font-weight:normal}
+.procompareleft img{width:60px;height:60px;border:1px solid #f1f1f1;margin:2px;}
+.procompareleft span.price{color:#ff3300;font-weight:bold;text-align:left;}
+.checkcomparetrue{background:#ff6600;color:#fff}
+.checkcomparefalse{background:#f1f1f1;color:#555}
+</style>
+<script src="{$GetInstallDir}shop/js/shop.compare.js"></script>
+<!---商品对比结束--->
+	
+	<!--[if IE 6]>
+	<script src="/ks_inc/iepng.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	   EvPNG.fix('div, ul, img, li, input'); 
+	</script>
+	<![endif]-->
+<style type="text/css">
+	/*购物车*/
+.carbox{padding:10px;border:1px solid #faebde;background:#fef9f2;width:96%;}
+#buybtn{cursor:pointer;width:140px;height:40px;background:url(/sysimg/default/buy_button.png) no-repeat;border:0px}
+#carbtn{cursor:pointer;width:142px;height:40px;background:url(/sysimg/default/buy_button.png) no-repeat -140px;border:0px}
+.carbox span{cursor:hand;float:left; width:auto;padding:0px 8px;text-align:center; line-height:22px;position:relative;}
+.carbox span.txt{border:1px #c9c8ce solid; padding:0px 2px; margin:0px 2px; color:#646464; font-family:Arial, Helvetica, sans-serif; background:#fff; margin-bottom:5px; white-space:nowrap;}
+.carbox span.txt i{display:none;bottom:0px;right:0px;position:absolute;}
+.carbox span.curr i{display:block;bottom:0px;right:0px;position:absolute;}
+.carbox span.txt:Hover{border:1px #ff6701 solid;}
+.carbox span.curr{width:auto;padding:0px 2px;margin:0px 2px;line-height:22px; border:1px #ff6701 solid;margin-bottom:5px; white-space:nowrap;}
+.carbox div{clear:both}
+#buyselect{height:22px;line-height:22px;}
+
+ </style>
+
+
+</head>
+<body style="background:#f0f0f0;">
+{KS_T02商城头部}
+    	 <div class="wrap">
+		
+	 	<div class="clear blank15"></div>
+		
+		<div class="mainbox"><img src="{$GetInstallDir}images/shop/0.jpg" /></div>
+		<div class="Dg">{KS_位置导航}</div>
+        
+        <div class="scnry">
+        			<div class="">
+                    
+                                      <div class="r_one" style="z-index:888; position:relative">
+                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+				  <tr>
+					<td width="360px" align="left" valign="top">
+					<div class="clear" style="overflow:hidden"></div>
+					{=GetGroupPhoto(360,360)} 
+					
+					</td>
+					<td align="left" style="padding-left:20px;" valign="top">
+					<div class="cttitle">{KS:Field:Title}</div>
+					商品编号:{KS:Field:ProID}  品牌:{KS:Field:BrandName}<br />
+					
+					<!--价格信息 begin-->
+					<div style="background:#990000;color:#ffffff;padding:5px; width:70%">
+					市场价：<em style="color:#f1f1f1">{KS:Field:PriceMarket}</em><br/>
+					 <span id="showPriceName">{$GetSalesPriceName}：</span>
+					 <font class="fontcor" style="color:#FFF">{KS:Field:DynamicPrice}</font>
+					 &nbsp;&nbsp;
+					 (剩余<span class='stock'>{KS:Field:Amount}</span>{KS:Field:Unit})
+					 
+					  <!--抢购倒计时 begin-->
+					  <div id="showLimitEndTime" style="display:none;">
+					    结束倒计时：<font id="limitendtime">loading...</font>
+						<script>
+						 show_date_time('{KS:Field:LimitBeginDate}','{KS:Field:LimitEndDate}','limitendtime',1);
+						</script>
+					  </div>
+					 <!--抢购倒计时 end-->
+					 
+					</div>
+					<!--价格信息 end-->
+					
+					
+					
+					购买将赠送<b style="padding:0px 3px;color:#086fbe">{KS:Field:Score}</b>积分<br />
+					已成功销售<b style="padding:0px 3px;color:#086fbe">{KS:Field:HasSold}</b>{KS:Field:Unit}<br />
+					上架时间:{KS:Field:AddDate}<br />
+					
+					<script>if ("{=getshopcommonconfig(43)}"=="1") document.write('<div>');else  document.write('<div style=\'display:none\'>'); </script>
+					是否参与商场优惠活动:
+					<script>if ("{KS:Field:IsPromotions}"=='1')  document.write('是');	 else  document.write('否');	</script>
+					</div>
+					
+					已有<b style="padding:0px 3px;color:#009900">{KS:Field:Hits}</b>人关注<br />
+					
+					<script type="text/javascript">
+					 <!---初始化必要参数 begin  须放在调用购物车之前-->
+						priceunitsymbol='{$GetCurrencySymbol}';
+						priceunit='{$GetCurrencyUnit}';
+						salespricename='{$GetSalesPriceName}';
+						dir='/';
+						classid={KS:Field:ClassID};
+						infoid={KS:Field:InfoID};
+						modelid={KS:Field:ChannelID};
+						prounit='{KS:Field:Unit}';
+					 <!---初始化必要参数 end-->
+					</script>
+					
+					
+					<div class="clear"></div>
+				
+					  <style>
+					  .tipsbox{border:1px solid #ccc;padding:20px;font-size:16px;}
+					  .tipsbox h2{color:red}
+					  </style>
+					  {KS:Field:AttributeCart}
+					  
+					 
+						   
+						   <DIV class=bshare-custom style="margin-top:15px" ><A class=bshare-qzone title=分享到QQ空间></A><A class=bshare-sinaminiblog title=分享到新浪微博></A><A class=bshare-renren title=分享到人人网></A><A  class=bshare-qqmb title=分享到腾讯微博></A><A class=bshare-douban title=分享到豆瓣></A><A class="bshare-more bshare-more-icon more-style-addthis" title=更多平台></A><SPAN class="BSHARE_COUNT bshare-share-count">0</SPAN></DIV>
+		<SCRIPT type=text/javascript charset=utf-8 src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=990f0982-7b8b-442c-b090-4ce2d2da658e&amp;pophcol=2&amp;lang=zh"></SCRIPT>
+		
+		<SCRIPT type=text/javascript charset=utf-8 src="http://static.bshare.cn/b/bshareC0.js"></SCRIPT>
+						  
+					</td>
+				  </tr>
+				</table>
+                                                    </div>      
+                                                    
+                                                           
+                    <div class="clear"></div>
+                <!--捆绑销售 begin-->
+				{KS:Field:BundleSale}
+				<!--捆绑销售 end-->    
+                   <div class="clear"></div>
+                    
+                    
+                    </div>
+         
+        </div>
+        
+
+        
+        
+		<div class="ctmain">
+			<div class="ctmain_l">
+				<div class="l_one">
+					<h4>分类索引</h4>
+					<b>{$GetParentClassName}</b>
+					<ul>
+						{KS_分类索引}
+					</ul>
+					<div class="clear"></div>
+				</div>
+				<div class="l_two">
+					<h4><span style="float:right;font-size:12px;font-weight:normal;color:#999; cursor:hand">
+					<!--清除浏览记录-->
+					<a target="hidframe" onclick=KesionJS.Confirm('确定清空您的最新浏览记录吗？','hidframe.location.href="{$GetInstallDir}Model/CleanViewRecord.aspx"',null)>清空</a></span>
+					<iframe src="about:blank" name="hidframe" id="hidframe" style="display:none" width="0" height="0"></iframe>
+					<!--清除浏览记录-->
+					您最近浏览了</h4>
+					<ul>
+						{KS_最近浏览过的商品}
+					</ul>
+				</div>
+				<div class="l_three">
+					<h4><span>热销</span>商品</h4>
+					<ul>
+						{KS_热销商品}
+					</ul>
+					<div class="clear"></div>
+				</div>
+				<div class="l_four">
+					<h4><span>品牌</span>推荐</h4>
+					<ul>
+						{KS_推荐品牌}
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="ctmain_r">
+				
+				<div class="r_two">
+				<script>
+				$(function(){
+						   
+						   
+							$(".info p").each(function(){
+									var txt = $(this).parent().siblings().attr("src");
+									$(this).html(txt);
+							})
+							
+						   $("#menu dt").click(function(){
+								var index = $(this).index();
+							   $(this).addClass("sd01").siblings().removeClass("sd01");
+							   $("#content .wenbenbox").eq(index).show().siblings().hide();
+							})
+							
+				})
+				</script>
+					<dl id="menu">
+						<dt class="sd01">商品详情</dt>
+						<dt>累计评价(<span id="totalReview">{KS:Field:CommentNum}</span>)</dt>
+						<dt>商家问答(<span id="totalAskNum">{KS:Field:AskNum}</span>)</dt>
+						<dt>售后服务</dt>							
+					</dl>
+					<div id="content">
+						<div class="wenbenbox">
+						
+							<!--商品详情-->
+							<div class="c01box">
+								{KS:Field:Content}
+							</div>
+							<!--END-->
+							
+						</div>	
+						<div class="wenbenbox" style="display:none">
+						
+							<!--累计评价-->
+							<div class="c02box">
+								{KS:Field:ReviewList}
+							</div>
+							<!--END-->
+							
+						</div>	
+						<div class="wenbenbox" style="display:none">
+						
+							<!--商家问答-->
+							<div class="c03box">
+								{KS:Field:AskList}
+							</div>
+							<!--END-->
+							
+						</div>	
+						<div class="wenbenbox" style="display:none">
+						
+							<!--售后服务-->
+							<div class="c04box">
+								{KS_商城售后服务}
+							</div>
+							<!--END-->
+							
+						</div>	
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+	{KS_商城底部通用}
+</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="{$GetInstallDir}images/home.css" rel="stylesheet" />
+	<title>{KS:Field:SEOTitle}-{$GetClassName}</title>
+	<meta content="{KS:Field:SeoKeyWords}" name="keywords" />
+	<meta content="{KS:Field:SeoDescription}" name="Description" />	
+	<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+	<script src="{$GetInstallDir}ks_inc/kesion.common.js" type="text/javascript"></script>
+	
+	<!--[if IE 6]>
+	<script src="{$GetInstallDir}ks_inc/iepng.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	   EvPNG.fix('div, ul, img, li, input'); 
+	</script>
+	<![endif]-->
+	<style>
+		.fr{ background:#fff url({$GetInstallDir}images/home/frbg03.png) repeat-x; display:none}
+	</style>
+
+</head>
+
+<body>
+	{KS_头部通用}
+	<div class="clear blank10"></div>
+	<div class="Dg">{KS_位置导航}</div>
+	<div class="newscontent">
+		<div class="left">
+			<h1>{KS:Field:Title}</h1>
+			<div class="dp">{KS:Field:AddDate}<span>点击数(<font>{KS:Field:Hits}</font>)</span><span>已有<font>{KS:Field:CommentNum}</font>人评论</span>
+			{KS:Current:Favorite}
+			</div>
+			<div class="clear"></div>
+			<div class="ct">
+				<div class="ct_box">
+					{KS:Field:Content}
+					
+					<div>关键字：{KS:Field:KeyTagsByLink}</div>
+
+					{KS:Field:GetPK}
+					
+					
+					{KS:Field:GetVote}
+				</div>
+
+			 <div class="pk">{KS_DIGG样式一}</div>
+			上一篇： {KS:Field:PreItem}<br/> 下一篇：{KS:Field:NextItem}
+			
+			<div class="clear"></div>
+			 <div class="ct_mood"><script src="/plus/mood.aspx?id=6&c_id={KS:Current:ItemID}&M_id={KS:Current:ModelID}" ></script></div>
+			 
+<DIV class=bshare-custom style="margin-top:15px" ><A class=bshare-qzone title=分享到QQ空间></A><A class=bshare-sinaminiblog title=分享到新浪微博></A><A class=bshare-renren title=分享到人人网></A><A  class=bshare-qqmb title=分享到腾讯微博></A><A class=bshare-douban title=分享到豆瓣></A><A class="bshare-more bshare-more-icon more-style-addthis" title=更多平台></A><SPAN class="BSHARE_COUNT bshare-share-count">0</SPAN></DIV>
+<SCRIPT type=text/javascript charset=utf-8 src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=990f0982-7b8b-442c-b090-4ce2d2da658e&amp;pophcol=2&amp;lang=zh"></SCRIPT>
+
+<SCRIPT type=text/javascript charset=utf-8 src="http://static.bshare.cn/b/bshareC0.js"></SCRIPT>
+				</div>
+			
+                <script>
+				 $(document).ready(function(){
+				  $(".bshare-custom").find("A").click(function(){
+				   return(addScore({KS:Field:ClassID},{KS:Field:InfoID}));
+				  });
+				 });
+				</script>
+				
+				<div class="clear blank18"></div>
+			 	<div class="pllist">
+					{KS:Field:ShowComment}　
+					
+				</div>
+				<div class="clear"></div>
+                 <div class="ct_pl">
+			 	{KS:Field:WriteComment}
+				</div>
+
+
+
+		</div>
+		
+		<!---->
+		<div class="right">
+			<div class="right02">
+				<h4><span><a href="{=GetClassUrl(1115)}">更多<em>&raquo;</em></a></span>图片新闻</h4>
+				<ul>
+					{KS_图片新闻}
+				</ul>
+			</div>
+			<div class="clear"></div>
+			<div class="right03">
+				<h4>点击排行榜</h4>
+				<ul>
+					{KS_文章点击榜}
+				</ul>
+			</div>			
+			<div class="clear"></div>
+			<div class="right03">
+				<h4>评论排行榜</h4>
+				<ul>
+					{KS_评论排行榜}
+				</ul>
+			</div>			
+		</div>
+		<!---->
+		
+	</div>
+	{KS_尾部通用}
+</body>
+</html>

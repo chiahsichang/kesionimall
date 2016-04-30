@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head> 
+<title>{KS:Field:Title}-{$GetClassName}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="max-age=1700">
+<meta name="viewport" content="user-scalable=no, width=device-width">
+<meta name="MobileOptimized" content="320">
+<meta name="author" content="kesion.com">
+<meta name="format-detection" content="telephone=no">
+<link href="images/style.css" rel="stylesheet" type="text/css">
+<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+<script src="{$GetInstallDir}ks_inc/kesion.common.js" type="text/javascript"></script>
+<script src="{$GetSiteUrl}shop/js/shop.detail.js"></script>
+<SCRIPT language=JavaScript type=text/JavaScript> 
+function showimg(src){	window.open(src);}
+</SCRIPT>
+
+</head>
+
+<body>
+{KS_3G_底部导航}
+<div class="navmain">
+	<div class="fl">
+		<a href="javascript:;" onClick="history.back()" class="returnbtn">&nbsp;</a>
+	</div>
+	<div class="fr">
+		<a href="#" onClick="openShutManager(this,'ejlmbox')" class="openmore" title="展开栏目">&nbsp;</a>
+	</div>
+	商品信息
+</div>
+{KS_3G_通用栏目导航}
+
+
+<div class="MiddleCont">
+   <div class="content" style="color:#555;">
+    {=GetGroupPhoto(290,280)}
+	<div class="clear"></div>
+	<div class="productr">
+			    <ul>
+				  <li>商品名称： <span>{KS:Field:Title}</span></li>
+				  <li>商品货号： <span>{KS:Field:ProID}</span></li>
+				  
+				  
+				  <!--价格信息 begin-->
+					<div style="background:#990000;color:#ffffff;padding:5px;">
+					市场价：<em style="color:#f1f1f1">{KS:Field:PriceMarket}</em><br/>
+					 <span id="showPriceName">{$GetSalesPriceName}：</span>
+					 <font class="fontcor">{KS:Field:DynamicPrice}</font>
+					 &nbsp;&nbsp;
+					 (剩余<span class='stock'>{KS:Field:Amount}</span>{KS:Field:Unit})
+					 
+					  <!--抢购倒计时 begin-->
+					  <div id="showLimitEndTime" style="display:none;">
+					    结束倒计时：<font id="limitendtime">loading...</font>
+						<script>
+						 show_date_time('{KS:Field:LimitBeginDate}','{KS:Field:LimitEndDate}','limitendtime',1);
+						</script>
+					  </div>
+					 <!--抢购倒计时 end-->
+					 
+					</div>
+					<!--价格信息 end-->
+				  
+				  <li>获赠积分：<span>{KS:Field:Score}</span></li>
+				  <li>上架时间： <span> {KS:Field:AddDate}</span></li>
+				  <li>已 销 售： <span class="sales"> {KS:Field:HasSold}</span> </li>
+                  <li>浏 览 量： 已有<span class="hits">{KS:Field:Hits}</span>人关注</li>
+				</ul>
+				
+				
+					<script type="text/javascript">
+					 <!---初始化必要参数 begin  须放在调用购物车之前-->
+						priceunitsymbol='{$GetCurrencySymbol}';
+						priceunit='{$GetCurrencyUnit}';
+						salespricename='{$GetSalesPriceName}';
+						dir='/';
+						classid={KS:Field:ClassID};
+						infoid={KS:Field:InfoID};
+						modelid={KS:Field:ChannelID};
+						prounit='{KS:Field:Unit}';
+					 <!---初始化必要参数 end-->
+					</script>
+					
+					
+			<div class="clear"></div>
+				<ul>
+				    
+			  {KS:Field:AttributeCart}
+			
+				</ul>
+				
+			 </div>
+			 
+				 
+	
+	<div class="shopcontent">
+	<div class="title">商品介绍：</div>
+		<div style="color:#999">{KS:Field:Content}</div>
+	
+	</div>
+   </div>
+<div style="height:60px"></div>	  
+
+</body>
+</html>

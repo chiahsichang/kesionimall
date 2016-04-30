@@ -1,0 +1,498 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/images/home.css" rel="stylesheet" />
+	<title>辽宁抚顺县旅游局就“官网只是一张图”道歉-国内</title>
+	<meta content="" name="keywords" />
+	<meta content="近日网曝辽宁抚顺县旅游局网站仅是一张静态图片，网友调侃其为“年度最牛政府网站”。本报沈阳12月12日电 （记者何勇）近日，辽宁省抚顺县旅游局网址在网上热传，整个网站仅有一张静态图片，所有链接无法打开。网友纷纷调侃抚顺县旅游局网站为“年度最牛政府网站”。抚顺县" name="Description" />	
+	<script src="/ks_inc/jquery.js" type="text/javascript"></script>
+	<script src="/ks_inc/kesion.common.js" type="text/javascript"></script>
+	<script src="/ks_inc/lhgdialog.js"></script>
+	<!--[if IE 6]>
+	<script src="/ks_inc/iepng.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	   EvPNG.fix('div, ul, img, li, input'); 
+	</script>
+	<![endif]-->
+	<style>
+		.fr{ background:#fff url(/images/home/frbg03.png) repeat-x; display:none}
+	</style>
+
+</head>
+
+<body>
+	<!--[if IE 6]>
+<script src="/ks_inc/iepng.js" type="text/javascript"></script>
+<script type="text/javascript">
+   EvPNG.fix('div, ul, img, li, input'); 
+</script>
+<![endif]-->
+
+<div class="head">
+		<div class="idx">
+			<div class="l">
+  <div id="loginForm">
+    <div id="haslogin"></div>
+	 <div id="nologin" >
+			   用户名:<input name="TxtUserName" type="text" class="username" id="TxtUserName" size="10" maxlength="20" value="用户名/UID"/> 密码:<input name="TxtPassWord" type="password" class="password" id="TxtPassWord" size="10" maxlength="20" value="******"/>
+			   <span style="display:none">验证码:<input name="TxtVerifyCode" maxlength="6" type="password" class="textbox" id="TxtVerifyCode" size="3" />
+								<img src="/Plus/ValidateCode.aspx" border="0" style="cursor:hand" onclick="this.src='/Plus/ValidateCode.aspx?t='+Math.random();" /></span>
+								<span style="display:none"><input name="ExpiresDate" type="checkbox" id="ExpiresDate" value="checkbox"></span>
+			   <input type="submit" name="button1" class="loginbtn" id="loginbtn" value="登录" onClick="CheckLogin()"/>
+			  <a href="/reg.aspx" target="_parent">注册</a> <a href="/GetPass.aspx">忘记密码？</a><a href="/qqlogin.aspx"><img src="http://localhost:96/sysimg/default/icon_qq.png" align="absmiddle" title="QQ登录"/></a><a href="/sinalogin.aspx"><img src="http://localhost:96/sysimg/default/icon_sina.png" align="absmiddle" title="新浪微博登录"/></a><a href="/alipaylogin.aspx"><img src="http://localhost:96/sysimg/default/icon_alipay.png" align="absmiddle" title="支付宝快捷登录"/></a>
+	  </div>
+   </div>
+     
+	<script>
+	jQuery(document).ready(function(){
+	  CheckIsLogin();
+    });
+    //回车
+   $("#nologin").die().live("keydown",function(event){  
+			if(event.keyCode==13){  
+						  $("#loginbtn").click();
+						  return false;
+			}      
+	});    
+	
+	function CheckIsLogin(){ 
+			 jQuery.ajax({
+			  type:"POST",
+			  datatype: "xml",
+			  url:"/plus/ajaxs.ashx",
+			  data:"a=checkislogin",
+			  success:IsLogin
+			 });
+	}
+	function IsLogin(xml){  
+		 var islogin=jQuery(xml).find("login islogin").text();
+		 if (islogin=='false'){
+		  jQuery("#TxtUserName").focus(function(){
+		    if (jQuery("#TxtUserName").val()=='用户名/UID') jQuery("#TxtUserName").val('');
+		  });
+		  jQuery("#TxtUserName").blur(function(){
+		    if (jQuery("#TxtUserName").val()=='') jQuery("#TxtUserName").val('用户名/UID');
+		  });
+		  jQuery("#TxtPassWord").focus(function(){
+		   if (jQuery("#TxtPassWord").val()=='******') jQuery("#TxtPassWord").val('');
+		  });
+		  jQuery("#TxtPassWord").blur(function(){
+		   if (jQuery("#TxtPassWord").val()=='') jQuery("#TxtPassWord").val('******');
+		  });
+		  
+		 jQuery("#nologin").show();
+		 jQuery("#haslogin").hide();
+		 }else{
+	      jQuery("#nologin").hide();
+		  jQuery("#haslogin").show();
+		  var str="";
+		  var logindirection="Horizontal";
+		  str+="<div class='ulogin'>您好!<span style='color:#ee0000;padding:0px 5px 0px 5px'>"+jQuery(xml).find("login username").text()+"</span>";
+		  if (logindirection=="Vertical"){
+		  str+="<br/>";
+		  str+=jQuery(xml).find("login point").text()+"<br/>";
+		  str+=jQuery(xml).find("login message").text()+"<br/>";
+		  str+="登录次数:"+jQuery(xml).find("login logintimes").text()+"次<br/>";
+		  str+="【<a href='/user/index.aspx'>会员中心</a>】【<a href='/user/UserLoginOut.aspx'>退出登录</a>】";
+		  str+="</div>"
+		  }else{
+		   str+="欢迎来到会员中心!&nbsp;登录次数"+jQuery(xml).find("login logintimes").text()+"次&nbsp;&nbsp;<a href='/user/index.aspx' >[会员中心]</a><a href='/user/UserLoginOut.aspx' onclick='return(LoginOut())'>[退出]</a>"
+		  }
+		  jQuery("#haslogin").html(str);
+		 }
+	}
+	function CheckLogin()
+	{
+	     if (jQuery("#TxtUserName").val()==''||jQuery("#TxtUserName").val()=='用户名/UID')
+		 {
+		  jQuery.dialog.alert("请输入会员登录名称!",function(){
+		  jQuery("#TxtUserName").focus();
+		  });
+		  return false;
+		 }
+	     if (jQuery("#TxtPassWord").val()==''||jQuery("#TxtPassWord").val()=='******')
+		 {
+		  jQuery.dialog.alert("请输入会员登录密码!",function(){
+		  jQuery("#TxtPassWord").focus();
+		  });
+		  return false;
+		 }
+		 if (jQuery("#TxtPassWord").val().length<6)
+		 {
+		  jQuery.dialog.alert("登录密码长度不能少于6位!",function(){
+		  jQuery("#TxtPassWord").focus();
+		  });
+		  return false;
+		 }
+		 if (false){
+			 if (jQuery("#TxtVerifyCode").val()==''){
+			  jQuery.dialog.alert("请输入验证码!",function(){
+			  jQuery("#TxtVerifyCode").focus();
+			  });
+			  return false;
+			 }
+		 }
+		 var ExpiresDate=0;
+		 if (jQuery("#ExpiresDate").attr("checked")==true)  ExpiresDate=1;
+		 jQuery.ajax({
+		  type:"POST",
+		  processData: false,
+		  url:"/plus/ajaxs.ashx",
+		  data:"a=checklogin&username="+jQuery("#TxtUserName").val()+"&password="+jQuery("#TxtPassWord").val()+"&ExpiresDate="+ExpiresDate+"&verifycode="+jQuery("#TxtVerifyCode").val(),
+		  success:function(xml)
+		  { 
+			if (jQuery(xml).find("login success").text()=="True")
+			{
+			  CheckIsLogin()
+			}else{
+			 jQuery.dialog.alert(jQuery(xml).find("login message").text());
+			}
+		  }
+		 });
+	  }
+	</script>
+ </div>
+			<div class="r"><a href="/plus/map.aspx">网站地图</a>|<a href="/3g/" target="_blank">手机版</a>
+                        </div>
+		</div>
+	</div>
+	<div class="logomain">
+		<div class="logo"><img src="/images/logo.png" align="left" style="margin-top:15px" /><span>NET V2.0</span></div>
+		<div class="r">
+	<style>
+
+		
+	</style>
+<!-----搜索条----->
+<div class="sc">
+	<script> 
+	function drop_mouseover(pos){
+	 try{window.clearTimeout(timer);}catch(e){}
+	}
+	function drop_mouseout(pos){
+	 var posSel=document.getElementById(pos+"Sel").style.display;
+	 if(posSel=="block"){
+	  timer = setTimeout("drop_hide('"+pos+"')", 1000);
+	 }
+	}
+	function drop_hide(pos){document.getElementById(pos+"Sel").style.display="none";}
+	function search_show(pos,searchType,href){
+		document.getElementById(pos+"SearchType").value=searchType;
+		document.getElementById(pos+"Sel").style.display="none";
+		document.getElementById(pos+"Slected").innerHTML=href.innerHTML;
+		var sE = document.getElementById("searchExtend");
+		if(sE != undefined  &&  searchType == "bar"){
+		 sE.style.display="block";
+		}else if(sE != undefined){
+		 sE.style.display="none";
+		}
+	 try{window.clearTimeout(timer);}catch(e){}
+	 return false;
+	}
+	function dosearch(){
+	  var key=jQuery("#key-text").val();
+	 if (key=='' || key=='请输入搜索关键字'){
+		KesionJS.Alert("请输入搜索关键字！","jQuery('#key-text').focus()");
+	 }
+	else
+	{
+	     var m=jQuery("#headSearchType").val();
+		 if (m==1000){   //问吧
+		  location.href="/asklist/?key="+key;
+		 }else if (m==1001){ //考试
+		  location.href="/examlist/?key-"+key;
+		 }else{
+		  location.href="/search.aspx?key="+ key+"&m="+ m;
+		 }
+	 }
+	 
+	}
+	jQuery(document).ready(function(){
+		 if (jQuery("#key-text").val()==''){
+		   jQuery("#key-text").val('')
+		 }
+	});
+	</script>
+
+ 	<div class="scbox">
+      <div class="selSearch">
+		<div class="nowSearch" id="headSlected" onclick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onmouseout="drop_mouseout('head');">不限</div>
+		<div class="btnSel"><a href="#" onclick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onmouseout="drop_mouseout('head');"></a></div>
+		<div class="clear"></div>
+		<ul class="selOption" id="headSel" style="display:none;">
+		 <li><a href="#" onclick="search_show('head','1',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">文章</a></li>
+<li><a href="#" onclick="search_show('head','2',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">图片</a></li>
+<li><a href="#" onclick="search_show('head','3',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">软件</a></li>
+<li><a href="#" onclick="search_show('head','4',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">商品</a></li>
+
+		 <li><a href="#" onclick="search_show('head','1000',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">问吧</a></li>
+		 <li><a href="#" onclick="search_show('head','1001',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">试卷</a></li>
+		</ul>
+     </div>
+     <input type="input" id="key-text" style="font-size:12px;" name="wd" class="SC_input" value="请输入搜索关键字" onfocus="this.value=(this.value=='请输入搜索关键字')?'':this.value" onblur="this.value=(this.value=='')?'请输入搜索关键字':this.value"/>
+     <input id="headSearchType" name="searchType" type="hidden" value="0">
+      <a href="#"><input name="" onclick="dosearch();" type="button" value="搜索" class="scbtn" align="left" /></a>
+    </div>
+	
+	  
+	  <div class="sc_tags"> <a href="http://localhost:96/tags/82.aspx" target="_blank" title="TAG:IMall&#10;被使用了9次">IMall</a> 
+<a href="http://localhost:96/tags/83.aspx" target="_blank" title="TAG:IExam&#10;被使用了1次">IExam</a> 
+<a href="http://localhost:96/tags/81.aspx" target="_blank" title="TAG:ICMS&#10;被使用了1次">ICMS</a> 
+  </div>	
+</div>
+</div>
+ <!-----搜索条结束----->
+	
+	
+	
+	
+	</div>
+	</div>
+	<div class="clear"></div>
+	<div class="navmain">
+		<ul>
+			<li><a href="/">首页</a></li>
+
+ <li class="curr"><a href="http://localhost:96/html/news/">读新闻</a></li>
+
+
+ <li><a href="http://localhost:96/html/tppd/#NAME1">赏图片</a></li>
+
+
+ <li><a href="http://localhost:96/html/tyy/">挑应用</a></li>
+
+ <li><a href="http://localhost:96/mall/classid-912.aspx">逛商城</a></li>
+
+ <li><a href="/ask/">问专家</a></li>
+
+ <li><a href="http://localhost:96/mall/classid-1131.aspx">商城导航</a></li>
+
+
+
+		</ul>
+	</div>
+<script>
+//scrolltotop
+$(function(){
+        //首先将#back-to-top隐藏
+        $("#totop").hide();
+        //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+        $(function () {
+            $(window).scroll(function(){
+                if ($(window).scrollTop()>100){
+                    $("#totop").fadeIn();
+                }
+                else
+                {
+                    $("#totop").fadeOut();
+                }
+            });
+            //当点击跳转链接后，回到页面顶部位置
+            $("#totop").click(function(){
+                $('body,html').animate({scrollTop:0},500);
+                return false;
+            });
+        });
+    }); 
+</script>
+<div id="share">
+<a id="totop" title="">返回顶部</a>
+<a href="http://weibo.com/1746776800/zFjVFob53" target="_blank" class="sina">关注KesionCMS新浪微博</a>
+<a href="http://t.qq.com/kesioncms?lang=zh_CHT"  target="_blank" class="tencent">关注KesionCMS腾讯微博</a>
+</div>
+
+	<div class="clear"></div>
+
+	<div class="clear blank10"></div>
+	<div class="Dg">您当前位置：<a href="http://localhost:96/html/news/">读新闻</a> ><a href="http://localhost:96/html/news/gn/">国内</a> >浏览文章</div>
+	<div class="newscontent">
+		<div class="left">
+			<h1>辽宁抚顺县旅游局就“官网只是一张图”道歉</h1>
+			<div class="dp">2013/12/13 3:45:00<span>点击数(<font><font type="showhits" action="count" f="0" id="3704" t="1">0</font></font>)</span><span>已有<font><font type="showhits" action="cmtnum" f="0" id="3704" t="1">0</font></font>人评论</span>
+			<iframe name="hidfavorite" src="about:blank" width="0" height="0" style="width:0px;height:0px"></iframe>
+			<a target="hidfavorite" href="http://localhost:96/user/favorite.aspx?modelid=1&id=3704">加入收藏</a>
+			</div>
+			<div class="clear"></div>
+			<div class="ct">
+				<div class="ct_box">
+					<p style="text-align: center;"><img alt="辽宁抚顺县旅游局就“官网只是一张图”道歉" src="/UploadFiles/2015-3/75/b1130718975776542672SWC.jpg"/></p><p style="text-align: center; font-family: 宋体; font-size: 10pt;">近日网曝辽宁抚顺县旅游局网站仅是一张静态图片，网友调侃其为“年度最牛政府网站”。</p><p style="text-indent: 2em;">本报沈阳12月12日电 （记者何勇）近日，辽宁省抚顺县旅游局网址在网上热传，整个网站仅有一张静态图片，所有链接无法打开。网友纷纷调侃抚顺县旅游局网站为“年度最牛政府网站”。</p><p style="text-indent: 2em;">抚顺县旅游局在给本报的回应中称，该县旅游网为抚顺市旅游网二级网站，由市旅游局和抚顺市旅游网（抚顺市任天行网络科技有限公司）统一管理，抚顺县旅游局提供信息，自2011年7月1日起正式运行。</p><p style="text-indent: 2em;">2013年11月4日，抚顺市旅游局收到市公安局网络警察支队的整改通知书：网站安全技术保护措施不完善，存在重大安全隐患，要求对隐患进行限期整改。整改后，网站运行仍不稳定，需进一步调试。为防止界面“无法连接打不开”的负面影响，运营商在整改期间，将原网站首页截图放到界面上，引起网友误会和热评。</p><p style="text-indent: 2em;">抚顺县旅游局表示：“没有及时发现不妥，是工作的疏忽，对此深表歉意。”12日晚，记者输入“辽宁省抚顺县旅游网”，发现页面已经打开。</p>
+					
+					<div>关键字：</div>
+
+					
+					
+					
+					<script src='/plus/itemvote.aspx?infoId=3704'></script>
+				</div>
+
+			 <div class="pk"><style type="text/css">
+	.mark {overflow:hidden;padding:15px 0 20px 111px; clear:both;}
+	#mark0, #mark1 {background:url(/sysimg/dig/mark.gif) no-repeat -189px 0;border:0;cursor:pointer;float:left;height:48px;margin:0;overflow:hidden;padding:0;position:relative;width:189px;}
+	#mark1 {background-position:-378px 0;margin-left:10px;}
+	#barnum1, #barnum2 {color:#333333;font-family:arial;font-size:10px;font-weight:400;left:70px;line-height:12px;position:absolute;top:30px;}
+	.bar {background-color:#FFFFFF;border:1px solid #40A300;height:5px;left:9px;overflow:hidden;position:absolute;text-align:left;top:32px;width:55px;}
+	.bar div {background:transparent url(/sysimg/dig/bar_Footbg.gif) repeat-x ;height:5px;overflow:hidden; margin:0;}
+	#mark1 .bar {border-color:#555555;}
+	#mark1 .bar div {background:transparent url(/sysimg/dig/Barbg.gif) repeat-x ;}
+</style>
+	<div class="mark">
+	 <div onClick="digg(0,1,3704,'/');" onfocus="this.blur()" onMouseOut="this.style.backgroundPosition='-189px 0'" onMouseOver="this.style.backgroundPosition='0 0'" id="mark0" style="background-position: -189px 0pt;">
+	 <div class="bar"><div style="width: 0px;" id="digzcimg"></div></div>
+	 <span id="barnum1"><span id="perz3704">0%</span> (<span id="s3704">0</span>)</span>
+     </div>
+	 <div onClick="digg(1,1,3704,'/');" onfocus="this.blur()" onMouseOut="this.style.backgroundPosition='-378px 0'" onMouseOver="this.style.backgroundPosition='-567px 0'" id="mark1" style="background-position: -378px 0pt;">
+	<div class="bar"><div style="width: 0px;" id="digcimg"></div></div>
+	 <span id="barnum2"><span id="perc3704">0%</span> (<span id="c3704">10</span>)</span>
+	</div>
+</div>
+<script>show_digg1(1,3704,'/');</script>
+
+     </div>
+			上一篇： <a href="http://localhost:96/html/news/gn/3700.html">四川广元现直径60米天坑 致11间房被埋(组图)</a><br/> 下一篇：<a href="http://localhost:96/html/news/gn/3707.html">北京春节如遇三天重污染烟花禁放 含环保烟花</a>
+			
+			<div class="clear"></div>
+			 <div class="ct_mood"><script src="/plus/mood.aspx?id=6&c_id=3704&M_id=1" ></script></div>
+			 
+<DIV class=bshare-custom style="margin-top:15px" ><A class=bshare-qzone title=分享到QQ空间></A><A class=bshare-sinaminiblog title=分享到新浪微博></A><A class=bshare-renren title=分享到人人网></A><A  class=bshare-qqmb title=分享到腾讯微博></A><A class=bshare-douban title=分享到豆瓣></A><A class="bshare-more bshare-more-icon more-style-addthis" title=更多平台></A><SPAN class="BSHARE_COUNT bshare-share-count">0</SPAN></DIV>
+<SCRIPT type=text/javascript charset=utf-8 src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=990f0982-7b8b-442c-b090-4ce2d2da658e&amp;pophcol=2&amp;lang=zh"></SCRIPT>
+
+<SCRIPT type=text/javascript charset=utf-8 src="http://static.bshare.cn/b/bshareC0.js"></SCRIPT>
+				</div>
+			
+                <script>
+				 $(document).ready(function(){
+				  $(".bshare-custom").find("A").click(function(){
+				   return(addScore(1105,3704));
+				  });
+				 });
+				</script>
+				
+				<div class="clear blank18"></div>
+			 	<div class="pllist">
+					<script src="/ks_inc/Comment.page.js"></script><script defer>var from3g=0;Page(1,1,'3704','Show','/');</script>　
+					
+				</div>
+				<div class="clear"></div>
+                 <div class="ct_pl">
+			 	<script src="/plus/comment.aspx?ID=3704&ChannelID=1&ClassId=1105&action=Write"></script>
+				</div>
+
+
+
+		</div>
+		
+		<!---->
+		<div class="right">
+			<div class="right02">
+				<h4><span><a href="http://localhost:96/html/news/tp/">更多<em>&raquo;</em></a></span>图片新闻</h4>
+				<ul>
+					
+
+				</ul>
+			</div>
+			<div class="clear"></div>
+			<div class="right03">
+				<h4>点击排行榜</h4>
+				<ul>
+					
+						<li><span>3</span><em class="em01">1</em><a href="http://localhost:96/html/news/gn/3715.html" title="黑砖厂致2学生溺亡仍经营 官员称取缔有过渡期">黑砖厂致2学生溺亡仍经营 官员称取缔</a></li>
+
+
+						<li><span>1</span><em class="em01">2</em><a href="http://localhost:96/html/news/gn/3697.html" title="空军证实歼-8飞机夜训时在浙江失事 飞行员牺牲">空军证实歼-8飞机夜训时在浙江失事 </a></li>
+
+
+						<li><span>0</span><em class="em01">3</em><a href="http://localhost:96/html/news/js/3316.html" title="中国海军将派出和平方舟号医院船赴菲救援">中国海军将派出和平方舟号医院船赴菲救</a></li>
+
+
+
+
+<li><span>0</span><em>4</em><a href="http://localhost:96/html/news/gn/3708.html" title="北京非居民垃圾处理费涨11倍 乱倒垃圾可罚10万">北京非居民垃圾处理费涨11倍 乱倒垃</a></li>
+
+
+<li><span>0</span><em>5</em><a href="http://localhost:96/html/news/gn/3707.html" title="北京春节如遇三天重污染烟花禁放 含环保烟花">北京春节如遇三天重污染烟花禁放 含环</a></li>
+
+
+<li><span>0</span><em>6</em><a href="http://localhost:96/html/news/gn/3704.html" title="辽宁抚顺县旅游局就“官网只是一张图”道歉">辽宁抚顺县旅游局就“官网只是一张图”</a></li>
+
+
+<li><span>0</span><em>7</em><a href="http://localhost:96/html/news/gn/3700.html" title="四川广元现直径60米天坑 致11间房被埋(组图)">四川广元现直径60米天坑 致11间房</a></li>
+
+
+<li><span>0</span><em>8</em><a href="http://localhost:96/html/news/gn/3698.html" title="河南公安厅长郑州街头徒步夜巡三小时(图)">河南公安厅长郑州街头徒步夜巡三小时(</a></li>
+
+
+
+
+
+
+				</ul>
+			</div>			
+			<div class="clear"></div>
+			<div class="right03">
+				<h4>评论排行榜</h4>
+				<ul>
+					
+						<li><span></span><em class="em01">1</em><a href="http://localhost:96/html/news/gn/3715.html" title="黑砖厂致2学生溺亡仍经营 官员称取缔有过渡期">黑砖厂致2学生溺亡仍经营 官员称取缔</a></li>
+
+
+						<li><span></span><em class="em01">2</em><a href="http://localhost:96/html/news/gn/3708.html" title="北京非居民垃圾处理费涨11倍 乱倒垃圾可罚10万">北京非居民垃圾处理费涨11倍 乱倒垃</a></li>
+
+
+						<li><span></span><em class="em01">3</em><a href="http://localhost:96/html/news/gn/3707.html" title="北京春节如遇三天重污染烟花禁放 含环保烟花">北京春节如遇三天重污染烟花禁放 含环</a></li>
+
+
+
+
+<li><span></span><em>4</em><a href="http://localhost:96/html/news/gn/3704.html" title="辽宁抚顺县旅游局就“官网只是一张图”道歉">辽宁抚顺县旅游局就“官网只是一张图”</a></li>
+
+
+<li><span></span><em>5</em><a href="http://localhost:96/html/news/gn/3700.html" title="四川广元现直径60米天坑 致11间房被埋(组图)">四川广元现直径60米天坑 致11间房</a></li>
+
+
+<li><span></span><em>6</em><a href="http://localhost:96/html/news/gn/3698.html" title="河南公安厅长郑州街头徒步夜巡三小时(图)">河南公安厅长郑州街头徒步夜巡三小时(</a></li>
+
+
+<li><span></span><em>7</em><a href="http://localhost:96/html/news/gn/3697.html" title="空军证实歼-8飞机夜训时在浙江失事 飞行员牺牲">空军证实歼-8飞机夜训时在浙江失事 </a></li>
+
+
+<li><span></span><em>8</em><a href="http://localhost:96/html/news/js/3316.html" title="中国海军将派出和平方舟号医院船赴菲救援">中国海军将派出和平方舟号医院船赴菲救</a></li>
+
+
+
+
+
+
+				</ul>
+			</div>			
+		</div>
+		<!---->
+		
+	</div>
+		<div class="clear"></div>
+<div class="fr">
+		<span>合作伙伴:</span>
+<a href="http://demo.kesion.com" linkref="18" title="KesionCMS演示" target="_blank">KesionCMS演示</a>
+
+<a href="/plus/link">更多</a></div>
+	</div>
+	<div class="clear"></div>
+
+		<div class="end" >
+	<div class="idx">
+		<a href="http://localhost:96/a/1094.aspx">关于我们</a>-
+		<a href="/v-1-3141.aspx">联系我们</a>-
+		<a href="/v-1-3142.aspx">法律声明</a>-
+		<a href="/v-1-3143.aspx">人才招聘</a>-
+		<a href="/v-1-3144.aspx">免责声明</a>-
+		<a href="/map.aspx">网站地图</a>
+	</div>
+	</div>
+	<div class="copyright">
+		<div class="idx">Powered By KesionICMS V3.0 正式版 www.kesion.com inc .<br />福建·漳州科兴信息技术有限公司版权所有 © 2006-2015 <br /> 
+软著登字第126518号 登记号2009SR00339 工商注册号:350602100002211 税务登记号:350602666863734 闽ICP备06009871号 
+<div class="clear"></div><img src="/images/home/kxwz.png" /><img src="/images/home/jybz.png" /><img src="/images/home/wlbj.png" /></div>
+	</div> 
+</body>
+</html>

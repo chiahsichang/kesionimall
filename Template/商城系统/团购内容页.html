@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> 
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>{KS:Field:Subject}-{$GetSiteTitle}</title>
+<meta name="keywords" content="{$GetClass_Meta_KeyWord}" />
+<meta name="description" content="{$GetClass_Meta_Description}" />
+<link href="{$GetInstallDir}images/shop/style.css" rel="stylesheet" />
+<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+<script  type="text/javascript" src="{$GetInstallDir}images/shop/new.js"></script>
+<script src="{$GetInstallDir}ks_inc/kesion.common.js" type="text/javascript"></script>
+
+<SCRIPT type=text/javascript> 
+jQuery(document).ready(function(){
+	var SDmodel = new scrollDoor();
+	SDmodel.sd(["m01","m02","m03"],["c01","c02","c03"],"sd01","sd02");
+})
+</SCRIPT>
+
+<script type="text/javascript">
+	//=点击展开关闭效果=
+	function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+	var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+	var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+	var openTip = oOpenTip || "";
+	var shutTip = oShutTip || "";
+	if(targetObj.style.display!="none"){
+	   if(shutAble) return;
+	   targetObj.style.display="none";
+	   if(openTip  &&  shutTip){
+		sourceObj.innerHTML = shutTip;
+	   }
+	} else {
+	   targetObj.style.display="block";
+	   if(openTip  &&  shutTip){
+		sourceObj.innerHTML = openTip;
+	   }
+	}
+	}
+	</script>
+	<!--[if IE 6]>
+	<script src="/ks_inc/iepng.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	   EvPNG.fix('div, ul, img, li, input'); 
+	</script>
+	<![endif]-->
+<style>
+.logomain .right{ float:left; padding-top:42px; margin:0 }
+.logomain .right .changecity{ float:left; height:30px; width:148px; padding-top:13px;}
+.logomain .sc{ float:left; margin:0 }
+</style>
+    </head>
+<body style="background:#F0F0F0">
+
+
+	{KS_T02商城头部}
+	<div class="clear"></div>
+	<div class="mainbox" style="position:relative">		
+		<div class="cityqh">
+		
+		{KS:Field:showchangecity}
+		
+		</div>	
+	</div>
+
+<div class="wrap">
+	<div class="clear blank15"></div>
+	<div class="Dg">{KS_位置导航}</div>
+	<div class="clear blank10"></div>
+	<!--团购内容页主体begin-->
+	<div class="tgnrmain">
+		<div class="tgnrmain_l">
+			<div class="l_one">
+				<h1>{KS:Field:Subject}</h1>
+				<div class="left">
+					 <div class="price">
+                     		<div class="l"><font>￥</font>{KS:Field:Price}</div>
+                     		<div class="tg_zk">{KS:Field:discount} 折</div>
+                            <div class="pricebox">
+                                <span class="tg_jg">原价<em>￥{KS:Field:Price_Original}</em></span>
+                                <span class="tg_jg">节省<b>￥{KS:Field:PriceSave}</b></span>
+							</div>
+                            
+                     </div>
+					  <div class="clear"></div> 
+						 <div class="buynum">当前已有<b>{KS:Field:hassellnum}</b>人参团</div>
+										
+						 {KS:Field:Groupbuytips}
+                         
+                         <div class="buybtn"><a href="{KS:Field:groupbuycarturl}">&nbsp;</a></div>
+
+						  <div class="tgtime">
+						  {KS:Field:GroupbuyTimetips}
+						  
+						  </div>
+				</div>
+				<div class="right">
+					<img src="{KS:Field:bigphoto}">
+					<div class="share" style="float:right;height:30px; line-height:30px;padding-top:10px">  <a class="bshareDiv" href="http://www.bshare.cn/share">分享按钮</a><script language="javascript" type="text/javascript" src="http://static.bshare.cn/b/button.js#uuid=395e9bd9-6962-46f8-b9e1-d5e7455d98c4&style=2&textcolor=#000&bgcolor=none&bp=qqmb,sinaminiblog,sohubai,renren&ssc=false&sn=false&text=分享到"></script></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="l_two">
+				<dl>
+					<dt class="sd01" id=m01>本单详情</dt>
+					<dt class="sd02" id=m02>团购亮点</dt>
+					<dt class="sd02" id=m03>温馨提示</dt>
+					<dt class="tit"></dt>
+				</dl>
+				<div class="display productline" id=c01>
+					<div class="ltwobox">
+						{KS:Field:intro}
+					</div>	
+				</div>
+				<div class="display productline" id=c02 style="display:none">
+					<div class="ltwobox">
+						{KS:Field:highlights}
+					</div>
+				</div>
+				<div class="display productline" id=c03 style="display:none">
+					<div class="ltwobox">
+						{KS:Field:notes}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tgnrmain_r">
+			<div class="r_one">
+			</div>
+			<div class="r_two">
+				<marquee direction="up" scrollamount="2" scrolldelay="2">
+					 {KS:Field:HasBuyUserList}
+				</marquee>
+			</div>
+			<div class="r_three">
+			   <div class="tgrbox">
+				<h4>团购热卖榜</h4>
+				 <ul>
+					{KS_团购热卖榜}
+				 </ul>
+				 <div class="cleasr"></div>
+			   </div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	{KS_商城底部通用}
+	
+</div>
+</body>
+</html>

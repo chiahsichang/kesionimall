@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Kesion.NET.WebSite.Shop.Compare" Codebehind="Compare.aspx.cs" %>

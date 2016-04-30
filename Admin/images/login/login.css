@@ -1,0 +1,49 @@
+﻿/* CSS Document */
+/*通用样式*/
+*{margin:0;padding:0;word-wrap:break-word;}
+body{font:12px/1.75 "宋体", arial, sans-serif,'DejaVu Sans','Lucida Grande',Tahoma,'Hiragino Sans GB',STHeiti,SimSun,sans-serif;color:#444;}
+a{text-decoration:none;color:#2C2C2C}
+a:hover{text-decoration:underline;color:#F60;}
+h3,h4,h5,h6{font-size:12px; margin:0; padding:0; font-weight:100;}
+h2{font-size:20px; color:#000; }
+h3{font-size:14px; font-weight:600; padding-left:15px;}
+a img{border:none; display:block;} 
+img{border:none; vertical-align:inherit;} 
+div,ul,li,p,form{padding: 0px; margin: 0px;list-style-type: none;}
+em{font-style: normal;font-weight: normal;}
+table {padding: 0px; margin: 0px;list-style-type: none;}
+dt,dl,dd {padding: 0px; margin: 0px;list-style-type: none;}
+form{margin:0px;padding:0px;}
+tr {padding: 0px; margin: 0px;list-style-type: none;}
+.clear {clear:both;height:0px; overflow:hidden;}
+.blank10{height:10px;overflow:hidden;}
+.blank20{height:20px;overflow:hidden;}
+.blank60{ background:url(comeon.gif) no-repeat center 20px;height:65px;overflow:hidden;}
+img, div { behavior: url(iepngfix.htc); }
+sup{ font-size:9px; color:#555;}
+
+.loginbg{background:url(/admin/images/login/bg.jpg) fixed; background-size: cover;}
+.loginbox{ border-radius:5px; width:410px;  margin:150px auto 0 ;background-color: rgba(232,239,241,0.7);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7FE8EFF1,endColorstr=#7FE8EFF1); overflow:hidden; }
+.loginbox .title{ background:#469ED8; width:100%; height:45px;border-radius:5px 5px 0 0;}
+.loginbox .title img{ margin-top:10px; margin-left:15px;}
+.loginbox .box{ padding:10px 0; overflow:hidden }
+.loginbox .box ul{ margin-top:20px;  padding-left:20px; overflow:hidden;}
+.loginbox .box li{line-height:35px; margin-bottom:15px; width:338px; position:relative; clear:both; text-align:left }
+.loginbox .box li .wz{ color:#555; display:inline-block; width:80px; float:left; text-align:right; font-size:14px;}
+.loginbox .box li .pic{cursor:pointer;width:75px; display:block;border:#E2E4E6 solid 1px; height:35px; line-height:35px; position:absolute; right:0px; top:0px; background:#fff;}
+.loginbox .box li .pic img{ height:35px;  width:75px;  }
+.loginbox .box li .pic input{ height:35px; width:75px; line-height:35px; background:#FFF; color:#555; border:none; cursor:pointer;}
+
+.loginbox .box li .od{ height:35px; line-height:35px;padding-left:40px; width:215px;  border:#E2E4E6 1px solid;background:#FFF url(icon.png) no-repeat; color:#A2A2A2;font-family:"微软雅黑"; }
+.loginbox .box li .txt{ background-position:10px -19px ;}
+.loginbox .box li .pas{ background-position:11px 8px ;}
+.loginbox .box li .rz{ background-position:10px -45px ;}
+.loginbox .box li .sj{ background-position:10px -75px ;}
+.loginbox .box li .yz{ background-position:10px -105px ; width:140px; border-right:none;}
+.loginbox .box li.bu{ margin-left:80px;}
+.loginbox .box li .btn{font-family:"微软雅黑"; width:99px; height:32px; line-height:32px;cursor:pointer; border:none; font-size:16px; color:#FFF; font-weight:500;}
+.loginbox .box li .but1{ background:#E87A00;}
+.loginbox .box li .but2{ background:#4788CD;}
+
+.copyright{word-spacing:0.3em;letter-spacing:0.1em;text-align:center;color:#fff; position:absolute; bottom:0px; width:100%;background-color: rgba(232,239,241,0.4);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7FE8EFF1,endColorstr=#7FE8EFF1); padding:10px 0}
+.copyright a{color:#FF0000;text-decoration:underline;}

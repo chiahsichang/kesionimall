@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="{$GetInstallDir}images/home.css" rel="stylesheet" />
+	<title>{$GetSiteTitle}-DIGG排行榜</title>
+	<script src="{$GetSiteUrl}ks_inc/jquery.js"></script>
+	<script src="{$GetInstallDir}ks_inc/kesion.common.js"></script>
+	<script language="JavaScript">
+	function showerrimg(obj){
+		 var errorimg = "{$GetInstallDir}images/nopic.png";//替换图片地址
+		 obj.src = errorimg;
+	}
+	</script>
+</head>
+<body>
+	{KS_头部通用}
+	
+<div class="Dg">{KS_位置导航}</div>
+<div class="idx" style="margin-top:0px"><img src="http://bbs.kesion.com/images/banner.gif" onerror="this.src='/images/980x100.jpg'" width="100%" /></div>
+<div class="digg">
+	<div class="digg_l">
+		<div class="left01">
+			<h4>猜你喜欢</h4>
+			<ul>
+					{KS_随机播报图片}
+					{KS_随机播报}
+			</ul>	
+		</div>
+		<div class="left02">
+			<h4>热门新闻排行榜</h4>
+			<ul>
+				{KS_文章点击榜}
+			</ul>	
+		</div>
+	</div>
+	<div class="digg_r">
+		<h4>Digg排行榜</h4>
+		<div class="tit"><a href="dig.aspx"{$NavCss0}>按支持数</a> <a href="?a=1"{$NavCss1}>按反对数</a> </div>
+		<ul>
+			{=ShowDigList(10,1)}
+		</ul>
+		[KS:PageStr2]
+	</div>
+</div>
+	{KS_尾部通用}
+
+</body>
+</html>

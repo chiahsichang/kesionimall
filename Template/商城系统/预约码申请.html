@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="{$GetInstallDir}images/shop/style.css" rel="stylesheet" />
+    <link href="{$GetInstallDir}images/home.css" rel="stylesheet" />
+	<title>预约码申请-{$GetSiteTitle}</title>
+	<script src="{$GetInstallDir}ks_inc/jquery.js"></script>
+	<script src="{$GetInstallDir}ks_inc/kesion.common.js"></script>
+	<script src="{$GetInstallDir}ks_inc/validecoupon.js"></script>
+<!--[if IE 6]>
+	<script src="/ks_inc/iepng.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	   EvPNG.fix('div, ul, img, li, input'); 
+	</script>
+	<![endif]-->
+ <style type="text/css">
+  body{font-size:12px}
+  td{font-size:12px}
+  .ShoppingCart{background:#e5e5e5; line-height:24px; font-family:SimSun}
+  .ShoppingCart .tdbg td{background:#fff;padding:10px 0px; text-align:center}
+  .ShoppingCart .tdbg td.align_Left{ text-align:left;padding-left:15px}
+  .ShoppingCart .Thead,.ShoppingCart .Tfoot{text-align:center;background:#fafafa;padding:10px }
+  .ShoppingCart .price{color:#ff3300}
+  .prolist{margin:5px}
+  .prolist ul{margin:0px;padding:0px}
+  .prolist ul li{width:100px;height:80px;float:left;list-style-type:none;}
+  #changeSucTip{background: url(/sysimg/shop/cartTipBottom.gif) bottom no-repeat;height:80px;padding-bottom:4px;}
+  #changeSucTip #tipContent{border:#ff9900 1px solid;background:#fffddd;border-bottom:none;height:77px;}
+  #changeSucTip #tipTitle{margin-top:10px;text-align:center;}
+  #changeSucTip #priceSpan{color:red;}
+  .gwcbox #couponnum{border:1px solid #ccc;margin-left:10px; height:20px; line-height:20px}
+  table{ font-family:SimSun}
+  .couponbtn{background:#f60;border:1px solid #f60;color:#fff;font-family:"\5FAE\8F6F\96C5\9ED1";}
+  .coupontxt{border:1px solid #ddd; height:22px; line-height:22px;padding:0px 5px}
+  .yym{ overflow:hidden; }
+  .yym .ts{ color:#999; margin-left:5px; font-style:normal}
+  .yym strong{ height:45px; line-height:45px; color:#666; font-size:14px; display:block; margin-top:10px;font-family: "微软雅黑";}
+  .yym .yytype,.yym .add_address{background:#FFF;padding:20px; border:#E5E5E5 solid 1px;border-bottom:#CCC solid 1px;}
+  .yym .yytype select{ padding:4px 2px; border:#DDD solid 1px; margin-right:10px;}
+  
+  .yym .add_address{ line-height:50px;}
+  .yym .lefttxt { min-width:80px; _width:80px; display:inline-block; font-size:14px;}
+  .yym .add_address input{ border:#DDD solid 1px; height:35px; line-height:35px; width:260px; padding-left:10px;}
+  
+  
+  .yym .yybtn{ border:none; margin:10px 0; display:block; float:right; line-height:35px; font-size:14px; background:#FF6600; padding:0 10px; color:#FFF; cursor:pointer;font-family: "微软雅黑";}
+ </style>
+</head>
+<body>
+{KS_商城首页头部}
+<div class="wrap">
+	<div class="gwcbox">
+		<div class="gwcbox_r">
+			<ul>
+				<li class="curr">预约码申请</li>
+			</ul>
+		</div>
+	</div>
+	<div class="gwcts">
+		<span>温馨提示：</span>每件商品每个城市都是限量发售,购买前请提前预约！
+	</div>
+	<div class="mainbox yym" style="margin-top:15px;line-height:30px;">
+	
+	
+	
+	[apply]
+	 <script>
+	  function checkapply(){
+	    if ($("#ProvinceID").val()==''){
+		  $.dialog.alert('请选择省份!');
+		  return false;
+		}
+	    if ($("#CityID").val()==''){
+		  $.dialog.alert('请选择城市!');
+		  return false;
+		}
+		if ($("#address").val()==''){
+		 $.dialog.alert('请输入收货地址!',function(){ $("#address").focus(); });
+		 return false;
+		}
+		if ($("#realname").val()==''){
+		 $.dialog.alert('请输入联系电话!',function(){ $("#realname").focus(); });
+		 return false;
+		}
+		if ($("#mobile").val()==''){
+		 $.dialog.alert('请输入联系电话!',function(){ $("#mobile").focus(); });
+		 return false;
+		}
+		
+		return true;
+	  }
+	 </script>
+	 <form name="myform" action="bookcodeapply.aspx" method="post">
+	  <input type="hidden" name="action" value="apply"/>
+	  <strong>第一步:选择您所在城市及预约类型</strong>
+      <div class="yytype">
+		  <script src="/plus/area.aspx?pid={$provinceid}&cityid={$cityid}&countyid={$countyid}"></script>
+          <div class="clear blank10"></div>
+          <i class="ts" style="padding:0">提示:一旦设定好城市,收货地址只能是该城市的地址.以防止个别用户通过"更改城市"从而达到购买到商品的目的.</i>
+          <br/>
+          
+          <div{$ShowBookCodeType}>
+          选择申请的款式:
+           <select name="ID">
+            {$BookCodeTypeOption}
+           </select>
+          </div>
+      </div>
+
+	  <strong>第二步:输入您详细的收货地址及信息</strong>
+	  <div class="add_address">
+        <span class="lefttxt">详细地址:</span><input type="text" name="address" id="address"/>
+        <br/>
+        <span class="lefttxt">收 货 人:</span><input type="text" name="realname" id="realname"/>
+        <br/>
+        <span class="lefttxt">手机号码:</span><input type="text" name="mobile" id="mobile"/> <i class="ts">预约成功将手机短信通知您。</i>
+        <br/>
+        <span class="lefttxt">邮编:</span><input type="text" name="zipcode" id="zipcode"/>
+      </div>
+
+	  <input type="submit" value="立即提交申请"  onclick="return(checkapply());" class="yybtn"/>
+	 </form>
+	 [/apply]
+	 
+	 [success]
+	   
+	    <h2><img src="/sysimg/default/ok.png"/>恭喜,预约码申请成功!</h2>
+		
+		预约码使用城市 {$city}
+		<br/>
+		预约码ID号:{$codeid}<br/>
+		
+		预约码类型:{$typename}
+		
+		
+	 [/success]
+	 
+	 
+	  	  <br/>
+	  <br/>
+
+	</div>
+	
+	{KS_商城底部通用}
+</div>
+</body>
+</html>

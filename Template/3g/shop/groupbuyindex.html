@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<title>团购首页 {$GetSiteName}-[KS:SearchTitle]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-control" content="max-age=1700">
+<meta name="viewport" content="user-scalable=no, width=device-width">
+<meta name="MobileOptimized" content="320">
+<meta name="author" content="kesion.com">
+<meta name="format-detection" content="telephone=no">
+<link href="{$GetSiteUrl}3g/images/style.css" rel="stylesheet" type="text/css">
+	<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+	<script src="{$GetInstallDir}ks_inc/kesion.common.js" type="text/javascript"></script>
+	<style>
+.qgtit{font-family:"simhei"; height:35px;  background:#FFF;}
+.qgtit a{ float:left; width:33.333%; position:relative; float:left; text-align:center; height:35px; line-height:35px;font-size:16px;}
+.qgtit a.curr{color:#fff;position:relative; background:#EC4B4B ; font-weight:bold}
+.panic{ clear:both;margin:0 auto; margin:0 12px;}
+.panic ul li{ color:#aaa;margin:15px 0px 0px 0px;padding:15px 15px 20px 15px; background:url(/images/shop/qgbg03.png) repeat-x 0 100%;}
+.panic ul li img.imgsize{width:100%; margin-bottom:20px}
+.panic ul li .liintro{}
+.panic ul li .liintro a{ display:block;font-size:16px;font-weight:bold; height:25px}
+.panic ul li .liintro font{color:#e00;font-weight:bold; font-family:Arial;font-size:16px; padding-right:10px}
+.panic ul li:hover{box-shadow:0 0 12px #999;background:#fff; padding:15px}
+</style>
+    
+</head>
+<body>
+
+	{KS:LoadFile("head.html")}
+
+
+	<div class="clear"></div>
+
+     <h4 style="margin-left:10px;"> {KS:Field:showchangecity}</h4> 
+     <div class="qgtit">
+		<div class="mainbox">
+			<div class="l">
+				<a href="groupbuyindex.aspx" class="curr">今日团购</a>
+				<a href="groupbuyhistory.aspx">往期团购</a>
+			</div>
+		</div>
+	</div> 
+
+   <div class="shopmain01">
+{KS:Filter("分类","ClassID")}
+			{KS:Filter("选择价格","price","fw","￥500-1000|￥1000-1500|￥1500-2000|￥2000-2500|￥2500以上","500-1000|1000-1500|1500-2000|2000-2500|2500-1000000" )}
+
+	<div class="clear blank10"></div>
+        <div class="pxfsbox"><span>排序方式：</span>{KS:Order("默认ID|id asc","销量<img src="../../images/shop/bottom.png" />|HasSellNum Desc","价格<img src="../../images/shop/top.png" />|price asc","更新时间<img src="../../images/shop/bottom.png" />|adddate desc")}</div>
+       <div class="clear"></div>
+    </div>
+        
+		
+		<div class="clear"></div>
+		<script type="text/javascript">
+		 var p=location.search;
+		 function gofilter(v,id){
+		   var parr=p.split(',');
+		   var nstr='';
+		   for (var i=0;i<parr.length;i++){
+			 if (parr[i].split('-')[0].toLowerCase()!=id.toLowerCase()){
+				 if (nstr==''){ nstr=parr[i]; }else{ nstr+=','+parr[i]; }
+			 }
+		   }
+		   if(v){nstr+=","+id+"-1";}
+		   location.href=nstr;
+		 }
+		</script>
+		
+
+		<!--团购 -->
+
+		<div class="wqtgcontent">
+		
+			<div class="tgl">
+		
+				  <div class="panic">
+					  <ul>
+						 [Loop Times="5"]
+					
+                      <li>
+						<div class="li_newbg"></div>
+					   <div class="tgimg"><a title="{$Field(subject,text,0,...,2,)}"  href="{KS:Field:groupbuyurl}"><img  src="{$Field(photourl,text,0,...,2,)}" class="imgsize"></a> </div>
+					   <h2><a title="{$Field(subject,text,0,...,2,)}"  href="{KS:Field:groupbuyurl}"><b style="color:#e00;padding-right:5px">[{KS:Field:discount}折]</b>{$Field(subject,text,28,,2,)}</a></h2>
+					   <div class="clear blank10"></div>
+					   <div class="liintro">
+							<div class="l"><span>{KS:Field:hassellnum}</span>人已购买</div>
+						   <div class="price">团购价：<font>￥{KS:Field:Price}</font><br />原价：<em>￥{KS:Field:Price_original}</em></div>
+					   </div>
+					  </li>
+					  [/loop]
+
+				
+					  </ul>
+				  </div>
+              </div>
+             </div>
+             <div class="clear"></div>
+				 <div class="fenyexinxi">[KS:PageStr3]</div>
+	<div style="height:60px"></div>  
+	</body>
+</html>

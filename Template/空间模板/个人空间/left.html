@@ -1,0 +1,48 @@
+﻿
+<div class="clear"></div>
+   <div class="mainbody">
+      <div class="mainbodyl">
+	    <div class="mainbodyl1">
+		   <div class="title">个人名片</div>
+		   <div class="box">
+			  <ul>
+			    {$ShowUserInfo}
+				</ul>
+				<ul class="ul_brief">
+					<li>姓名：{KS:Field:RealName}</li>
+					<li>性别：{KS:Field:sex}</li>
+					<li>地区：{KS:Field:Address}</li>
+					<li>QQ号：{KS:Field:QQ}</li>
+					<li>Email：{KS:Field:Email}</li>
+					<li>个人签名： {KS:Field:Sign}</li>
+				</ul>
+		   </div>
+		</div>
+
+		<div class="clear"></div>		
+		 
+		 <div class="mainbodyl2">
+		   <div class="title">最近谁来看过我</div>
+		   <div class="friends">
+		     <ul>
+               {KS_最新访客}
+             </ul>  
+             
+		   </div>
+		</div>
+		<div class="clear"></div>		
+
+		  <div class="mainbodyl2">
+		   <div class="title">博客统计</div>
+		   <div class="ul_stats">
+				<ul>
+					<li><span>总博文：</span>{KS:Field:ArticleTotal}</li>
+					<li><span>相册集：</span>{KS:Field:AlbumTotal}</li>
+					<li><span>文　集：</span>{KS:Field:CorpusTotal}</li>
+					<li><span>问　答：</span>{KS:Field:AskTotal}</li>
+					<li><span>留　言：</span>{KS:Field:MessageTotal}</li>
+				</ul>		  
+			 </div>
+		</div>
+		
+	  </div>

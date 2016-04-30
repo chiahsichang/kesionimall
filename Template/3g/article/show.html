@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head> 
+<title>{KS:Field:Title}-{$GetClassName}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="max-age=1700">
+<meta name="viewport" content="user-scalable=no, width=device-width">
+<meta name="MobileOptimized" content="320">
+<meta name="author" content="kesion.com">
+<meta name="format-detection" content="telephone=no">
+<link href="{$GetSiteUrl}3g/images/style.css" rel="stylesheet" type="text/css">
+<script src="{$GetSiteUrl}ks_inc/jquery.js"></script>
+<script src="{$GetSiteUrl}ks_inc/kesion.common.js"></script>
+<SCRIPT language=JavaScript type=text/JavaScript> 
+function resizepic(thispic){ if(thispic.width>230) thispic.width=230;}
+function showimg(src){	window.open(src);}
+function bbimg(o){}
+</SCRIPT>
+</head>
+
+<body>
+{KS_3G_底部导航}
+<div class="navmain">
+	<div class="fl">
+		<a href="javascript:;" onClick="history.back()" class="returnbtn">&nbsp;</a>
+	</div>
+	<div class="fr">
+		<a href="#" onClick="openShutManager(this,'ejlmbox')" class="openmore" title="展开栏目">&nbsp;</a>
+	</div>
+	浏览文章
+</div>
+{KS_3G_通用栏目导航}
+
+<div class="contentbox">
+	<h1>{KS:Field:Title}</h1>
+	<div class="gray">
+	(编辑：{KS:Field:Inputer} 日期：{KS:Field:AddDate} 归属：<a href="#">{$GetClassName}</a>)
+	</div>
+	<div class="newscontent">
+	{KS:Field:Content}
+	</div>
+	
+	<div class="clear"></div>
+	<div class="plbox">
+		<h2><img src="{$GetSiteUrl}3g/images/pltit.png" /></h2>
+		<div class="pllist">
+			{KS:Field:ShowComment}
+		</div>	
+		<div class="plcontent">
+			{KS:Field:WriteComment}
+		</div>
+	</div>
+		<div class="clear"></div>
+
+</div>
+
+<div style="height:70px;"></div>
+</body>
+</html>

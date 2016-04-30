@@ -1,0 +1,528 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/images/home.css" rel="stylesheet" />
+	<title>KESION 智能建站系统V3.0(基于ASP.NET C#)-新闻频道-国内新闻-第1页</title>
+	<!--鼠标滑动特效start--> 
+	<script src="/ks_inc/jquery.js" type="text/javascript"></script>
+	<script src="/ks_inc/kesion.common.js" type="text/javascript"></script>
+	<script src="/ks_inc/lhgdialog.js"></script>
+	<!--鼠标滑动特效end--> 
+	<style>
+		.fr{margin-top:0px;}
+	</style>
+</head>
+
+<body>
+	<!--[if IE 6]>
+<script src="/ks_inc/iepng.js" type="text/javascript"></script>
+<script type="text/javascript">
+   EvPNG.fix('div, ul, img, li, input'); 
+</script>
+<![endif]-->
+
+<div class="head">
+		<div class="idx">
+			<div class="l">
+  <div id="loginForm">
+    <div id="haslogin"></div>
+	 <div id="nologin" >
+			   用户名:<input name="TxtUserName" type="text" class="username" id="TxtUserName" size="10" maxlength="20" value="用户名/UID"/> 密码:<input name="TxtPassWord" type="password" class="password" id="TxtPassWord" size="10" maxlength="20" value="******"/>
+			   <span style="display:none">验证码:<input name="TxtVerifyCode" maxlength="6" type="password" class="textbox" id="TxtVerifyCode" size="3" />
+								<img src="/Plus/ValidateCode.aspx" border="0" style="cursor:hand" onclick="this.src='/Plus/ValidateCode.aspx?t='+Math.random();" /></span>
+								<span style="display:none"><input name="ExpiresDate" type="checkbox" id="ExpiresDate" value="checkbox"></span>
+			   <input type="submit" name="button1" class="loginbtn" id="loginbtn" value="登录" onClick="CheckLogin()"/>
+			  <a href="/reg.aspx" target="_parent">注册</a> <a href="/GetPass.aspx">忘记密码？</a><a href="/qqlogin.aspx"><img src="http://localhost:96/sysimg/default/icon_qq.png" align="absmiddle" title="QQ登录"/></a><a href="/sinalogin.aspx"><img src="http://localhost:96/sysimg/default/icon_sina.png" align="absmiddle" title="新浪微博登录"/></a><a href="/alipaylogin.aspx"><img src="http://localhost:96/sysimg/default/icon_alipay.png" align="absmiddle" title="支付宝快捷登录"/></a>
+	  </div>
+   </div>
+     
+	<script>
+	jQuery(document).ready(function(){
+	  CheckIsLogin();
+    });
+    //回车
+   $("#nologin").die().live("keydown",function(event){  
+			if(event.keyCode==13){  
+						  $("#loginbtn").click();
+						  return false;
+			}      
+	});    
+	
+	function CheckIsLogin(){ 
+			 jQuery.ajax({
+			  type:"POST",
+			  datatype: "xml",
+			  url:"/plus/ajaxs.ashx",
+			  data:"a=checkislogin",
+			  success:IsLogin
+			 });
+	}
+	function IsLogin(xml){  
+		 var islogin=jQuery(xml).find("login islogin").text();
+		 if (islogin=='false'){
+		  jQuery("#TxtUserName").focus(function(){
+		    if (jQuery("#TxtUserName").val()=='用户名/UID') jQuery("#TxtUserName").val('');
+		  });
+		  jQuery("#TxtUserName").blur(function(){
+		    if (jQuery("#TxtUserName").val()=='') jQuery("#TxtUserName").val('用户名/UID');
+		  });
+		  jQuery("#TxtPassWord").focus(function(){
+		   if (jQuery("#TxtPassWord").val()=='******') jQuery("#TxtPassWord").val('');
+		  });
+		  jQuery("#TxtPassWord").blur(function(){
+		   if (jQuery("#TxtPassWord").val()=='') jQuery("#TxtPassWord").val('******');
+		  });
+		  
+		 jQuery("#nologin").show();
+		 jQuery("#haslogin").hide();
+		 }else{
+	      jQuery("#nologin").hide();
+		  jQuery("#haslogin").show();
+		  var str="";
+		  var logindirection="Horizontal";
+		  str+="<div class='ulogin'>您好!<span style='color:#ee0000;padding:0px 5px 0px 5px'>"+jQuery(xml).find("login username").text()+"</span>";
+		  if (logindirection=="Vertical"){
+		  str+="<br/>";
+		  str+=jQuery(xml).find("login point").text()+"<br/>";
+		  str+=jQuery(xml).find("login message").text()+"<br/>";
+		  str+="登录次数:"+jQuery(xml).find("login logintimes").text()+"次<br/>";
+		  str+="【<a href='/user/index.aspx'>会员中心</a>】【<a href='/user/UserLoginOut.aspx'>退出登录</a>】";
+		  str+="</div>"
+		  }else{
+		   str+="欢迎来到会员中心!&nbsp;登录次数"+jQuery(xml).find("login logintimes").text()+"次&nbsp;&nbsp;<a href='/user/index.aspx' >[会员中心]</a><a href='/user/UserLoginOut.aspx' onclick='return(LoginOut())'>[退出]</a>"
+		  }
+		  jQuery("#haslogin").html(str);
+		 }
+	}
+	function CheckLogin()
+	{
+	     if (jQuery("#TxtUserName").val()==''||jQuery("#TxtUserName").val()=='用户名/UID')
+		 {
+		  jQuery.dialog.alert("请输入会员登录名称!",function(){
+		  jQuery("#TxtUserName").focus();
+		  });
+		  return false;
+		 }
+	     if (jQuery("#TxtPassWord").val()==''||jQuery("#TxtPassWord").val()=='******')
+		 {
+		  jQuery.dialog.alert("请输入会员登录密码!",function(){
+		  jQuery("#TxtPassWord").focus();
+		  });
+		  return false;
+		 }
+		 if (jQuery("#TxtPassWord").val().length<6)
+		 {
+		  jQuery.dialog.alert("登录密码长度不能少于6位!",function(){
+		  jQuery("#TxtPassWord").focus();
+		  });
+		  return false;
+		 }
+		 if (false){
+			 if (jQuery("#TxtVerifyCode").val()==''){
+			  jQuery.dialog.alert("请输入验证码!",function(){
+			  jQuery("#TxtVerifyCode").focus();
+			  });
+			  return false;
+			 }
+		 }
+		 var ExpiresDate=0;
+		 if (jQuery("#ExpiresDate").attr("checked")==true)  ExpiresDate=1;
+		 jQuery.ajax({
+		  type:"POST",
+		  processData: false,
+		  url:"/plus/ajaxs.ashx",
+		  data:"a=checklogin&username="+jQuery("#TxtUserName").val()+"&password="+jQuery("#TxtPassWord").val()+"&ExpiresDate="+ExpiresDate+"&verifycode="+jQuery("#TxtVerifyCode").val(),
+		  success:function(xml)
+		  { 
+			if (jQuery(xml).find("login success").text()=="True")
+			{
+			  CheckIsLogin()
+			}else{
+			 jQuery.dialog.alert(jQuery(xml).find("login message").text());
+			}
+		  }
+		 });
+	  }
+	</script>
+ </div>
+			<div class="r"><a href="/plus/map.aspx">网站地图</a>|<a href="/3g/" target="_blank">手机版</a>
+                        </div>
+		</div>
+	</div>
+	<div class="logomain">
+		<div class="logo"><img src="/images/logo.png" align="left" style="margin-top:15px" /><span>NET V2.0</span></div>
+		<div class="r">
+	<style>
+
+		
+	</style>
+<!-----搜索条----->
+<div class="sc">
+	<script> 
+	function drop_mouseover(pos){
+	 try{window.clearTimeout(timer);}catch(e){}
+	}
+	function drop_mouseout(pos){
+	 var posSel=document.getElementById(pos+"Sel").style.display;
+	 if(posSel=="block"){
+	  timer = setTimeout("drop_hide('"+pos+"')", 1000);
+	 }
+	}
+	function drop_hide(pos){document.getElementById(pos+"Sel").style.display="none";}
+	function search_show(pos,searchType,href){
+		document.getElementById(pos+"SearchType").value=searchType;
+		document.getElementById(pos+"Sel").style.display="none";
+		document.getElementById(pos+"Slected").innerHTML=href.innerHTML;
+		var sE = document.getElementById("searchExtend");
+		if(sE != undefined  &&  searchType == "bar"){
+		 sE.style.display="block";
+		}else if(sE != undefined){
+		 sE.style.display="none";
+		}
+	 try{window.clearTimeout(timer);}catch(e){}
+	 return false;
+	}
+	function dosearch(){
+	  var key=jQuery("#key-text").val();
+	 if (key=='' || key=='请输入搜索关键字'){
+		KesionJS.Alert("请输入搜索关键字！","jQuery('#key-text').focus()");
+	 }
+	else
+	{
+	     var m=jQuery("#headSearchType").val();
+		 if (m==1000){   //问吧
+		  location.href="/asklist/?key="+key;
+		 }else if (m==1001){ //考试
+		  location.href="/examlist/?key-"+key;
+		 }else{
+		  location.href="/search.aspx?key="+ key+"&m="+ m;
+		 }
+	 }
+	 
+	}
+	jQuery(document).ready(function(){
+		 if (jQuery("#key-text").val()==''){
+		   jQuery("#key-text").val('')
+		 }
+	});
+	</script>
+
+ 	<div class="scbox">
+      <div class="selSearch">
+		<div class="nowSearch" id="headSlected" onclick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onmouseout="drop_mouseout('head');">不限</div>
+		<div class="btnSel"><a href="#" onclick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onmouseout="drop_mouseout('head');"></a></div>
+		<div class="clear"></div>
+		<ul class="selOption" id="headSel" style="display:none;">
+		 <li><a href="#" onclick="search_show('head','1',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">文章</a></li>
+<li><a href="#" onclick="search_show('head','2',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">图片</a></li>
+<li><a href="#" onclick="search_show('head','3',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">软件</a></li>
+<li><a href="#" onclick="search_show('head','4',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">商品</a></li>
+
+		 <li><a href="#" onclick="search_show('head','1000',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">问吧</a></li>
+		 <li><a href="#" onclick="search_show('head','1001',this)" onmouseover="drop_mouseover('head');" onmouseout="drop_mouseout('head');">试卷</a></li>
+		</ul>
+     </div>
+     <input type="input" id="key-text" style="font-size:12px;" name="wd" class="SC_input" value="请输入搜索关键字" onfocus="this.value=(this.value=='请输入搜索关键字')?'':this.value" onblur="this.value=(this.value=='')?'请输入搜索关键字':this.value"/>
+     <input id="headSearchType" name="searchType" type="hidden" value="0">
+      <a href="#"><input name="" onclick="dosearch();" type="button" value="搜索" class="scbtn" align="left" /></a>
+    </div>
+	
+	  
+	  <div class="sc_tags"> <a href="http://localhost:96/tags/82.aspx" target="_blank" title="TAG:IMall&#10;被使用了9次">IMall</a> 
+<a href="http://localhost:96/tags/83.aspx" target="_blank" title="TAG:IExam&#10;被使用了1次">IExam</a> 
+<a href="http://localhost:96/tags/81.aspx" target="_blank" title="TAG:ICMS&#10;被使用了1次">ICMS</a> 
+  </div>	
+</div>
+</div>
+ <!-----搜索条结束----->
+	
+	
+	
+	
+	</div>
+	</div>
+	<div class="clear"></div>
+	<div class="navmain">
+		<ul>
+			<li><a href="/">首页</a></li>
+
+ <li class="curr"><a href="http://localhost:96/html/news/">读新闻</a></li>
+
+
+ <li><a href="http://localhost:96/html/tppd/#NAME1">赏图片</a></li>
+
+
+ <li><a href="http://localhost:96/html/tyy/">挑应用</a></li>
+
+ <li><a href="http://localhost:96/mall/classid-912.aspx">逛商城</a></li>
+
+ <li><a href="/ask/">问专家</a></li>
+
+ <li><a href="http://localhost:96/mall/classid-1131.aspx">商城导航</a></li>
+
+
+
+		</ul>
+	</div>
+<script>
+//scrolltotop
+$(function(){
+        //首先将#back-to-top隐藏
+        $("#totop").hide();
+        //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+        $(function () {
+            $(window).scroll(function(){
+                if ($(window).scrollTop()>100){
+                    $("#totop").fadeIn();
+                }
+                else
+                {
+                    $("#totop").fadeOut();
+                }
+            });
+            //当点击跳转链接后，回到页面顶部位置
+            $("#totop").click(function(){
+                $('body,html').animate({scrollTop:0},500);
+                return false;
+            });
+        });
+    }); 
+</script>
+<div id="share">
+<a id="totop" title="">返回顶部</a>
+<a href="http://weibo.com/1746776800/zFjVFob53" target="_blank" class="sina">关注KesionCMS新浪微博</a>
+<a href="http://t.qq.com/kesioncms?lang=zh_CHT"  target="_blank" class="tencent">关注KesionCMS腾讯微博</a>
+</div>
+
+	<div class="clear"></div>
+
+	<div class="newsnav">
+		<ul>
+			
+ <li class="curr"><a href="http://localhost:96/html/news/gn/"><img src="http://i.kesion.com/UploadFiles/newsnav/icon01.png" /><br />国内</a></li>
+
+ <li><a href="http://localhost:96/html/news/gj/"><img src="http://i.kesion.com/UploadFiles/newsnav/icon02.png" /><br />国际</a></li>
+
+ <li><a href="http://localhost:96/html/news/sh/"><img src="http://i.kesion.com/UploadFiles/newsnav/icon03.png" /><br />社会</a></li>
+
+ <li><a href="http://localhost:96/html/news/js/"><img src="http://i.kesion.com/UploadFiles/newsnav/icon04.png" /><br />军事</a></li>
+
+ <li><a href="http://localhost:96/html/news/yl/"><img src="http://i.kesion.com/UploadFiles/newsnav/icon06.png" /><br />娱乐</a></li>
+
+ <li><a href="http://localhost:96/html/news/ls/"><img src="http://i.kesion.com/UploadFiles/newsnav/icon05.png" /><br />历史</a></li>
+
+ <li><a href="http://localhost:96/html/news/jy/"><img src="http://i.kesion.com/UploadFiles/newsnav/icon07.png" /><br />教育</a></li>
+
+ <li><a href="http://localhost:96/html/news/fc/"><img src="http://i.kesion.com/UploadFiles/newsnav/icon08.png" /><br />房产</a></li>
+
+ <li><a href="http://localhost:96/html/news/cj/"><img src="http://i.kesion.com/UploadFiles/newsnav/icon09.png" /><br />财经</a></li>
+
+ <li><a href="http://localhost:96/html/news/gy/"><img src="http://i.kesion.com/UploadFiles/newsnav/icon10.png" /><br />公益</a></li>
+
+ <li><a href="http://localhost:96/html/news/tp/"><img src="http://i.kesion.com/UploadFiles/newsnav/icon11.png" /><br />图片</a></li>
+
+
+		</ul>
+	</div>
+	<div class="clear"></div>
+	<div class="newsmain01" style="margin-top:0px">
+		<div class="left">
+			<div class="left02">
+				<h1 style="border-top:0px"><span><a href="/special/index.aspx" style="color:#666;">论专题</a> | 
+</span>国内频道</h1>
+				<ul>
+					
+					<li class="li02">
+						<div class="title"><a href="http://localhost:96/html/news/gn/3715.html" title="黑砖厂致2学生溺亡仍经营 官员称取缔有过渡期">黑砖厂致2学生溺亡仍经营 官员称取缔有过渡期</a></div>
+						<div class="intro">由于无证砖厂生产需大量泥土，挖土形成深约4米的大坑，每逢下雨，积水深厚，但水坑没有任何安全警示。今年6月22日，5名小学生来到水坑游泳时，其中2人不幸溺亡。无证砖厂仍正常生产。汤凯锋 摄　　一边是儿子冰冷的尸体还躺在殡仪馆，一边是涉事的无证砖厂还在烧砖排</div> 
+						<div class="biaoqian"><span></span></div>
+					</li>
+					<div class="clear"></div>
+
+
+					<li class="li02">
+						<div class="title"><a href="http://localhost:96/html/news/gn/3708.html" title="北京非居民垃圾处理费涨11倍 乱倒垃圾可罚10万">北京非居民垃圾处理费涨11倍 乱倒垃圾可罚10万</a></div>
+						<div class="intro">
+新京报讯 （记者蒋彦鑫）从明年1月1日起，北京将大幅上调非居民垃圾处理费和排污费标准。其中垃圾处理费由25元/吨提高到300元/吨；四种污染物排放收费由不到1元/公斤提高到10元/公斤和12元/公斤。此次主要是对非居民的生活垃圾价格进行调整，针对的主要是机关、企事业单位和</div> 
+						<div class="biaoqian"><span></span></div>
+					</li>
+					<div class="clear"></div>
+
+
+					<li class="li02">
+						<div class="title"><a href="http://localhost:96/html/news/gn/3707.html" title="北京春节如遇三天重污染烟花禁放 含环保烟花">北京春节如遇三天重污染烟花禁放 含环保烟花</a></div>
+						<div class="intro">
+昨日，熊猫烟花展台首款环保烟花亮相。马年烟花市场中，至少有10%属于环保型烟花。新京报记者 王贵彬 摄2008年北京奥运会开幕式中，曾有一道如同星河、长度近四十米的“银色瀑布”，沿“鸟巢”碗口徐徐垂下，落入场内，实现这一美妙效果的就是环保烟花。资料图片新京报讯 （</div> 
+						<div class="biaoqian"><span></span></div>
+					</li>
+					<div class="clear"></div>
+
+
+					<li class="li02">
+						<div class="title"><a href="http://localhost:96/html/news/gn/3704.html" title="辽宁抚顺县旅游局就“官网只是一张图”道歉">辽宁抚顺县旅游局就“官网只是一张图”道歉</a></div>
+						<div class="intro">近日网曝辽宁抚顺县旅游局网站仅是一张静态图片，网友调侃其为“年度最牛政府网站”。本报沈阳12月12日电 （记者何勇）近日，辽宁省抚顺县旅游局网址在网上热传，整个网站仅有一张静态图片，所有链接无法打开。网友纷纷调侃抚顺县旅游局网站为“年度最牛政府网站”。抚顺县</div> 
+						<div class="biaoqian"><span></span></div>
+					</li>
+					<div class="clear"></div>
+
+
+					<li class="li02">
+						<div class="title"><a href="http://localhost:96/html/news/gn/3700.html" title="四川广元现直径60米天坑 致11间房被埋(组图)">四川广元现直径60米天坑 致11间房被埋(组图)</a></div>
+						<div class="intro">
+四川新闻网广元12月12日讯（记者 高志农）12月12日凌晨0:40许，广元市朝天区平溪乡三组突然发生地陷，造成的天坑长约60米，宽40余米，坑深越30余米。当地村民王加顺11间旧房被埋，新建楼房开裂成危房，王加福家一间旧房被拉塌，所幸无人伤亡。目前，垮塌还在继续扩大中。12</div> 
+						<div class="biaoqian"><span></span></div>
+					</li>
+					<div class="clear"></div>
+
+
+					<li class="li02">
+						<div class="title"><a href="http://localhost:96/html/news/gn/3698.html" title="河南公安厅长郑州街头徒步夜巡三小时(图)">河南公安厅长郑州街头徒步夜巡三小时(图)</a></div>
+						<div class="intro">
+
+在社区警务室，他和社区工作人员、警务室民警座谈。社区民警李欣说，社区群众自发组建了多支义务巡逻队，帮助维护社区治安。 王小洪（中）、黄保卫（右二）等徒步夜巡郑州 　　12月11日晚，省长助理、公安厅长王小洪身着警服和反光背心，以普通民警身份参加机关民警</div> 
+						<div class="biaoqian"><span></span></div>
+					</li>
+					<div class="clear"></div>
+
+
+					<li class="li02">
+						<div class="title"><a href="http://localhost:96/html/news/gn/3697.html" title="空军证实歼-8飞机夜训时在浙江失事 飞行员牺牲">空军证实歼-8飞机夜训时在浙江失事 飞行员牺牲</a></div>
+						<div class="intro">
+“歼-8”飞机。(资料图)
+		var flash_vid = 'u00135xyt04', 
+		    flash_title = '空军证实一架歼-8战机夜航训练时失事',
+		    flash_pic = '/UploadFiles/2013-12/74/b21303173734...</div> 
+						<div class="biaoqian"><span></span></div>
+					</li>
+					<div class="clear"></div>
+
+
+<div class="fenye" id="fenye">
+  <table border="0"><tr><td id="pagelist">
+	 <a href="javascript:;" class="prev" style="display:none">首 页</a> <a href="javascript:;" class="next"><img src="/SysImg/fl.png" /></a>
+		  <a href="#" class="curr">1</a>
+
+	 <a href="javascript:;" class="next"><img src="/SysImg/fr.png" /></a>
+	 <a href="javascript:;" class="prev" style="display:none">末页</a> </td></tr></table>
+</div>
+	
+<script>
+                var TotalPage=1;
+                var TotalPut=7;
+               </script><script src="/ks_inc/kesion.page.js"></script><script>page(2,12,'篇','.html','index');</script>
+				</ul>
+			</div>
+		</div>
+		<div class="right">
+			<img src="/images/home/banner.png" width="100%" style="margin-top:20px" />
+			<div class="right02">
+				<h4><span><a href="http://localhost:96/html/news/tp/">更多<em>&raquo;</em></a></span>图片新闻</h4>
+				<ul>
+					
+
+				</ul>
+			</div>
+			<div class="clear"></div>
+			<div class="right03">
+				<h4>点击排行榜</h4>
+				<ul>
+					
+						<li><span>3</span><em class="em01">1</em><a href="http://localhost:96/html/news/gn/3715.html" title="黑砖厂致2学生溺亡仍经营 官员称取缔有过渡期">黑砖厂致2学生溺亡仍经营 官员称取缔</a></li>
+
+
+						<li><span>1</span><em class="em01">2</em><a href="http://localhost:96/html/news/gn/3697.html" title="空军证实歼-8飞机夜训时在浙江失事 飞行员牺牲">空军证实歼-8飞机夜训时在浙江失事 </a></li>
+
+
+						<li><span>0</span><em class="em01">3</em><a href="http://localhost:96/html/news/js/3316.html" title="中国海军将派出和平方舟号医院船赴菲救援">中国海军将派出和平方舟号医院船赴菲救</a></li>
+
+
+
+
+<li><span>0</span><em>4</em><a href="http://localhost:96/html/news/gn/3708.html" title="北京非居民垃圾处理费涨11倍 乱倒垃圾可罚10万">北京非居民垃圾处理费涨11倍 乱倒垃</a></li>
+
+
+<li><span>0</span><em>5</em><a href="http://localhost:96/html/news/gn/3707.html" title="北京春节如遇三天重污染烟花禁放 含环保烟花">北京春节如遇三天重污染烟花禁放 含环</a></li>
+
+
+<li><span>0</span><em>6</em><a href="http://localhost:96/html/news/gn/3704.html" title="辽宁抚顺县旅游局就“官网只是一张图”道歉">辽宁抚顺县旅游局就“官网只是一张图”</a></li>
+
+
+<li><span>0</span><em>7</em><a href="http://localhost:96/html/news/gn/3700.html" title="四川广元现直径60米天坑 致11间房被埋(组图)">四川广元现直径60米天坑 致11间房</a></li>
+
+
+<li><span>0</span><em>8</em><a href="http://localhost:96/html/news/gn/3698.html" title="河南公安厅长郑州街头徒步夜巡三小时(图)">河南公安厅长郑州街头徒步夜巡三小时(</a></li>
+
+
+
+
+
+
+				</ul>
+			</div>			
+			<div class="clear"></div>
+			<div class="right03">
+				<h4>评论排行榜</h4>
+				<ul>
+					
+						<li><span></span><em class="em01">1</em><a href="http://localhost:96/html/news/gn/3715.html" title="黑砖厂致2学生溺亡仍经营 官员称取缔有过渡期">黑砖厂致2学生溺亡仍经营 官员称取缔</a></li>
+
+
+						<li><span></span><em class="em01">2</em><a href="http://localhost:96/html/news/gn/3708.html" title="北京非居民垃圾处理费涨11倍 乱倒垃圾可罚10万">北京非居民垃圾处理费涨11倍 乱倒垃</a></li>
+
+
+						<li><span></span><em class="em01">3</em><a href="http://localhost:96/html/news/gn/3707.html" title="北京春节如遇三天重污染烟花禁放 含环保烟花">北京春节如遇三天重污染烟花禁放 含环</a></li>
+
+
+
+
+<li><span></span><em>4</em><a href="http://localhost:96/html/news/gn/3704.html" title="辽宁抚顺县旅游局就“官网只是一张图”道歉">辽宁抚顺县旅游局就“官网只是一张图”</a></li>
+
+
+<li><span></span><em>5</em><a href="http://localhost:96/html/news/gn/3700.html" title="四川广元现直径60米天坑 致11间房被埋(组图)">四川广元现直径60米天坑 致11间房</a></li>
+
+
+<li><span></span><em>6</em><a href="http://localhost:96/html/news/gn/3698.html" title="河南公安厅长郑州街头徒步夜巡三小时(图)">河南公安厅长郑州街头徒步夜巡三小时(</a></li>
+
+
+<li><span></span><em>7</em><a href="http://localhost:96/html/news/gn/3697.html" title="空军证实歼-8飞机夜训时在浙江失事 飞行员牺牲">空军证实歼-8飞机夜训时在浙江失事 </a></li>
+
+
+<li><span></span><em>8</em><a href="http://localhost:96/html/news/js/3316.html" title="中国海军将派出和平方舟号医院船赴菲救援">中国海军将派出和平方舟号医院船赴菲救</a></li>
+
+
+
+
+
+
+				</ul>
+			</div>			
+		</div>
+	</div>
+		<div class="clear"></div>
+<div class="fr">
+		<span>合作伙伴:</span>
+<a href="http://demo.kesion.com" linkref="18" title="KesionCMS演示" target="_blank">KesionCMS演示</a>
+
+<a href="/plus/link">更多</a></div>
+	</div>
+	<div class="clear"></div>
+
+		<div class="end" >
+	<div class="idx">
+		<a href="http://localhost:96/a/1094.aspx">关于我们</a>-
+		<a href="/v-1-3141.aspx">联系我们</a>-
+		<a href="/v-1-3142.aspx">法律声明</a>-
+		<a href="/v-1-3143.aspx">人才招聘</a>-
+		<a href="/v-1-3144.aspx">免责声明</a>-
+		<a href="/map.aspx">网站地图</a>
+	</div>
+	</div>
+	<div class="copyright">
+		<div class="idx">Powered By KesionICMS V3.0 正式版 www.kesion.com inc .<br />福建·漳州科兴信息技术有限公司版权所有 © 2006-2015 <br /> 
+软著登字第126518号 登记号2009SR00339 工商注册号:350602100002211 税务登记号:350602666863734 闽ICP备06009871号 
+<div class="clear"></div><img src="/images/home/kxwz.png" /><img src="/images/home/jybz.png" /><img src="/images/home/wlbj.png" /></div>
+	</div> 
+</body>
+</html>

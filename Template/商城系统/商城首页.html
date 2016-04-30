@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>	
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="{$GetInstallDir}images/shop/style.css" rel="stylesheet" />
+<title>{$GetSiteTitle}-在线商城系统</title>
+<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+<script src="{$GetInstallDir}ks_inc/kesion.common.js" type="text/javascript"></script>
+<!--[if IE 6]>
+<script src="/ks_inc/iepng.js" type="text/javascript"></script>
+<script type="text/javascript">
+EvPNG.fix('div, ul, img, li, input'); 
+</script>
+<![endif]-->
+<!--[if lt IE 7]>
+<script type="text/javascript">
+   // alert('请您升级到IE7或以上版本!');
+   // window.open("http://www.baidu.com/search/theie6countdown.html","_self");
+</script>
+<![endif]-->
+</head>
+<body>
+<SCRIPT type=text/javascript src="{$GetInstallDir}images/home/scrolltop.js"></SCRIPT>
+<DIV style="DISPLAY: none" id=goTopBtn title="回顶部">返回顶部</DIV>
+<SCRIPT type=text/javascript>goTopEx();</SCRIPT>
+<!-------头头开始--------------> 
+<div class=" header" >
+        <div class="header_box">
+                <div class="l">欢迎登入{$GetSiteName}！
+                    <!--弹窗登录开始--->
+                    <span id="PopLoginTips"><a href="javascript:showuserlogin()">[ 登录 ]</a> <a href="{=GetRewriteUrl(reg)}" target="_blank">[ 免费注册 ]</a></span>
+                    <script>
+                    jQuery(document).ready(function(){
+					   $(".site-menu").find("li:first").addClass("curr");
+                       jQuery.ajax({
+                          type:"POST",
+                          datatype: "xml",
+                          url:"{$GetInstallDir}plus/ajaxs.ashx",
+                          data:"a=checkislogin",
+                          success:function(xml){
+                              var islogin=jQuery(xml).find("login islogin").text();
+                          if (islogin=='false') return;
+                          var str="<img src='"+jQuery(xml).find("login userface").text()+"' align='texttop' class='userface' /> <a href='{$GetSiteUrl}user/index.aspx' style='color:#333'>"+jQuery(xml).find("login username").text()+"</a> <a href='{$GetSiteUrl}user/UserLoginOut.aspx'>退出</a>  <a href='{$GetSiteUrl}user/receivedmessage.aspx?menu=message'>消息"+jQuery(xml).find("login message").text()+"</a>";
+                         jQuery("#PopLoginTips").html(str);
+                          }
+                         });
+                    });
+                    </script>
+                    <!--弹窗登录结束--->
+                </div>
+                <div class="r"> 
+                    <a href="{$GetInstallDir}?app=shoppingcart"><img src="{$GetInstallDir}images/shop/cart.png" align="texttop" style="margin:1px 5px 0px 0px" />购物车<script src='{$GetInstallDir}shop/GetCartNum.aspx'></script></a> 
+                    <a href="{=GetClassUrl(1006)}"><img src="{$GetInstallDir}images/shop/help.png" align="texttop" style="margin:0px 5px 0px 0px" />帮助中心</a>  
+                    <a href="{=Get3GClassUrl(912)}"><img src="{$GetInstallDir}images/shop/phone.png" align="texttop" style="margin:2px 5px 0px 0px" />手机版</a>
+                </div>
+        </div>
+</div>
+
+<div class="logomain">
+        <div class="logo"></div>
+        <div class="indexright">
+                   
+                    
+                    <div class="clear"></div>
+                    <div class="sc">
+                         <script>
+                          function doMallSearch(){
+                            if (jQuery("#key").val()==''||jQuery("#key").val()=='请输入搜索关键字...'){
+                              KesionJS.Alert('请输入要搜索的商品关键字！',"jQuery('#key').focus();");
+                              return false
+                            }
+                            return true;
+                          }
+                         </script>
+                         <form name="searchform" method="post" action="{=GetRewriteUrl(search)}">
+                            <input type="hidden" name="m" value="4"/>
+                            <input type="input" id="key" onfocus="this.value=(this.value=='商品名称+ENTER')?'':this.value" onblur="this.value=(this.value=='')?'商品名称+ENTER':this.value" name="key" value="商品名称+ENTER" class="sctext" /><input name="" type="submit" class="scbtn" value="搜索" onclick="return(doMallSearch())" >		
+                            <div class="clear"></div>
+                        </form>
+                    </div>
+        </div>
+
+<!-------头部结束------------>
+
+</div>
+
+<div class="clear"></div>   
+    
+    
+<!----导航+菜单---------->
+<div class="public-nav-layout">
+  <div class="wrapper">
+  	<!-------首页左侧分类菜单开始---------->
+    <div class="all-category">
+      <div class="title">
+        <h3><a >全部商品分类</a></h3>
+        	</div>
+          <div class="category">
+                <ul class="menu">
+                    {SQL_左边栏目导航外02(912)}
+                </ul>
+          </div>    
+        </div>
+    <!-------首页左侧分类菜单结束---------->  
+    
+    <!----导航开始---------->
+    <ul class="site-menu">
+    			{KS_t02商城导航}
+              
+    </ul>
+     <!----导航结束---------->
+  </div>
+</div>
+<!----导航+菜单---------->
+
+ <div class="clear"></div>
+
+<div class="home-focus-layout"><!---------幻灯----->
+        <ul id="fullScreenSlides" class="full-screen-slides">
+        		{KS_t02首页幻灯切换}
+                
+        </ul>
+        <script type="text/javascript" src="{$GetInstallDir}images/shop/indexhd.js"><!------头部所有幻灯脚本------></script>
+
+        <div class="jfocus-trigeminy">
+            <ul>
+                   {KS_t02首页头条推荐商品}<!---调用 推荐 + 头条--->
+                   
+            </ul>
+		</div>  
+  
+<div class="right-sidebar">
+        <div class="policy">
+                <ul>
+                        <li class="b1">七天包退</li>
+                        <li class="b2">正品保障</li>
+                        <li class="b3">闪电发货</li>
+                </ul>
+        </div>
+        <div class="groupbuy">
+        <div class="title"><span>抢</span>抢购推荐</div>
+        <ul>
+					{KS_T02首页抢购}
+        </ul>
+</div>
+        <div class="proclamation">
+                <ul class="tabs-nav"> <li class="tabs-selected"> <h3>服务公告</h3></li></ul>
+                <div class="tabs-panel">
+                    <ul class="mall-news">
+                           {ks_t02商城公告}
+                    </ul>
+                </div>
+        </div>
+  </div>
+</div>
+
+
+<div class="clear blank15"></div>  	
+
+<div class="shopmain01">
+		<div class="titbox" style=" margin-bottom:10px;"><span>{KS_品牌文字列表}<a href="{$GetBrandIndexUrl}" class="more">更多品牌</a></span><h4>品牌活动<!---畅销品牌-----></h4></div>
+                
+             {KS_t02品牌活动}<!---自定义静态标签修改--->
+
+</div>            
+<div class="clear blank15"></div>
+
+<div class="fzsp">
+		<div class="titbox" style=" margin-bottom:10px;"><span><a href="{=GetClassUrl(914)}" class="more">更多</a></span><h4>服装饰品<!---畅销品牌-----></h4></div>
+        <div class="" style=" float:left; width:1200px;  ">
+        	<div class="" style=" width:260px; height:390px; float:left">
+            					{ks_t02服装饰品推荐}
+			</div>
+            <div class="" style=" float:right; width:940px;">
+            		<ul class="hzmr_cp">
+								{KS_t02服装饰品}
+                    </ul>
+                    <dl>
+                    		{ks_t02服装饰品自定义}
+                    	 
+
+                    </dl>
+            </div>
+            
+        </div>		
+       
+</div>            
+
+<div class="clear blank15"></div>
+<div class="mainbox"><script src="{$GetInstallDir}html/AD/JS/T02A.JS"></script></div>
+<div class="clear blank15"></div>
+
+<div class="shopmain02">
+		<div class="titbox" style=" margin-bottom:10px;"><span><a href="{=GetClassUrl(923)}" class="more">更多</a></span><h4>化妆美容<!---畅销品牌-----></h4></div>
+        <div class="" style=" float:left; width:990px;  ">
+                        <div class="" style=" width:260px; height:390px; float:left">
+                                            {ks_t02化妆美容推荐}
+                        </div>
+                        <div class="" style=" float:right; width:730px;">
+                                <ul class="hzmr_cp">
+                    
+                                            {KS_t02化妆美容}
+                                  </ul>
+                        </div>
+        </div>		
+        <div class="rxtj">
+        <div class="title"><h3>热销排行榜</h3></div>
+				{ks_tp02化妆美容排行榜}
+        </div>    	
+</div>            
+
+<div class="clear blank15"></div>
+
+
+<div class="shopmain02">
+		<div class="titbox" style=" margin-bottom:10px;"><span><a href="{=GetClassUrl(924)}" class="more">更多</a></span><h4>数码办公<!---家用电器-----></h4></div>
+        <div class="" style=" float:left; width:990px;  ">
+        	<div class="" style=" width:260px; height:390px; float:left">
+            			{ks_t02家用电器推荐}
+			</div>
+            <div class="" style=" float:right; width:730px;">
+            		<ul class="hzmr_cp">
+                                   {KS_t02家用电器}
+                      </ul>
+            </div>
+            
+        </div>		
+        <div class="rxtj">
+        <div class="title"><h3>热销排行榜</h3></div>
+        		{ks_tp02家用电器排行榜}
+        </div>    	
+</div>
+
+<div class="clear blank15"></div>
+	<div class="mainbox"><script src="{$GetInstallDir}html/AD/JS/T02B.JS"></script></div>
+<div class="clear blank15"></div>
+
+
+<div class="shopmain02">
+		<div class="titbox" style=" margin-bottom:10px;"><span><a href="{=GetClassUrl(926)}" class="more">更多</a></span><h4>母婴用品</h4></div>
+        <div class="" style=" float:left; width:990px;  ">
+        	<div class="" style=" width:260px; height:390px; float:left">
+            
+					{ks_t02母婴用品推荐}
+			</div>
+            <div class="" style=" float:right; width:730px;">
+            		<ul class="hzmr_cp">
+								{KS_t02母婴用品}
+                      </ul>
+            </div>
+            
+        </div>		
+        <div class="rxtj">
+        <div class="title"><h3>热销排行榜</h3></div>
+				{KS_tp02母婴用品排行榜}
+        </div>    	
+</div>
+
+
+<div class="clear blank15"></div>
+
+<div class="clear"></div>		
+
+{KS_商城底部通用}
+</body>
+</html>
+<script type="text/javascript">
+var PRICE_FORMAT = '&yen;%s';
+$(function(){
+	//首页左侧分类菜单
+	$(".category ul.menu").find("li").each(
+		function() {
+			$(this).hover(
+				function() {
+				    var cat_id = $(this).attr("cat_id");
+					var menu = $(this).find("div[cat_menu_id='"+cat_id+"']");
+					menu.show();
+					$(this).addClass("hover");
+					if(menu.attr("hover")>0) return;
+					var menu_height = menu.height();
+					if (menu_height < 60) menu.height(80);
+					menu_height = menu.height();
+					var li_top = $(this).position().top;
+					if ((li_top > 60) && (menu_height >= li_top)) $(menu).css("top",-li_top+50);
+					if ((li_top > 150) && (menu_height >= li_top)) $(menu).css("top",-li_top+90);
+					if ((li_top > 240) && (li_top > menu_height)) $(menu).css("top",menu_height-li_top+90);
+					if (li_top > 300 && (li_top > menu_height)) $(menu).css("top",60-menu_height);
+					if ((li_top > 40) && (menu_height <= 120)) $(menu).css("top",-5);
+					menu.attr("hover",1);
+				},
+				function() {
+					$(this).removeClass("hover");
+				    var cat_id = $(this).attr("cat_id");
+					$(this).find("div[cat_menu_id='"+cat_id+"']").hide();
+				}
+			);
+		}
+	);
+	
+});
+</script>

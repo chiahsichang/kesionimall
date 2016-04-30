@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head> 
+<title>团购-购物车</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-control" content="max-age=1700">
+<meta name="viewport" content="user-scalable=no, width=device-width">
+<meta name="MobileOptimized" content="320">
+<meta name="author" content="kesion.com">
+<meta name="format-detection" content="telephone=no">
+<link href="{$GetSiteUrl}3g/images/style.css" rel="stylesheet" type="text/css">
+<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+<script src="{$GetInstallDir}ks_inc/Kesion.common.js" type="text/javascript"></script>
+<style>
+tr td{ line-height:20px}
+.price{font-size:12px;color:#e00;font-weight:bold;}
+.freight{color:green;font-size:12px;}
+.tgcart{width:320px;margin:0 auto;margin-top:15px;background:#fff;padding:5px 10px;border-bottom:15px solid #f1f1f1}
+.tgcart h4{height:30px; line-height:30px;padding-left:15px; font-family:"微软雅黑";}
+</style>
+</head>
+<body>
+
+	{KS:LoadFile("head.html")}
+
+
+
+	<div class="clear blank15"></div>
+    
+
+	<div class="clear"></div>
+	 <div class="wrap">
+
+		<div class="tgcart">
+		   <script src="{$GetSiteUrl}ks_inc/tips.js"></script>
+		   <script>var dir="[KS:GroupBuyDir]";var showDeliveryFlag=[KS:ShowDeliveryFlag];var showPayMentFlag=[KS:showPayMentFlag];var IsBusiness=[KS:IsBusiness];</script>
+		   <script src="../shop/groupbuycart.js"></script>
+		   <script>DecimalPlaces={$DecimalPlaces};</script>
+		   <h4>团购订单信息</h4>
+           <hr/>
+			<FORM name="myform" action="groupbuycart.aspx" method="post">
+			<INPUT id="Action" type="hidden" value="order" name="Action" />
+		   <table width="100%" border="0" cellpadding="0" cellspacing="0">
+			  [Loop]
+			  <tr>
+				<td style="padding:10px; line-height:20px; font-family:'宋体'">
+                 <strong>商品名称： </strong>
+				 <input type="hidden" name="proid_{KS:Field:CartID}" id="proid_{KS:Field:CartID}" value="{KS:Field:ID}"/>
+				<a href="{KS:Field:groupbuyurl}" target="_blank" style="font-weight:bold;color:#666">{$Field(subject,text,0,...,2,)}</a>
+				<a href="?action=del&cartid={KS:Field:CartID}" onClick="return(confirm('确定删除!'))" style="color:red">删除</a>
+                <br/>
+                 <strong>商品原价： </strong>
+				<span class='pricemarket'>￥<span id="{KS:Field:CartID}">{KS:Field:price_original}</span>元</span>
+                <br/>
+                <strong>购买数量： </strong>
+                {KS:Field:ShowBuyNum}<br/>
+                <strong> 团购价： </strong>￥<span id="price_{KS:Field:CartID}">{KS:Field:price}</span>
+                <br/>
+                 <strong>小计： </strong> <span class='subtotal'>￥<span id="subtotal_{KS:Field:CartID}">{KS:Field:totalprice}</span></span>
+                 <hr/>
+                  </td>
+			  </tr>
+			  [/Loop]
+			  <tr>
+				<td style="font-size:13px;">
+				<strong>运费：<span class="freight"><span id="orderFreight">0</span>元</span></strong>&nbsp;&nbsp;
+				<strong>
+				总共为您节省了：<span class='saveMoney'>￥<span id="SaveMoney">0</span>元</span><br />总金额：<span class='price'>￥<span id='orderTotalPrice'>0</span>元</span>
+				
+	
+				</strong></td>
+			  </tr>
+		</table>
+		   
+		   
+		   
+			
+			 
+			<div id="showDelivery" style="margin-top:15px"> <!--  这里的ID不能删除 -->
+				<div style="border:1px dashed #fd9682;padding:5px 0px 10px 0px">
+				<!--收货人地址开始-->
+				   <h4>收货人信息</h4>
+				   [KS:ShowAddress]
+				<!--收货人信息结束-->
+				</div>	
+			
+				<!--配送方式开始-->
+				<div id="part_payTypeAndShipType" style="margin-top:15px">
+					<div style="border:1px dashed #d5d5d5;padding:10px">
+						<h4 style="padding-left:5px">配送方式</h4>
+						 <div class='middle' id="ShowDeliveryList"></div>
+					</div>		 
+				</div>
+			<!--及配送方式结束-->
+			</div>
+			
+		   
+			<!--支付方式开始-->
+			 <div class="clear" style="height:15px"></div>
+				 <div id="showPayment">
+					 <div style="border:1px dashed #d5d5d5;padding:10px">
+						 <h4 style="padding-left:5px">支付方式</h4>
+						 [KS:ShowPayment]
+					</div> 
+				</div>
+			 <!--支付方式结束-->
+			 <div class="clear" style="height:15px"></div>
+					 <div style="border:1px dashed #d5d5d5;padding:10px">
+					 <h4 style="height:40px; line-height:30px;padding-left:5px">备注/留言</h4>
+				  <table cellSpacing=1 cellPadding=3 width="100%" align=center border=0 class="psxx">
+				  <tr>
+					<td colspan="2">
+				  </td>
+				  </tr>
+				   <tr>
+					   <td align=right width=100>手机号码： </td>
+					   <td><input type="text" name="mobile" id="mobile" value="[KS:Mobile]" size="20"/></td>
+				   </tr>
+				   <tr>
+					   <td align=right width=100>备注/留言： </td>
+					   <td><TEXTAREA name="Remark" id="Remark" rows="5" cols="22"></textarea></td>
+				   </tr>
+				</table> 
+		</div>
+		
+		
+		
+		<div style="text-align:center;margin:30px">
+		<INPUT type="image" src="../shop/Images/sure.gif" onclick="return(checkOrder())" border="0" alt="确认订单" name=submit2>
+		 </div>
+		
+													
+		   </form>
+		   
+		
+		</div>
+		<!--团购购物车end-->
+		
+		
+		</div>
+	</div>
+
+<div style="height:60px"></div>  
+	</body>
+</html>

@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$GetBBSName}--{KS:Field:BoardName}</title>
+<link href="images/kesion.css" rel="stylesheet" type="text/css" />
+<link href="{$GetInstallDir}images/home.css" rel="stylesheet" />
+<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+<script src="{$GetInstallDir}ks_inc/Kesion.Common.js" type="text/javascript"></script>
+<script src="{$GetInstallDir}{$GetBBSInstallDir}/images/club.js"></script>
+
+<script type="text/javascript">
+$(function(){	
+	//获取要定位元素距离浏览器顶部的距离
+	var navH = $(".tag").offset().top;
+	//滚动条事件
+	$(window).scroll(function(){
+		//获取滚动条的滑动距离
+		var scroH = $(this).scrollTop();
+		//滚动条的滑动距离大于等于定位元素距离浏览器顶部的距离，就固定，反之就不固定
+		if(scroH>=navH){
+			$(".tag").css({"position":"fixed","top":0});
+		}else if(scroH<navH){
+			$(".tag").css({"position":"static"});
+		}
+		console.log(scroH==navH);
+	})
+})
+</script>
+<style>
+				.showContent{position: relative;padding: 10px;overflow: hidden;line-height:25px;font-size:14px;}
+				.gradient{width: 100%;height: 35px;position: absolute;bottom: 0;left: 0;}
+				.readmore{padding: 5px;}
+				.readmore a{padding-right: 22px;text-decoration: none;}
+				.readmore a: hover{color: #000;}
+                .replybox{background:#f1f1f1;font-size:12px;padding:10px;border-top:1px solid #ccc;clear:both;}
+                .replybox li{line-height:22px;}
+				.replyboxbottom{margin-top:5px;border-top:1px solid #ccc;padding-top:5px;}
+				.replayTime{color:#999;}
+				.replyContent{border:1px solid #efefef;color:#999;width:80%;height:25px;overflow:auto}
+				.replybutton{padding:5px;}
+			</style>
+</head>
+<body>
+{KS_头部通用}
+  <!--<div class="nav">
+    <div class="topmain">
+       <img src="images/logo.png" alt="kesion" />
+       <ul class="menu">
+          <li class="curr"><a href="{$GetClubIndexUrl}" class="m1">首页</a></li>
+          <li><a href="#" class="m2">版块</a></li>
+          <li><a href="#" class="m3">精华帖</a></li>
+          <li><a href="#" class="m4">会员</a></li>
+       </ul>
+       <div class="user">
+		 
+	 <!--弹窗登录开始---
+	<span id="PopLoginTips">
+	<a href="javascript:showuserlogin()">登录</a> 
+	<a href="{=GetRewriteUrl(reg)}" target="_blank">注册</a>
+	<a href="{=GetRewriteUrl(qqlogin)}"><img src="images/icon_qq.png" /></a>
+    <a href="{=GetRewriteUrl(sinalogin)}"><img src="images/icon_sina.png" /></a>
+    <a href="{=GetRewriteUrl(alipaylogin)}"><img src="images/icon_alipay.png" /></a>
+
+	</span>
+	
+	<script>
+	jQuery(document).ready(function(){
+	   jQuery.ajax({
+		  type:"POST",
+		  datatype: "xml",
+		  url:"{$GetInstallDir}plus/ajaxs.ashx",
+		  data:"a=checkislogin",
+		  success:function(xml){
+		      var islogin=jQuery(xml).find("login islogin").text();
+			  if (islogin=='false') return;
+			  var str="<img src='"+jQuery(xml).find("login userface").text()+"' align='texttop' class='userface' /> <a href='{$GetSiteUrl}user/index.aspx' style='color:#333'>"+jQuery(xml).find("login username").text()+"</a> <a href='javascript:;' onclick=\"$.dialog.confirm('确定退出登录吗？',function(){location.href='{$GetSiteUrl}user/UserLoginOut.aspx';},function(){});\">退出</a>  <a href='{$GetSiteUrl}user/receivedmessage.aspx?menu=message'>消息"+jQuery(xml).find("login message").text()+"</a>";
+			 jQuery("#PopLoginTips").html(str);
+		  }
+		 });
+    });
+	</script>
+<!--弹窗登录结束---
+		 
+         </div>
+  </div>
+  -->
+  <div class="navigation"> {KS_位置导航}</div>
+  <div class="clear"></div>
+  <div class="top">
+     <ul>
+        <li>今日：{KS:Field:TodayNum}</li>
+        <span class="item-line"></span>
+        <li>话题：{KS:Field:TopicNum}</li>
+        <span class="item-line"></span>
+        <li>帖子：{KS:Field:PostNum}</li>
+        <span class="item-line"></span>
+        <li>版主:{KS:Field:BoardMaster}</li>
+     </ul>
+     <a href="post.aspx?bid={KS:Field:BoardID}" class="postbtn">发帖</a>
+  </div>
+  <div class="clear blank10"></div>
+  
+ 
+  
+  
+  <!--表情-->
+			<div id="emot" style="display:none">
+			{$ShowEmotList}
+			</div>
+ <!--表情-->
+			
+  <link rel="stylesheet" href="/KS_Inc/prettyPhoto/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+ <script src="/KS_Inc/prettyPhoto/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+ <script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				 $(".groupimg").find("a").prettyPhoto({theme:'dark_square'});
+			});
+	</script>
+
+
+   <div class="main"> 
+     <div class="bbslist">
+        <ul>
+		
+		<!--置顶话题-->
+		[TopLoop]
+           <li id="tr{KS:Field:TopicId}">
+              <div class="pic"><a href="/space/?{$Field(UserID,text,0,...,2,)}" target="_blank"><img src="/uploadfiles/avatar/{$Field(UserID,text,0,...,2,)}.jpg" alt="{$Field(UserName,text,0,...,2,)}" onerror="this.src='/sysimg/face/boy.jpg'"/></a></div>
+              <div class="lbox">
+                  <span class="man">{$Field(UserName,text,0,...,2,)} IP:{$Field(UserIP,text,0,...,2,)} </span>
+                  <span class="ll">阅读：{$Field(hits,text,0,...,2,)} 次</span>
+                  <span class="item-line"></span>
+                  <span class="time">时间：{KS:Field:PostTime}  最后回复：{KS:Field:LastPostTime}</span>
+              </div>
+              <!--右侧标签-->
+              <div class="rbox" id="rico{KS:Field:TopicId}">
+			      {KS:Field:HotIco}
+				  {KS:Field:BestIco}
+				  {KS:Field:TopIco}
+              </div>
+              <!--右侧标签end-->
+              <div class="clear"></div>
+              
+              <div style="clear:both">
+						<!--显示内容-->
+						<div class="showContent">
+							<div>
+								{KS:Field:Content}
+                                
+							</div>
+							<div class="gradient"></div>
+						</div>
+						<div class="readmore"></div>
+						<!--显示内容结束-->
+						
+						<div class="groupimg">
+						{KS:Field:GroupImages}
+						</div>
+						
+               </div>
+               <div class="clear blank10"></div>
+               <!--操作-->
+               <div class="detail">
+                  <a href="javascript:;" class="reply replyBtn"  topicid="{KS:Field:TopicId}">回复(<span class="rnum{KS:Field:TopicId}">{$Field(PostNum,text,0,...,2,)}</span>)</a>
+                  <span class="item-line"></span>
+                  <a href="javascript:;" class="like digBtn" topicid="{KS:Field:TopicId}">赞(<span>{$Field(digg,text,0,...,2,)}</span>)</a> 
+                  <span class="item-line"></span>
+                  <a href="javascript:;" class="set manageBtn" topicid="{KS:Field:TopicId}"{KS:Field:ShowManage}>设置</a>
+               </div>
+                <!--操作end-->
+  
+			   <div class="clear"></div>
+			   
+               <div id="rbox{KS:Field:TopicId}" style="clear:both;display:none">
+			     <strong><font color="#888888">快速回复：</font></strong><br/>
+                 <textarea class="replyContent" name="replyContent" onclick="checkcommentlength(this,{$MaxLen},'commentmax{KS:Field:TopicId}');setPos('replyContent{KS:Field:TopicId}');" onkeyup="setPos('replyContent{KS:Field:TopicId}');" id="replyContent{KS:Field:TopicId}" onkeydown="checkcommentlength(this,{$MaxLen},'commentmax{KS:Field:TopicId}');" onkeyup="checkcommentlength(this,{$MaxLen},'commentmax{KS:Field:TopicId}');">我也说一句</textarea>
+                    
+                  <div class="poster">
+                     <a href="javascript:;" onClick="showemot(this,{KS:Field:TopicId})" class="a1"></a>
+                     <a href="#" class="a2"></a>
+					 <span class="sz" id="commentmax{KS:Field:TopicId}">{$MaxLen}</span>
+                     <input type="button" class="replybutton" topicid="{KS:Field:TopicId}" value="回复"/>
+                  </div>
+                  
+			   </div>
+			   
+               <div class="clear"></div>
+			   
+               <!--回复列表-->
+               <div class="comments-list" id="sreply{KS:Field:TopicId}">
+                   {KS:Field:ShowReply}
+               </div>
+               <!--回复列表end-->
+               <div class="clear"></div>
+			  
+           </li>
+		[/TopLoop]
+		<!--置顶话题-->
+		
+		   
+		   
+		   
+		 <!--普通话题-->
+		[Loop]
+           <li id="tr{KS:Field:TopicId}">
+              <div class="pic"><a href="/space/?{$Field(UserID,text,0,...,2,)}" target="_blank"><img src="/uploadfiles/avatar/{$Field(UserID,text,0,...,2,)}.jpg" alt="{$Field(UserName,text,0,...,2,)}" onerror="this.src='/sysimg/face/boy.jpg'"/></a></div>
+              <div class="lbox">
+                  <span class="man">{$Field(UserName,text,0,...,2,)} IP:{$Field(UserIP,text,0,...,2,)} </span>
+                  <span class="ll">阅读：{$Field(hits,text,0,...,2,)} 次</span>
+                  <span class="item-line"></span>
+                  <span class="time">时间：{KS:Field:PostTime}  最后回复：{KS:Field:LastPostTime}</span>
+              </div>
+              <!--右侧标签-->
+              <div class="rbox" id="rico{KS:Field:TopicId}">
+			      {KS:Field:HotIco}
+				  {KS:Field:BestIco}
+				  {KS:Field:TopIco}
+              </div>
+              <!--右侧标签end-->
+              <div class="clear"></div>
+              <div>
+                    <!--显示内容-->
+                    <div class="showContent">
+                        <div>
+                            {KS:Field:Content}
+                            
+                        </div>
+                        <div class="gradient"></div>
+                    </div>
+                    <div class="readmore"></div>
+                    <!--显示内容结束-->
+                    
+                    <div class="groupimg">
+                    {KS:Field:GroupImages}
+                    </div>
+						
+               </div>
+               <div class="clear blank10"></div>
+               <!--操作-->
+               <div class="detail">
+                  <a href="javascript:;" class="reply replyBtn"  topicid="{KS:Field:TopicId}">回复(<span class="rnum{KS:Field:TopicId}">{$Field(PostNum,text,0,...,2,)}</span>)</a>
+                  <span class="item-line"></span>
+                  <a href="javascript:;" class="like digBtn" topicid="{KS:Field:TopicId}">赞(<span>{$Field(digg,text,0,...,2,)}</span>)</a> 
+                  <span class="item-line"></span>
+                  <a href="javascript:;" class="set manageBtn" topicid="{KS:Field:TopicId}"{KS:Field:ShowManage}>设置</a>
+               </div>
+                <!--操作end-->
+  
+			   <div class="clear"></div>
+			   
+               <div id="rbox{KS:Field:TopicId}" style="clear:both;display:none">
+			     <strong><font color="#888888">快速回复：</font></strong><br/>
+                 <textarea class="replyContent" name="replyContent" onclick="checkcommentlength(this,{$MaxLen},'commentmax{KS:Field:TopicId}');setPos('replyContent{KS:Field:TopicId}');" onkeyup="setPos('replyContent{KS:Field:TopicId}');" id="replyContent{KS:Field:TopicId}" onkeydown="checkcommentlength(this,{$MaxLen},'commentmax{KS:Field:TopicId}');" onkeyup="checkcommentlength(this,{$MaxLen},'commentmax{KS:Field:TopicId}');">我也说一句</textarea>
+                    
+                  <div class="poster">
+                     <a href="javascript:;" onClick="showemot(this,{KS:Field:TopicId})" class="a1"></a>
+                     <!-- <a href="#" class="a2"></a>-->
+					 <span class="sz" id="commentmax{KS:Field:TopicId}">{$MaxLen}</span>
+                     <input type="button" class="replybutton" topicid="{KS:Field:TopicId}" value="回复"/>
+                  </div>
+			   </div>	
+			   <div class="clear"></div>
+			   		   
+               <!--回复列表-->
+               <div class="comments-list" id="sreply{KS:Field:TopicId}">
+                   {KS:Field:ShowReply}
+               </div>
+               <!--回复列表end-->
+
+			   
+               <div class="clear"></div>
+           </li>
+		[/Loop]
+		<!--普通话题-->
+		   
+		   
+		   
+		   
+        </ul>
+		
+		
+			[RollAjaxBegin]
+				<!---滚动加载开始-->
+				 <ul id="documentDiv"></ul>
+				 <ul id="loading">正在加载....</ul>
+				 
+				 <script type="text/javascript">
+					currpage=2;
+					boardId={KS:Field:BoardID};
+					$(document).ready(function() {
+						$("#loading").html("正在加载...");
+						//setTimeout("loadData('topicList')",1000);
+					});
+					var s = setInterval("isShow()", 1500);//每隔1.5秒判断滚动条是否在2/3处,是的话加载数据
+					var isShow = function() {//判断是否显示数据
+						if ($(window).scrollTop() + $(window).height() >= $(document).height()*2/3) {
+							$("#loading").html("正在加载....");
+							setTimeout("loadData('topicList')", 1500);
+						}
+					};
+				</script>
+				<!---滚动加载结束-->
+			[/RollAjaxBegin]
+			
+			 
+			[KS:PageStr2]
+		
+     </div>
+     <div class="right">
+       <div class="tag">
+          <div class="title">分版切换...</div>
+          <ul>
+		     {$ShowSubBoardList}
+          </ul> 
+       </div>
+     </div>
+   
+  </div>
+    <div class="clear"></div>
+  <div class="foot">
+     <h3>版规</h3>
+      <ul>
+         {KS:Field:BoardRules}
+     </ul>
+  </div>
+     {KS_尾部通用}
+ </body>
+</html>

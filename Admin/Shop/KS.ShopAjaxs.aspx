@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="Kesion.NET.WebSite.Admin.Shop.ShopAjaxss" Codebehind="KS.Shopajaxs.aspx.cs" %>

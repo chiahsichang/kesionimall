@@ -1,0 +1,102 @@
+﻿ {KS:loadfile("header.html")}
+	
+    <script type="text/javascript">
+        $(function () {
+
+            $("a").click(function () {
+
+                var hf = $(this).attr("href");
+                var reg = /(page=)\d/;
+                var reg2 = /\d/;
+                var str = hf.toString();
+                var str2 = str.match(reg).toString();
+                var page = str2.match(reg2);
+
+                if (page == null || page == "") {
+                    alert(00);
+                } else {
+                    location.href = "/space/?{KS:Field:UserID}/message/page=" + page;
+                }
+                return false;
+            });
+
+
+
+
+        });
+    </script>
+
+	{KS:loadfile("left.html")}
+	  
+	  <!--右边-->
+      <div class="blogmain">
+          <div class="nav">
+              <!--<p><a href="#">首页</a> >> <a href="#">博文</a></p>-->
+              <p>[KS:BlogNavStr]</p>
+          </div>
+          <script type="text/javascript">
+              $(function () {
+                  $("#Content").val("既然来了，就顺便留句话儿吧...");
+                  $("#Content").focus(function () {
+                      if ($(this).val() == '既然来了，就顺便留句话儿吧...') {
+                          $(this).val("");
+                      }
+                  }).blur(function () {
+                      if ($(this).val() == '') {
+                          $(this).val("既然来了，就顺便留句话儿吧...");
+                      }
+                  });
+              });
+              function CheckForm() {
+                  if ($("#Content").val() == "既然来了，就顺便留句话儿吧...") {
+                      $.dialog.alert("请输入你的评论内容！",function(){ $('#Content').focus(); });
+                      return false;
+                  } else {
+                      $("#scontent").val($("#Content").val());
+                  }
+                  return true;
+              }
+            </script>
+
+          <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="comment_write_table">
+		    <iframe src="about:blank" name="hidframe" style="display:none"></iframe>
+            <form name="msgform" action="/space/?{KS:Field:UserID}/message/send" method="post" target="hidframe">
+              <input type="hidden" value="{KS:Field:OurUserName}" name="UserName">
+              <input type="hidden" value="{KS:Field:OurUserId}" name="UserId">
+              <input type="hidden" value="" name="scontent" id="scontent">
+              <tr>
+                <td class="comment_write_title"><span style='font-weight:bold;font-size:14px'>发表您的留言:</span><br/>
+                    你的观点：<input type="text" style="height:20px; width:458px;" class="textbox" name="title" id="title" /><br />
+                  <textarea class="msgtextarea" cols='70' rows='4' style="width:500px;" id="Content">00</textarea>
+                  <br/>
+                  昵称：
+                  <input name="AnounName" readonly maxlength="100" type="text" value="{KS:Field:username}" id="AnounName" style="background:#FBFBFB;color:#999;border:1px solid #ccc;width:100px;height:20px;line-height:20px"/>
+                  &nbsp;<br/>
+                <input type="submit" onClick="return (CheckForm());"  name="SubmitComment" value="OK了，提交留言" class="btn"/></td>
+              </tr>
+            </form>
+          </table>
+
+          <table border="0" align="center"  width="100%" style="float:left; margin:0px;">
+                [Loop Times="8" type="message"]
+                <tr>
+                 <td style="padding:10px;border-bottom: #DDD 1px dashed;text-align:left; vertical-align:middle" colspan="2">{KS:Field:Message}
+                
+                    {KS:IF [Field:Replay]}
+                        <div style="background:#eee; text-indent:10px; width:70%; float:right;"><h5>下面为来自主人的回复（{KS:Field:ReplayDate}）:</h5>
+                            <div>{KS:Field:Replay}</div>
+                        </div>
+                    {/KS:IF}
+
+                    <div style="text-align:right; clear:both;">({KS:Field:Sender} 发表于：{KS:Field:AddDate})  
+                 </td>
+              </tr>
+                [/Loop]
+              <tr><td colspan="2"><div class="fyys">[KS:PageStr]</div></td></tr>
+            </table>
+
+	  </div>
+    
+   </div>
+
+ {KS:loadfile("footer.html")}

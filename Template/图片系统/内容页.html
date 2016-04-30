@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="{$GetInstallDir}images/photo/photo.css" rel="stylesheet" />
+    <link href="{$GetInstallDir}images/home.css" rel="stylesheet" />
+	<title>{$GetSiteTitle}-图片频道-{KS:Field:Title}</title>
+	<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+	<script src="{$GetInstallDir}ks_inc/kesion.common.js" type="text/javascript"></script>
+	
+<SCRIPT>
+//改变图片大小
+function resizepic(thispic)
+{ 
+if(thispic.width>850) thispic.width=750; 
+}
+</SCRIPT>
+<style type="text/css">
+/* 图片分页方式的样式*/
+.imagelist{margin:0 auto;width:930px;} /*总宽度*/
+.imagelist .imagetop{padding-right:5px;text-align:right;margin:5px;}
+.imagelist .defaultimagesrc{text-align:center;margin:5px;padding-top:40px;padding-bottom:10px;}
+.imagelist .defaultImagesrc img{border:1px solid #f1f1f1;padding:2px}
+.imagelist .imageintro{text-align:center;font-size:15px;padding-bottom:15px; line-height:22px;font-weight:bold; font-family:"微软雅黑"}
+.thumb {
+    height:120px;
+    background:#F7F7F7;
+	padding:5px;
+}
+.thumb_1 {
+	text-align: center;
+	float: left;
+	height: 50px;
+	width: 80px;
+	padding-top: 30px;
+	font-weight: 700;
+	font-size: 18px;
+	color:#000;
+}
+.thumb_1 .font-28{font-size:28px;color:#000;}
+.thumb_2 {float: left;
+	width: 830px;
+}
+.thumb_2_1 {
+	background:url({$GetInstallDir}sysimg/default/leftbut.gif) no-repeat;
+	float: left;
+	height: 117px;
+	width: 42px;
+	cursor:pointer;
+	margin-left:10px;
+	_margin-left:0px;
+}
+.thumb_2_2 {
+	background:url({$GetInstallDir}sysimg/default/rightbut.gif) no-repeat;
+	float: right;
+	height: 117px;
+	width: 42px;
+	cursor:pointer;
+}
+#scrool_div {
+	width:728px;
+	position:relative;
+	height:120px;
+	overflow:hidden;
+}
+#scrool_wrap {height:109px;position:absolute;width:2000px;}
+#scrool_wrap li {float:left;position:relative;margin-right:5px;}
+#scrool_div img{
+	width:120px;
+	height:90px;
+	margin:5px;
+}
+.normalthumb img{padding:2px;border:4px solid #F9AF10}
+.currthumb img{padding:2px;border:4px solid #ff6600;}
+/* 图片分页方式的样式结束*/
+
+/*组图显示方式的样式*/
+/*组图显示方式的样式结束*/
+
+/*平行显示方式样式*/
+.imglist{text-align:center}
+.imglist img{display:block;border:4px solid #efefef;padding:1px}
+.imglist div{margin-bottom:15px}
+/*平行显示方式样式结束*/
+ /*正文分页样式*/
+#pageNext{padding:10px 12px 6px; clear:both;}
+#pageNext .prev,#pageNext .next{width:52px; text-align:center;}
+#pageNext a.curr{width:22px;background:#1f3a87; border:1px solid #dcdddd; color:#fff; font-weight:bold; text-align:center;}
+#pageNext a.curr:visited {color:#fff;}
+#pageNext a{margin:5px 4px 0 0; color:#1E50A2;background:#fff; display:inline-table; border:1px solid #dcdddd; float:left; text-align:center;height:22px;line-height:22px}
+#pageNext a.num{width:22px;}
+#pageNext a:visited{color:#1f3a87;} 
+#pageNext a:hover{color:#fff; background:#1E50A2; border:1px solid #1E50A2;float:left;}
+
+</style>
+
+	<SCRIPT language=javascript>function T(n){document.getElementById("ArticleCnt").style.fontSize=n+"px";}</SCRIPT>
+	<SCRIPT>  
+	function srcMarquee(){
+	this.ID = document.getElementById(arguments[0]);
+	if(!this.ID){this.ID = -1;return;}
+	this.Direction = this.Width = this.Height = this.DelayTime = this.WaitTime = this.Correct = this.CTL = this.StartID = this.Stop = this.MouseOver = 0;
+	this.Step = 1;
+	this.Timer = 30;
+	this.DirectionArray = {"top":0 , "bottom":1 , "left":2 , "right":3};
+	if(typeof arguments[1] == "number")this.Direction = arguments[1];
+	if(typeof arguments[2] == "number")this.Step = arguments[2];
+	if(typeof arguments[3] == "number")this.Width = arguments[3];
+	if(typeof arguments[4] == "number")this.Height = arguments[4];
+	if(typeof arguments[5] == "number")this.Timer = arguments[5];
+	if(typeof arguments[6] == "number")this.DelayTime = arguments[6];
+	if(typeof arguments[7] == "number")this.WaitTime = arguments[7];
+	if(typeof arguments[8] == "number")this.ScrollStep = arguments[8]
+	this.ID.style.overflow = this.ID.style.overflowX = this.ID.style.overflowY = "hidden";
+	this.ID.noWrap = true;
+	this.IsNotOpera = (navigator.userAgent.toLowerCase().indexOf("opera") == -1);
+	if(arguments.length >= 7)this.Start();
+	}
+	srcMarquee.prototype.Start = function(){
+	if(this.ID == -1)return;
+	if(this.WaitTime < 800)this.WaitTime = 800;
+	if(this.Timer < 20)this.Timer = 20;
+	if(this.Width == 0)this.Width = parseInt(this.ID.style.width);
+	if(this.Height == 0)this.Height = parseInt(this.ID.style.height);
+	if(typeof this.Direction == "string")this.Direction = this.DirectionArray[this.Direction.toString().toLowerCase()];
+	this.HalfWidth = Math.round(this.Width / 2);
+	this.BakStep = this.Step;
+	this.ID.style.width = this.Width;
+	this.ID.style.height = this.Height;
+	if(typeof this.ScrollStep != "number")this.ScrollStep = this.Direction > 1 ? this.Width : this.Height;
+	var msobj = this;
+	var timer = this.Timer;
+	var delaytime = this.DelayTime;
+	var waittime = this.WaitTime;
+	msobj.StartID = function(){msobj.Scroll()}
+	msobj.Continue = function(){
+	if(msobj.MouseOver == 1){
+	setTimeout(msobj.Continue,delaytime);
+		 }
+		 else{ clearInterval(msobj.TimerID);
+	msobj.CTL = msobj.Stop = 0;
+	msobj.TimerID = setInterval(msobj.StartID,timer);
+		 }
+		}
+	msobj.Pause = function(){
+	msobj.Stop = 1;
+	clearInterval(msobj.TimerID);
+	setTimeout(msobj.Continue,delaytime);
+		}
+	msobj.Begin = function(){
+	   msobj.ClientScroll = msobj.Direction > 1 ? msobj.ID.scrollWidth : msobj.ID.scrollHeight;
+	   if((msobj.Direction <= 1 && msobj.ClientScroll <msobj.Height) || (msobj.Direction > 1 && msobj.ClientScroll <msobj.Width))return;
+	   msobj.ID.innerHTML += msobj.ID.innerHTML;
+	   msobj.TimerID = setInterval(msobj.StartID,timer);
+	   if(msobj.ScrollStep < 0)return;
+	   msobj.ID.onmousemove = function(event){
+		   if(msobj.ScrollStep == 0 && msobj.Direction > 1){
+	var event = event || window.event;
+	if(window.event){
+	if(msobj.IsNotOpera){msobj.EventLeft = event.srcElement.id == msobj.ID.id ? event.offsetX - msobj.ID.scrollLeft : event.srcElement.offsetLeft - msobj.ID.scrollLeft + event.offsetX;}
+	else{msobj.ScrollStep = null;return;}
+	}
+	else{msobj.EventLeft = event.layerX - msobj.ID.scrollLeft;}
+	msobj.Direction = msobj.EventLeft > msobj.HalfWidth ? 3 : 2;
+	msobj.AbsCenter = Math.abs(msobj.HalfWidth - msobj.EventLeft);
+	msobj.Step = Math.round(msobj.AbsCenter * (msobj.BakStep*2) / msobj.HalfWidth);
+	}
+	}
+	msobj.ID.onmouseover = function(){
+	if(msobj.ScrollStep == 0)return;
+	msobj.MouseOver = 1;
+	clearInterval(msobj.TimerID);
+	}
+	msobj.ID.onmouseout = function(){
+	if(msobj.ScrollStep == 0){
+	if(msobj.Step == 0)msobj.Step = 1;
+	return;
+	}
+	msobj.MouseOver = 0;
+	if(msobj.Stop == 0){
+	clearInterval(msobj.TimerID);
+	msobj.TimerID = setInterval(msobj.StartID,timer);
+	}}}
+	setTimeout(msobj.Begin,waittime);
+	}
+	srcMarquee.prototype.Scroll = function(){
+	switch(this.Direction){
+	case 0:
+	this.CTL += this.Step;
+	if(this.CTL >= this.ScrollStep && this.DelayTime > 0){
+	this.ID.scrollTop += this.ScrollStep + this.Step - this.CTL;
+	this.Pause();
+	return;
+	}
+	else{
+	if(this.ID.scrollTop >= this.ClientScroll){this.ID.scrollTop -= this.ClientScroll;}
+	this.ID.scrollTop += this.Step;
+	}
+	break;
+	case 1:
+	this.CTL += this.Step;
+	if(this.CTL >= this.ScrollStep && this.DelayTime > 0){
+	this.ID.scrollTop -= this.ScrollStep + this.Step - this.CTL;
+	this.Pause();
+	return;
+	}
+	else{
+	if(this.ID.scrollTop <= 0){this.ID.scrollTop += this.ClientScroll;}
+	this.ID.scrollTop -= this.Step;
+	}
+	break;
+	case 2:
+	this.CTL += this.Step;
+	if(this.CTL >= this.ScrollStep && this.DelayTime > 0){
+	this.ID.scrollLeft += this.ScrollStep + this.Step - this.CTL;
+	this.Pause();
+	return;
+	}
+	else{
+	if(this.ID.scrollLeft >= this.ClientScroll){this.ID.scrollLeft -= this.ClientScroll;}
+	this.ID.scrollLeft += this.Step;
+	}
+	break;
+	case 3:
+	this.CTL += this.Step;
+	if(this.CTL >= this.ScrollStep && this.DelayTime > 0){
+	this.ID.scrollLeft -= this.ScrollStep + this.Step - this.CTL;
+	this.Pause();
+	return;
+	}
+	else{
+	if(this.ID.scrollLeft <= 0){this.ID.scrollLeft += this.ClientScroll;}
+	this.ID.scrollLeft -= this.Step;
+	}
+	break;
+	}
+	} 
+	</SCRIPT>
+	<style>
+		.fr{ background:#fff url({$GetInstallDir}images/home/frbg.png) repeat-x 0 -2px}
+		#Scroll{width:280px; height:25px; line-height:25px}
+		#Scroll a{ display:block;color:#444}
+	</style>
+
+	<script type="text/javascript">
+	//===========================点击展开关闭效果====================================
+	function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+	var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+	var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+	var openTip = oOpenTip || "";
+	var shutTip = oShutTip || "";
+	if(targetObj.style.display!="none"){
+	   if(shutAble) return;
+	   targetObj.style.display="none";
+	   if(openTip && shutTip){
+		sourceObj.innerHTML = shutTip; 
+	   }
+	} else {
+	   targetObj.style.display="block";
+	   if(openTip && shutTip){
+		sourceObj.innerHTML = openTip; 
+	   }
+	}
+	}
+	</script>
+</head>
+
+<body>
+	<SCRIPT type=text/javascript src="{$GetInstallDir}images/home/scrolltop.js"></SCRIPT>
+	<DIV style="DISPLAY: none" id=goTopBtn title="回顶部">返回顶部</DIV>
+	<SCRIPT type=text/javascript>goTopEx();</SCRIPT>
+	<div class="photonav">
+		<div class="mainbox">
+			<div class="l">
+				<a href="/" class="homebtn" title="KESION" target=_blank>&nbsp;</a>
+				<a href="#" class="downbtn" onclick="openShutManager(this,'lmbox001')">&nbsp;</a>
+			</div>
+			<div class="r">
+
+				<DIV id=Scroll>
+					<DIV id=ScrollMe style="OVERFLOW: hidden; HEIGHT: 25px">
+						{KS_热门图集滚动}
+					</DIV>
+				</DIV>
+				<SCRIPT>new srcMarquee("ScrollMe",0,1,808,25,30,2000,2000,25)</SCRIPT>
+				
+			</div>
+		</div>	
+	</div>
+	<div class="clear"></div>
+
+	<div class="wrap">
+		<div class="clear"></div>
+		<div class="mainbox">
+				<div id="lmbox001" style="display:none">
+						
+						{KS_图片栏目}
+						
+				</div>
+		
+		</div>
+
+		<!--Content-->
+		<div class="ipc_nr">
+			<h1>{KS:Field:Title}</h1>
+			<div class="pic_tt"><span style="padding-left:5px">上传时间：</span><font>{KS:Field:AddDate}</font><span>分类：</span><font>{$GetClassName}</font><span>上传者：</span><font>{KS:Field:Inputer}</font><span>点击数：</span><font style="color:#e00">{KS:Field:Hits}</font>
+			
+			</div>
+			<div class="tp_ct">
+				{KS:ShowImages}
+			</div>	
+			<div class="fy">
+				上一篇：{KS:Field:PreItem}<br />
+				下一篇：{KS:Field:NextItem}
+				
+				<DIV class=bshare-custom style="text-align:right;margin-top:15px" ><A class=bshare-qzone title=分享到QQ空间></A><A class=bshare-sinaminiblog title=分享到新浪微博></A><A class=bshare-renren title=分享到人人网></A><A  class=bshare-qqmb title=分享到腾讯微博></A><A class=bshare-douban title=分享到豆瓣></A><A class="bshare-more bshare-more-icon more-style-addthis" title=更多平台></A><SPAN class="BSHARE_COUNT bshare-share-count">0</SPAN></DIV>
+	<SCRIPT type=text/javascript charset=utf-8 src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=990f0982-7b8b-442c-b090-4ce2d2da658e&amp;pophcol=2&amp;lang=zh"></SCRIPT>
+	
+	<SCRIPT type=text/javascript charset=utf-8 src="http://static.bshare.cn/b/bshareC0.js"></SCRIPT>
+				
+					<script>
+					 $(document).ready(function(){
+					  $(".bshare-custom").find("A").click(function(){
+					   return(addScore({KS:Field:ClassID},{KS:Field:InfoID}));
+					  });
+					 });
+					</script>
+			</div>	
+			<div class="tp_into">
+			
+				<h4>图片介绍</h4>
+				{KS:Field:Details}
+			</div>
+		</div>	
+		
+		{KS_尾部通用}
+	</div>
+</body>
+</html>

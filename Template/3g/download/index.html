@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<title>{$GetSiteName}-{$GetChannelName}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-control" content="max-age=1700">
+<meta name="viewport" content="user-scalable=no, width=device-width">
+<meta name="MobileOptimized" content="320">
+<meta name="author" content="kesion.com">
+<meta name="format-detection" content="telephone=no">
+<link href="{$GetSiteUrl}3g/images/style.css" rel="stylesheet" type="text/css">
+<script src="{$GetSiteUrl}ks_inc/jquery.js"></script>
+<script src="{$GetSiteUrl}ks_inc/kesion.common.js"></script>
+<style>
+.lmbg .lmbgtit{ background:url({$GetSiteUrl}3g/images/tit06.png) no-repeat 50% 50%;}
+</style>
+</head>
+
+<body>
+<div style="width:320px; margin:0 auto; background:#f1f1f1; ">
+{KS_3G_底部导航}
+<div class="navmain">
+	<div class="fl">
+		<a href="javascript:;" onClick="history.back()" class="returnbtn">&nbsp;</a>
+	</div>
+	<div class="fr">
+		<a href="#" onClick="openShutManager(this,'ejlmbox')" class="openmore" title="展开栏目">&nbsp;</a>
+	</div>
+	{$GetClassName}
+</div>
+{KS_3G_通用栏目导航}
+<div class="downmain">
+	<ul>
+		<li class="li01"><span>&nbsp;</span><div class="r_ct"><a href="{=GetClassUrl(847)}">系统安全</a><div class="intro">辨识系统中的危险源，并采取有效的控制措施使其危险性最小。</div></div></li>
+		<li class="li02"><span>&nbsp;</span><div class="r_ct"><a href="{=GetClassUrl(848)}">聊天通讯</a><div class="intro">提供qq,飞信,skype,百度Hi,MSN等最常用的电脑手机通信聊天软件。</div></div></li>
+		<li class="li03"><span>&nbsp;</span><div class="r_ct"><a href="{=GetClassUrl(849)}">生活实用</a><div class="intro">为您的生活提供快捷服务。</div></div></li>
+		<li class="li04"><span>&nbsp;</span><div class="r_ct"><a href="{=GetClassUrl(851)}">影音图像</a><div class="intro">在线看视频，看图片，听音乐。</div></div></li>
+		<li class="li05"><span>&nbsp;</span><div class="r_ct"><a href="{=GetClassUrl(858)}">壁纸美化</a><div class="intro">轻松还原主题壁纸鼠标图标 万款个性美化资源随你使用!</div></div></li>
+		<li class="li06"><span>&nbsp;</span><div class="r_ct"><a href="{=GetClassUrl(850)}">书籍阅读</a><div class="intro">收录有用的手机电子书下载,提供常用的手机阅读器下载。</div></div></li>
+		<li class="li07"><span>&nbsp;</span><div class="r_ct"><a href="{=GetClassUrl(852)}">网络社区</a><div class="intro">以博客、空间、交友、在线聊天和基础服务为一体。</div></div></li>
+	</ul>
+	<div class="clear"></div>
+</div>
+<div style="height:55px;"></div>
+</div>
+</body>
+</html>

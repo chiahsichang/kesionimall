@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Space_index" Codebehind="index.aspx.cs" %>

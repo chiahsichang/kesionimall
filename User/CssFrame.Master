@@ -1,0 +1,19 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="CssFrame.master.cs" Inherits="Kesion.NET.WebSite.CssFrame" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+     <title>用户管理中心</title>
+    <link href="images/css.css" rel="stylesheet" type="text/css" />
+    <script src="/ks_inc/jquery.js"></script>
+    <script src="/ks_inc/kesion.common.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

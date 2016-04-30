@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head> 
+<title>会员登录-{$GetSiteName}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="max-age=1700">
+<meta name="viewport" content="user-scalable=no, width=device-width">
+<meta name="MobileOptimized" content="320">
+<meta name="author" content="kesion.com">
+<meta name="format-detection" content="telephone=no">
+<link href="{$GetInstallDir}3g/images/style.css" rel="stylesheet" type="text/css">
+<script src="{$GetInstallDir}ks_inc/jquery.js"></script>
+<script src="{$GetInstallDir}KS_Inc/Kesion.Common.js"></script>
+</head>
+<script type="text/javascript">
+var check={
+   CheckForm:function(){
+	 var username=$('#Username').val();
+	 var pass=$('#Password').val();
+	 var vycode=$('#Verifycode').val();
+	 if (username==''||username=='UID/用户名/Email'){
+		  alert('请输入用户名!');
+		  $('#Username').focus();
+		  return false;
+	 }
+	 if (pass==''){
+		  alert('请输入登录密码!');
+		  $('#Password').focus();
+	      return false;
+	 }
+	 if (vycode=='' && {$CheckVerifyCode}){
+		  alert('请输入验证码!');
+		  $('#Verifycode').focus();
+		  return false;
+	 }
+	  
+	  	var ExpiresDate=1;
+		
+		 jQuery.ajax({
+		  type:"POST",
+		  processData: false,
+		  url:"{$GetInstallDir}plus/ajaxs.ashx",
+		  data:"a=checklogin&username="+username+"&password="+pass+"&ExpiresDate="+ExpiresDate+"&verifycode="+vycode,
+		  success:function(xml)
+		  { 
+		    if (jQuery(xml).find("login success").text()=="True")
+			{
+			  CheckIsLogin();
+			}else{
+			 alert(jQuery(xml).find("login message").text());
+			}
+		  }
+		 });
+	  return false;
+	}
+}
+function CheckIsLogin()
+	{
+	     jQuery("#nologin").css('display','none');
+		 jQuery("#haslogin").css('display','');
+		 jQuery("#haslogin").html("<img src='{$GetInstallDir}user/images/loading.gif' border='0' />");
+		 jQuery.ajax({
+		  type:"POST",
+		  processData: false,
+		  datatype: "xml",
+		  url:"{$GetInstallDir}plus/ajaxs.ashx",
+		  data:"a=checkislogin",
+		  success:IsLogin
+		 });
+	}
+	function IsLogin(xml)
+	{
+		 var islogin=jQuery(xml).find("login islogin").text();
+		 if (islogin=='false')
+		 {
+		  alert('登录失败，请重新登录!');
+		 }else{
+	       var comeurl='{$GetComeUrl}';
+		   if (comeurl==''){
+		    location.href='user.aspx';
+		   }else{
+		    location.href=comeurl
+		   }
+		 }
+	}
+
+
+</script>
+<body>
+{KS_3G_底部导航}
+<div class="navmain">
+	<div class="fl">
+		<a href="javascript:;" onClick="history.back()" class="returnbtn">&nbsp;</a>
+	</div>
+	<div class="fr">
+		<a href="#" onClick="openShutManager(this,'ejlmbox')" class="openmore" title="展开栏目">&nbsp;</a>
+	</div>
+	用户中心
+</div>
+{KS_3G_通用栏目导航}
+<a href="reg.aspx"><img src="{$GetInstallDir}3g/images/banner.png" width="100%" /></a>
+<div class="userlogin01">
+	<ul>
+		<li class="curr">用户登录</li>
+		<li><a href="reg.aspx">免费注册</a></li>
+	</ul>
+</div>
+
+	<div class="loginbox">
+				<form action="login.aspx" id="myform" name="myform" method="post">
+				 
+					<div class="form_detail">
+						<p style="margin-top:12px">
+							<input type="text" onFocus="if(this.value=='UID/用户名/Email'){this.value='';}" onBlur="if(this.value==''){this.value='UID/用户名/Email';}" value="UID/用户名/Email" name="Username" maxlength="60" id="Username" class="login_tx" tabindex="1" />
+							
+						</p>
+						<p>
+							<input type="password" name="Password" maxlength="60" id="Password" class="login_tx" tabindex="2" autocomplete="off" onFocus="if(this.value=='000000'){this.value='';}" onBlur="if(this.value==''){this.value='000000';}" value="000000" />
+						</p>
+						<p{$ShowVerify}>
+							<label>验证码：</label>
+							<input type="text" maxlength="6" name="Verifycode" id="Verifycode" onFocus="this.value='';" class="ipt_tx" style="width:55px;" tabindex="3" autocomplete="off"/>
+							<span id="showVerify"><img style='height:38px;cursor:pointer' title='点击刷新' align='absmiddle' src='../plus/ValidateCode.aspx' onClick='this.src="../plus/ValidateCode.aspx?n="+ Math.random();'></span>
+							
+						</p>
+						
+						<p class="loginbut"><input type="hidden" name="u1" id="u1"/>
+							<input name="" type="button" onClick="return check.CheckForm();" value="登录" class="loginbtn">
+							<input name="" type="button" onClick="location.href='getpassword.aspx';" value="忘记密码" class="loginbtn">
+						
+						</p>
+						
+					</div>
+				</form>
+				<div class="clear"></div>
+				
+	
+				</div>
+				<div class="otherlogin">
+					<div class="hrefbox">
+						<ul>
+							<li></li>
+							<li></li>
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<div class="clear blank10"></div>
+					<h3>使用第三方网站账号登录</h3>
+					<div class="formdetail">
+					{$ShowApiLogin}
+					</div>
+				</div>		
+</body>
+</html>

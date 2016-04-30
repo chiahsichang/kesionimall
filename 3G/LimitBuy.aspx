@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="Kesion.NET.WebSite.G3.Shop_LimitBuy" Codebehind="LimitBuy.aspx.cs" %>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="{$GetInstallDir}images/home.css" rel="stylesheet" />
+	<title>{$GetSiteTitle}-专题模板</title>
+	<!--鼠标滑动特效start--> 
+	<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+	<script src="{$GetInstallDir}ks_inc/kesion.common.js" type="text/javascript"></script>
+		
+<!--鼠标滑动特效end--> 
+</head>
+<body style="background:#eee; font-family:'微软雅黑'">
+<div class="zt_head">
+	<ul>
+		<div class="l">
+			<li class="li01"><a href="{$GetInstallDir}">科汛首页</a>|</li>
+			<li class="li02"><a href="{$GetInstallDir}special/index.aspx">新闻专题</a>|</li>
+			<li class="li03"><a href="{$GetInstallDir}plus/map.aspx">频道地图</a>|</li>
+			<li class="li04"><a href="{=GetClassUrl(1094)}">关于我们</a></li>
+		</div>
+		<div class="r">
+			{$GetTopUserLogin}
+		</div>
+	</ul>
+</div>
+<div class="idx" style="margin-top:0px"><img src="http://bbs.kesion.com/images/banner.gif" width="100%" /></div>
+<div class="Dg" style="font-family:'微软雅黑'">{KS_位置导航}</div>
+<div class="subject">
+	<div class="subject_l">
+		<div class="l_one">
+			<h4>专题分类</h4>
+			<ul>
+				 {KS_专题分类列表}
+			</ul>
+		</div>
+		<div class="l_two">
+			<h4>专题排行榜</h4>
+			<ul>
+				{KS_专题排行榜}
+			</ul>
+		</div>
+	</div>
+	<div class="subject_r">
+		<h4>最新专题列表</h4>
+		<ul>
+			{KS_最新专题列表}
+		</ul>
+			<div class="clear"></div>
+	</div>
+</div>	
+{KS_尾部通用}	
+</body>
+</html>

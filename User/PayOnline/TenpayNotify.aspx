@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="Kesion.NET.WebSite.User_PayOnline_Tenpay" Codebehind="TenpayNotify.aspx.cs" %>

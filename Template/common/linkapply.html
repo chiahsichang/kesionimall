@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>{$GetSiteName}-申请友情链接</title>
+<link href="{$GetInstallDir}images/home.css" rel="stylesheet" />
+<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+<script src="{$GetInstallDir}ks_inc/kesion.common.js" type="text/javascript"></script>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+	{KS_头部通用}
+<div style="width:960px;margin:20px auto;;border:2px solid #d7e8f7;font-size:14px; line-height:24px">
+  <table bgcolor="#ffffff" width="778" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center"><br>
+         <table border="0" cellpadding="2" cellspacing="1" width="500"  class="table_border">
+         <tr class="link_table_title">
+           <td colspan=2>本站链接信息</td>
+         </tr>
+         <tr>
+           <td colspan="2" align="right"><div align="center">申请链接交换，务请先使用下面的代码做好本站链接。</div></td>         </tr>
+         <tr>
+           <td width="176" height="25" align="right" valign="middle"><strong>※本站文字链接代码:</strong></td>           <td width="313" height="25"><div align="center">演示:<a href="{$GetSiteUrl}" title="{$GetSiteTitle}" target="_blank">{$GetSiteName}</a></div></td>         </tr>
+         <tr align="center">
+           <td height="25" colspan="2"> <textarea name="textlink" rows="2" onMouseOver="javascript:this.select();" style="width:88%;border-style: solid; border-width: 1"><a href="{$GetSiteUrl}" title="{$GetSiteTitle}" target="_blank">{$GetSiteName}</a></textarea></td>         </tr>
+         <tr>
+           <td width="176" height="25" align="right"><strong>※本站LOGO链接代码:</strong></td>           <td height="25"><div align="center">演示:<a href="{$GetSiteUrl}" title="{$GetSiteTitle}" target="_blank"><img src="{$GetSiteLogo}" width="88" height="31" border="0" align="absmiddle"></a></div></td>         </tr>
+         <tr align="center">
+           <td height="25" colspan="2"> <textarea name="logolink" rows="2" onMouseOver="javascript:this.select();" style="width:88%;border-style: solid; border-width: 1"><a href="{$GetSiteUrl}" title="{$GetSiteTitle}发" target="_blank"><img src="/images/logo.gif" width="88" height="31" border="0"></a></textarea></td>         </tr>
+       </table>
+         <br>
+         <table width="500" border="0" cellspacing="0" cellpadding="0" class="table_border">
+           <tr class="link_table_title">
+             <td>申请友情链接</td>
+           </tr>
+           <tr><td>  <form action="{=GetRewriteUrl(linkapply)}" name="LinkForm" method="post">
+   <input name="Action" type="hidden" id="Action" value="AddLink">
+  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="20%" height="25" align="center">
+              <div align="center">网站名称</div></td>
+            <td width="542" height="25" align="left">
+			<input name="SiteName" class="textbox" type="text" id="SiteName" size="38" >              <font color="red">*</font></td>
+          </tr>
+          <tr>
+            <td height="25" align="center">所属类别</td>
+            <td height="25" align="left">
+             {$FriendLinkClass}
+</td>
+         </tr>          
+		 <tr>
+            <td height="25" align="center">
+              <div align="center">网站站长</div></td>
+            <td height="25" align="left">
+              <input name="WebMaster" id="WebMaster" class="textbox" type="text" size="38"> <font color="red">*</font></td>          </tr>
+          <tr>
+            <td height="25" align="center">
+              <div align="center">站长信箱</div></td>
+            <td height="25" align="left">
+              <input name="Email" id="Email" type="text" class="textbox" size="38" value="@" ></td>
+          </tr>
+          <tr>
+            <td height="25" align="center">
+              <div align="center">网站密码</div></td>
+            <td height="25" align="left">
+              <input name="PassWord" id="PassWord" type="password" class="textbox" size="42" > <font color="red">*</font>不少于6位, 修改信息时用 </td>          </tr>
+          <tr>
+            <td height="25" align="center">确定密码</td>
+            <td height="25" align="left">
+            <input name="ConPassWord" id="ConPassWord" class="textbox" type="password" size="42" > <font color="red">*</font>同上</td>
+          </tr>
+          <tr>           
+		   <td height="25" align="center">网站地址</td>
+            <td height="25" align="left"><input name="Url" class="textbox" type="text"  value="http://" id="Url" size="38"> <font color="red">*</font></td>        
+			  </tr>
+          <tr>            
+		  <td height="25" align="center">链接类型</td>
+            <td height="25" align="left"><input type="radio" name="LinkType" onClick="SetLogoArea('none')" value="0" checked> 文字链接 <input type="radio" name="LinkType" onClick="SetLogoArea('')" value="1">  LOGO链接              </td>
+          </tr>        
+		   <tr Style="display:none" ID="LinkArea">
+            <td height="25" align="center">Logo 地址</td>
+            <td height="25" align="left"><input name="Logo" class="textbox" type="text"  value="http://" id="Logo" size="38"> <font color="red">*</font></td>          
+			</tr>
+          <tr>
+            <td height="25" align="center"><div align="center">网站简介</div></td>
+            <td height="25" align="left">
+              <textarea name="Description" rows="6" id="Description" style="width:80%;border-style: solid; border-width: 1"></textarea></td>          </tr>
+          <tr>
+            <td height="25" align="center">认 证 码</td>
+            <td height="25" align="left">
+            <input name="Verifycode" id="Verifycode" class="textbox" type="text" size="8" > <font color="red"><<=</font><IMG style="cursor:hand;" src="{$GetInstallDir}plus/ValidateCode.aspx?n=69656.92" onClick="this.src='{$GetInstallDir}plus/ValidateCode.aspx?n='+ Math.random();" align="absmiddle"></td>
+          </tr>
+        </table>
+       </td>    </tr>
+    </table>
+  <table width="100%" height="38" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="40" align="center">
+        <input type="button" class="inputbutton" name="Submit" Onclick="CheckForm()" value=" 确 定 ">
+        <input type="reset" class="inputbutton" name="Submit2"  value=" 重 填 ">
+      </td>
+    </tr>
+  </table>
+  </form>
+<Script Language="javascript">
+<!--
+function is_email(str)
+{ if((str.indexOf('@')==-1)||(str.indexOf('.')==-1)){
+    return false;
+    }
+    return true;
+}
+function SetLogoArea(Value){   
+document.all.LinkArea.style.display=Value;
+}
+function CheckForm()
+{ var form=document.LinkForm;
+   if (form.SiteName.value==''){     
+	 KesionJS.Alert("请输入网站名称!","jQuery('#SiteName').focus();");
+     return false;
+    }
+   if (form.WebMaster.value=='')
+    {     
+	 KesionJS.Alert("请输入网站站长!","jQuery('#WebMaster').focus();");
+     return false;
+    }
+    if ((form.Email.value!='@')&&(is_email(form.Email.value)==false))
+    {  
+		KesionJS.Alert("非法电子邮箱!","jQuery('#Email').focus();");
+     return false;
+    }
+    if (form.PassWord.value=='')
+    {    
+	 KesionJS.Alert("请输入网站密码!","jQuery('#PassWord').focus();");
+     return false;    }
+   else if (form.PassWord.value.length<6)
+    {  KesionJS.Alert("网站密码不能少于6位!","jQuery('#PassWord').focus();");
+     return false;
+    }
+   if (form.ConPassWord.value=='')
+    {
+     KesionJS.Alert("请输入确定密码!","jQuery('#ConPassWord').focus();");
+     return false;
+    }else if(form.ConPassWord.value.length<6)
+    { 
+	 KesionJS.Alert("确定密码不能少于6位!","jQuery('#ConPassWord').focus();");
+     return false;
+    }
+   if (form.PassWord.value!=form.ConPassWord.value)
+    {
+	KesionJS.Alert("两次输入的密码不一致!","jQuery('#PassWord').focus();");
+     return false;
+    }
+   if (form.Url.value=='' || form.Url.value=='http://')
+    {
+	 KesionJS.Alert("请输入网站地址!","jQuery('#Url').focus();");
+     return false;
+    }
+   if (form.Verifycode.value=='')
+    {
+	 KesionJS.Alert("请输入认证码!","jQuery('#Verifycode').focus();");
+     return false;
+    }
+    form.submit();
+}
+//-->
+</Script>
+ </td></tr></table>
+         <br>
+       </td>
+     </tr>
+   </table>
+ </form>
+ </div>
+ 	{KS_尾部通用}
+
+ </body>
+ </html>

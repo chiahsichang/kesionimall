@@ -1,0 +1,54 @@
+.dynamic-tab-pane-control.tab-pane {
+	position:	relative;
+	/*width:		100%;		 width needed weird IE bug */
+	/*margin-right:	-2px;	 to make room for the shadow */
+}
+.dynamic-tab-pane-control .tab-row{height:29px;  }
+.dynamic-tab-pane-control .tab-row .tab {
+	font-size: 12px;
+	float:left;
+	 margin-right:3px;
+  height: 28px;
+  line-height: 28px;
+  color: gray;
+  display: block;
+  padding: 0 10px;
+  text-align: center;
+  border: #DDD solid 1px;
+  color: #666;
+  background: #F0F0F0;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+
+}
+
+.dynamic-tab-pane-control .tab-row .tab.selected {
+	background:#FFF;
+	height:29px;
+	margin-bottom:-10px;
+}
+.dynamic-tab-pane-control .tab-row .tab.selected a{
+	
+}
+.dynamic-tab-pane-control .tab-row .tab a {
+	font:12px Tahoma;
+	color: #666;
+	text-decoration: none;
+	cursor: hand;
+	line-height:28px;
+	
+}
+.dynamic-tab-pane-control .tab-row .tab.hover {
+	background:#FAFAFA;
+}
+.dynamic-tab-pane-control .tab-page {
+
+	border: 0px solid #DDD;
+	background: rgb( 252, 252, 254 );
+	color: #333;
+	
+	/*244, 243, 238*/
+	/* 145, 155, 156*/
+	
+
+}

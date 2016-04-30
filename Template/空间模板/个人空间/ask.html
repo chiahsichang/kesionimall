@@ -1,0 +1,56 @@
+﻿ {KS:loadfile("header.html")}
+
+<script type="text/javascript">
+    $(function () {
+
+        $("a").click(function () {
+
+            var hf = $(this).attr("href");
+            var reg = /(page=)\d/;
+            var reg2 = /\d/;
+            var str = hf.toString();
+            var str2 = str.match(reg).toString();
+            var page = str2.match(reg2);
+
+            if (page == null || page == "") {
+                alert(00);
+            } else {
+                location.href = "/space/?{KS:Field:UserID}/ask/page=" + page;
+            }
+            return false;
+        });
+
+        
+
+
+    });
+</script>
+
+	{KS:loadfile("left.html")}
+	  
+	  <!--右边-->
+      <div class="blogmain">
+          <div class="nav">
+              <!--<p><a href="#">首页</a> >> <a href="#">博文</a></p>-->
+              <p>[KS:BlogNavStr]</p>
+          </div>
+            <ul>
+            [Loop Times="0"]
+				 <li>
+                 <span class="date">{$Field(AddDate,date,YY-MM-DD)}</span>
+				 <a href="{KS:Field:QuestionUrl}" target="_blank" class="title">{$Field(title,text,30,...,2,)}</a><span>（{KS:Field:IsSolves}）</span>
+				 <div class="type" style=" clear:both;color:#999">
+				 分类：{KS:Field:ClassName}&nbsp;
+				 关键字：{$Field(KeyTags,text,0,...,2,)}<br/>
+				 </div>
+
+				 </li>
+			[/Loop]
+           </ul>
+				<div class="clear"></div>
+				<div class="fyys">[KS:PageStr]</div>
+
+	  </div>
+   </div>
+
+ {KS:loadfile("footer.html")}

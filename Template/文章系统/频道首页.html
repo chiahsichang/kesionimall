@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="{$GetInstallDir}images/home.css" rel="stylesheet" />
+	<title>{$GetSiteTitle}-{$GetClassName}-频道首页</title>
+	<!--鼠标滑动特效start--> 
+	<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+	<script src="{$GetInstallDir}ks_inc/kesion.common.js" type="text/javascript"></script>
+	
+	<!--鼠标滑动特效end--> 
+	<script language="JavaScript">
+	function showerrimg(obj){
+		 var errorimg = "{$GetInstallDir}images/nopic.png";//替换图片地址
+		 obj.src = errorimg;
+	}
+	</script>
+	<style>
+		.fr{margin-top:0px;}
+	</style>
+</head>
+
+<body>
+	{KS_头部通用}
+	
+	<div class="newsnav">
+		<ul>
+			{KS_新闻栏目导航}
+		</ul>
+	</div>
+	<div class="clear"></div>
+	<div class="newsmain01">
+		<div class="left">
+			<div class="left01">
+				{KS_新闻首页幻灯}
+			</div>
+			<div class="clear"></div>
+			<div class="left02">
+				<h1><span><a href="/special/index.aspx" style="color:#666;">论专题</a> | {KS_最新专题新闻}</span>今日要闻</h1>
+				<ul>
+					{KS_今日热门(图片)}
+					{KS_新闻分页}
+				</ul>
+			</div>
+		</div>
+		<div class="right">
+			<div class="right01">
+				<ul>
+					{KS_新闻焦点}
+				</ul>
+			</div>
+			<div class="clear"></div>
+			<div class="right02">
+				<h4><span><a href="#">更多<em>&raquo;</em></a></span>图片新闻</h4>
+				<ul>
+					{KS_图片新闻}
+				</ul>
+			</div>
+			<div class="clear"></div>
+			<div class="right03">
+				<h4>点击排行榜</h4>
+				<ul>
+					{KS_文章点击榜}
+				</ul>
+			</div>			
+			<div class="clear"></div>
+			<div class="right03">
+				<h4>评论排行榜</h4>
+				<ul>
+					{KS_评论排行榜}
+				</ul>
+			</div>			
+		</div>
+	</div>
+	
+	{KS_尾部通用}
+</body>
+</html>

@@ -1,0 +1,15 @@
+<%@ Control Language="C#" AutoEventWireup="true" Inherits="Kesion.NET.WebSite.Control_SpaceLabel" Codebehind="SpaceLabel.ascx.cs" %>
+<LI><div onmousedown="DragStart()" onclick="SetValue(document.getElementById('<%=TemplateID %>'))" label="{$GetSiteName}" class="field" style="cursor:hand">企业网站名称</div></LI>
+<LI><div onmousedown="DragStart()" onclick="SetValue(document.getElementById('<%=TemplateID %>'))" label="{$GetSiteEnName}" class="field" style="cursor:hand">网站英文名称</div></LI>
+<LI><div onmousedown="DragStart()" onclick="SetValue(document.getElementById('<%=TemplateID %>'))" label="{$GetLogo}" class="field" style="cursor:hand">网站Logo地址</div></LI>
+<LI><div onmousedown="DragStart()" onclick="SetValue(document.getElementById('<%=TemplateID %>'))" label="{$GetBanner}" class="field" style="cursor:hand">网站Banner</div></LI>
+<LI><div onmousedown="DragStart()" onclick="SetValue(document.getElementById('<%=TemplateID %>'))" label="{$GetSiteSearch}" class="field" style="cursor:hand">站内搜索</div></LI>
+<LI><div onmousedown="DragStart()" onclick="SetValue(document.getElementById('<%=TemplateID %>'))" label="{$GetUserClass}" class="field" style="cursor:hand">用户分类</div></LI>
+<LI><div onmousedown="DragStart()" onclick="SetValue(document.getElementById('<%=TemplateID %>'))" label="{$GetSiteSearch}" class="field" style="cursor:hand">站内搜索</div></LI>
+<LI><div onmousedown="DragStart()" onclick="SetValue(document.getElementById('<%=TemplateID %>'))" label="{$GetUserName}" class="field" style="cursor:hand">显示用户名</div></LI>
+<LI><div onmousedown="DragStart()" onclick="SetValue(document.getElementById('<%=TemplateID %>'))" label="{$GetSiteGuidance}" class="field" style="cursor:hand">位置导航</div></LI>
+<LI><div onmousedown="DragStart()" onclick="SetValue(document.getElementById('<%=TemplateID %>'))" label="{$GetSiteSearch}" class="field" style="cursor:hand">站内搜索</div></LI>
+<LI><div onmousedown="DragStart()" onclick="SetValue(document.getElementById('<%=TemplateID %>'))" label="{$GetSiteSearch}" class="field" style="cursor:hand">站内搜索</div></LI>
+<LI><div onmousedown="DragStart()" onclick="SetValue(document.getElementById('<%=TemplateID %>'))" label="{$GetSiteSearch}" class="field" style="cursor:hand">站内搜索</div></LI>
+<LI><div onmousedown="DragStart()" onclick="SetValue(document.getElementById('<%=TemplateID %>'))" label="{$GetSiteSearch}" class="field" style="cursor:hand">站内搜索</div></LI>
+<LI><div onmousedown="DragStart()" onclick="SetValue(document.getElementById('<%=TemplateID %>'))" label="{$GetSiteSearch}" class="field" style="cursor:hand">站内搜索</div></LI>

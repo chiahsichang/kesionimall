@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Kesion.NET.WebSite.User1" Codebehind="User.master.cs" %>
+<%@ Import Namespace="Kesion.Publics" %>
+<%@ Import Namespace="Kesion.Components" %>
+<%@ Import Namespace="Kesion.Cache" %>
+<%@ Import Namespace="Kesion.BLL" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>用户管理中心</title>
+    <link href="/user/images/css.css" rel="stylesheet" type="text/css" />
+    <script src="<%=MyCache.GetCacheConfig(0) %>ks_inc/jquery.js"></script>
+    <script src="<%=MyCache.GetCacheConfig(0) %>ks_inc/kesion.common.js"></script>
+    <script src="/user/images/Tab.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <iframe src="about:blank" name="hidframe" id="hidframe" width="0" height="0" style="display:none;width:0px;height:0px"></iframe>
+    <form id="form1" runat="server">
+            <div id="locationid" style="display:none"></div>
+            <asp:contentplaceholder id="KSContent" runat="server">
+            </asp:contentplaceholder>
+     </form>
+
+	<script type="text/javascript">
+	    //iframe 自适应高度
+	    $(window.parent.document).find("#main").load(function () {
+	        autoIframeHeight();
+	    });
+	    function autoIframeHeight() {
+	        var main = $(window.parent.document).find("#main");
+	        var thisheight = $(document).height() + 30;
+	        if (thisheight < 300) thisheight = 300;
+	        main.height(thisheight);
+	        $(window.parent.document).find("#main").parent().height($(window.parent.document).find("#main").contents().find("body").height() + 30); //设置Iframe外层高度
+
+	    }
+		</script>  
+</body>
+</html>

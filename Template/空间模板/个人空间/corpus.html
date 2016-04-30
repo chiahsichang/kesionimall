@@ -1,0 +1,61 @@
+﻿ {KS:loadfile("header.html")}
+	
+    <script type="text/javascript">
+        $(function () {
+
+            $("a").click(function () {
+
+                var hf = $(this).attr("href");
+                var reg = /(page=)\d/;
+                var reg2 = /\d/;
+                var str = hf.toString();
+                var str2 = str.match(reg).toString();
+                var page = str2.match(reg2);
+
+                if (page == null || page == "") {
+                    alert(00);
+                } else {
+                    location.href = "/space/?{KS:Field:UserID}/corpus/page=" + page;
+                }
+                return false;
+            });
+
+
+
+
+        });
+    </script>
+
+	{KS:loadfile("left.html")}
+	  
+	  <!--右边-->
+      <div class="blogmain">
+          <div class="nav">
+              <!--<p><a href="#">首页</a> >> <a href="#">博文</a></p>-->
+              <p>[KS:BlogNavStr]</p>
+          </div>
+
+            [Loop Times="0"]
+				 <li>
+                 <span class="date">{$Field(AddDate,date,YY-MM-DD)}</span>
+				 <a href="{$Field(InfoID,url,0,3)}" target="_blank" class="title">{$Field(Title,text,30,...,2,)}</a>
+				
+				 <div class="type" style=" clear:both;color:#999">
+				 {$Field(Intro,text,100,...,2,)}<br/>
+				 分类：{$Field(ClassID,url,1,2)}&nbsp;
+				 关键字：{$Field(KeyTags,text,0,...,2,)}<br/>
+				 </div>
+				 <div style="color:#009933;">
+				 
+				  链接:{$Field(InfoID,url,1,3)} 
+				 </div>
+				 </li>
+				[/Loop]
+				<div class="clear"></div>
+				<div class="fyys">[KS:PageStr]</div>
+
+	  </div>
+    
+   </div>
+
+ {KS:loadfile("footer.html")}

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="{$GetInstallDir}images/shop/style.css" rel="stylesheet" />
+    <link href="{$GetInstallDir}images/sc.css" rel="stylesheet" />
+	<title>{$GetSiteTitle}-搜索</title>
+	<!--鼠标滑动特效start--> 
+	<script src="{$GetInstallDir}ks_inc/jquery.js" language="javascript"></script>
+	<script src="{$GetInstallDir}ks_inc/ajaxs.js" language="javascript"></script>
+	<style>
+	.norecord{width:270px;margin:0 auto;margin-top:20px; height:32px; line-height:32px;padding-left:27px; border:1px solid #f9b49c;color:#e00; background:#fff6e6 url({$GetInstallDir}images/no.gif) no-repeat 10px 50%;font-size:12px}
+
+	</style>
+</head>
+<body style=" background:#f0f0f0">
+{KS_T02商城头部}
+	<div class="Dg" style="padding-top:5px;">{KS_位置导航}</div>
+	<div class="sc_list">
+		<div class="clear"></div>
+		<div class="scjg"><div class="idx">搜索 <font color=red>[KS:SearchKey]</font> 的结果,执行时间 <font color=green>[KS:ExecuteTime]</font> 秒：</div></div>
+		<div class="clear"></div>
+		<div class="idx">
+			<div class="sc_list_l">
+				[Loop Times="9"]
+				 <li>
+				 <a href="{$Field(InfoID,url,0,3)}" target="_blank" class="title">{$Field(Title,text,30,...,2,)}</a><span class="date">{$Field(AddDate,date,YY-MM-DD)}</span>
+				
+				 <div style=" clear:both;color:#999">
+				 {$Field(Intro,text,100,...,2,)}<br/>
+				 分类：{$Field(ClassID,url,1,2)}&nbsp;
+				 关键字：{$Field(KeyTags,text,0,...,2,)}<br/>
+				 </div>
+				 <div style="color:#009933;">
+				 
+				  链接:{$Field(InfoID,url,1,3)} 
+				 </div>
+				 </li>
+				[/Loop]
+				<div class="clear"></div>
+				<li class="fyys">[KS:PageStr2]</li>
+			</div>
+			<div class="sc_list_r">
+				<h4>猜你喜欢</h4>
+				<ul>
+					{KS_搜索_猜你喜欢2}
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	
+	{KS_商城底部通用}
+
+</body>
+</html>

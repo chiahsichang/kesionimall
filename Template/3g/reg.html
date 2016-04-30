@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>{$GetSiteName}-新会员注册</title>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="max-age=1700">
+<meta name="viewport" content="user-scalable=no, width=device-width">
+<meta name="MobileOptimized" content="320">
+<link href="{$GetInstallDir}3g/images/style.css" rel="stylesheet" type="text/css">
+<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javaScript"></script>
+	<script src="{$GetInstallDir}ks_Inc/Kesion.Common.js"></script>
+	<script language="javascript">
+	var minlen={$Show_UserNameLimitChar};
+	var maxlen={$Show_UserNameMaxChar};
+	var MobileReg={$MobileReg};
+	var SessionID="{$SessionID}"; //防止恶意发短信和注册
+	var OutTimes ="{$SendSMSInterval}";
+	var VerifyCodeReg={$VerifyCodeReg};
+	var EnabledRegField="{$EnabledRegField}";
+	</script>
+	<script language="javascript" src="{$GetInstallDir}ks_inc/kesion.checkreg.js"></script>
+	<script type="text/javascript">
+ function Check3GRegForm() 
+		{ 
+			if (document.myform.UserName.value ==""||document.myform.UserName.value =="会员名称")
+			{
+			 alert("请填写您的会员名！");
+			 document.myform.UserName.focus();
+			return false;
+			}
+			if (document.myform.PassWord.value =="" ||document.myform.PassWord.value =="用户密码") 
+			{
+			 alert("请填写您的密码！");
+			 document.myform.PassWord.focus();
+			 return false; 
+			}
+if (document.myform.Question.value =="" && EnabledRegField.indexOf("question")!=-1){
+			alert("请填写您的密码问题!");
+			document.myform.Question.focus();
+			return false;
+	}
+	if (document.myform.Answer.value =="" && EnabledRegField.indexOf("question")!=-1){
+			alert("请填写您的问题答案！");
+			document.myform.Answer.focus();
+			return false;
+	}
+var mobile=$("#Mobile").val();
+	if (mobile =="" && (EnabledRegField.indexOf("mobile")!=-1 || MobileReg==1)){
+			alert("请输入您的手机号码！");
+			$("#Mobile").focus();
+			return false;
+	}
+	if (ismobile(mobile)==false&& (EnabledRegField.indexOf("mobile")!=-1 || MobileReg==1)){
+	   alert('手机号码格式不正确，请重新输入！');
+	   $("#Mobile").focus();
+	   return false;
+	}
+	if (MobileReg==1 && ($("#MobileCode").val()==''||$("#MobileCode").val()=='手机验证码')){
+			 alert("请输入手机验证码！");
+			 $("#MobileCode").focus();
+		     return false;
+	}
+	if ($("#Email").val()=="" && EnabledRegField.indexOf("email")!=-1){
+			alert("请输入您的电子邮件地址！");
+			$("#Email").focus();
+			return false;
+	}
+	
+	if (VerifyCodeReg==1 && $("#Verifycode").val()==''){
+		alert("请输入验证码！");
+		$("#Verifycode").focus();
+		     return false;
+	}		
+
+		  return true;
+}
+</script>
+
+<body>
+{KS_3G_底部导航}
+<div class="navmain">
+	<div class="fl">
+		<a href="javascript:;" onClick="history.back()" class="returnbtn">&nbsp;</a>
+	</div>
+	<div class="fr">
+		<a href="#" onClick="openShutManager(this,'ejlmbox')" class="openmore" title="展开栏目">&nbsp;</a>
+	</div>
+	注册
+</div>
+{KS_3G_通用栏目导航}
+
+<iframe src="about:blank" name="hidframe" id="hidframe" style="display:none"></iframe>
+ <form name="myform" onSubmit="return Check3GRegForm();" action="Reg.aspx?action=dosave" method="post" target="hidframe">
+
+<div class="user_topd">
+	
+	<div class="usertopd">
+		
+	      <!--注册信息start-->
+			           
+						<div class="blank10 clear"></div>
+						
+						<dl class="cc"{$DisplayUserType}>
+								
+								<dd class="put" style="color:#666;font-size:16px;">
+									{$ShowUserType}
+								</dd>
+								
+						 </dl>
+						<div class="blank10 clear"></div>
+						
+				        <dl class="cc">
+							
+								<dd class="put">
+									<input name="UserName" class="input" maxlength="30" id="UserName" type="text" onFocus="if(this.value=='会员名称'){this.value='';}" onBlur="if(this.value==''){this.value='会员名称';}" value="会员名称" >
+								</dd>
+								
+						 </dl>
+						<div class="blank10 clear"></div>
+						
+						 <dl class="cc">
+								<dd class="put">
+									<input id="PassWord" name="PassWord" class="input" type="PassWord" style="font-FAMILY: verdana;" onFocus="if(this.value=='用户密码'){this.value='';}" onBlur="if(this.value==''){this.value='用户密码';}" value="用户密码" >
+								</dd>
+								
+						 </dl>
+						 
+						 <div class="blank10 clear"></div>
+						  <dl class="cc"{$DisplayQuestion}>
+								<dd class="put">
+									<Select id="Question" name="Question" class="text" style="width:285px;border-radius: 3px; height:35px;background:#e5e5e5;border:0px;color:#aaa">
+								<Option value="" selected>--请选择提示问题--</Option>
+								<Option value="我的宠物名字？">我的宠物名字？</Option>
+								<Option value="我最好的朋友是谁？">我最好的朋友是谁？</Option>
+								<Option value="我最喜爱的颜色？">我最喜爱的颜色？</Option>
+								<Option value="我最喜爱的电影？">我最喜爱的电影？</Option>
+								<Option value="我最喜爱的影星？">我最喜爱的影星？</Option>
+								<Option value="我最喜爱的歌曲？">我最喜爱的歌曲？</Option>
+								<Option value="我最喜爱的食物？">我最喜爱的食物？</Option>
+								<Option value="我最大的爱好？">我最大的爱好？</Option>
+								<Option value="我中学校名全称是什么？">我中学校名全称是什么？</Option>
+								<Option value="我的座右铭是？">我的座右铭是？</Option>
+								<Option value="我最喜欢的小说的名字？">我最喜欢的小说的名字？</Option>
+								<Option value="我最喜欢的卡通人物名字？">我最喜欢的卡通人物名字？</Option>
+								<Option value="我母亲/父亲的生日？">我母亲/父亲的生日？</Option>
+								<Option value="我最欣赏的一位名人的名字？">我最欣赏的一位名人的名字？</Option>
+								<Option value="我最喜欢的运动队全称？">我最喜欢的运动队全称？</Option>
+								<Option value="我最喜欢的一句影视台词？">我最喜欢的一句影视台词？</Option>
+							  </Select>    </dd>
+						   </dl>
+						   <div class="blank10 clear"></div>
+						   <dl class="cc"{$DisplayQuestion}>
+								<dd class="put">
+									<input name="Answer"  type="text" id="Answer" class="input" onFocus="if(this.value=='提示答案'){this.value='';}" onBlur="if(this.value==''){this.value='提示答案';}" value="提示答案" ></dd>
+						   </dl>
+						 
+						 
+						<div class="blank10 clear"></div>
+						  <dl class="cc"{$DisplayMobile}>
+								<dd class="put">
+									<input name="Mobile"   type="text" id="Mobile" class="input" onFocus="if(this.value=='手机号码'){this.value='';}" onBlur="if(this.value==''){this.value='手机号码';}" value="手机号码" ></dd>
+						   </dl>
+						   <div class="blank10 clear"></div>
+						  <dl class="cc"{$DisplayMobileReg}>
+								<dd class="put">
+							<table border="0" cellpadding="0" cellspacing="0">
+							 <tr>
+							 <td><input name="MobileCode" style="width:120px"  type="text" id="MobileCode" class="input" onFocus="if(this.value=='手机验证码'){this.value='';}" onBlur="if(this.value==''){this.value='手机验证码';}" value="手机验证码" ></td>
+							 <td><input type="button" id="SendMobileBtn" onclick="getMobileCode()" value="获取手机验证码" class="qrzcbtn" style="width:170px;"/></td>
+							</tr>
+							</table>
+									</dd>
+						   </dl>
+						   
+						<div class="blank10 clear"></div>
+						  <dl class="cc"{$DisplayEmail}>
+								<dd class="put">
+									<input name="Email" id="Email" type="text" class="input" onFocus="if(this.value=='邮箱'){this.value='';}" onBlur="if(this.value==''){this.value='邮箱';}" value="邮箱" > </dd>
+						   </dl>
+		
+						<div class="blank10 clear"></div>
+							
+							<dl class="cc"{$DisplayVerifyCode}>
+								<dd class="put">
+									<input onFocus="if(this.value=='验证码'){this.value='';}" onBlur="if(this.value==''){this.value='验证码';}" value="验证码" name="Verifycode" type="text" id="Verifycode" class="input" style="width:95px; float:left; " maxlength="6"><img style='cursor:pointer;margin-left:10px; float:left' onClick="this.src='../plus/ValidateCode.aspx?time='+Math.random();" src="../plus/ValidateCode.aspx?n="/>
+									
+								</dd>
+						    </dl> 
+						 <div class="clear blank10"></div>
+						 
+						  <input type="submit" value="确定注册" align="middle" border="0" class="qrzcbtn">
+					
+				  
+	           </form>
+          <!--注册信息end-->
+		  <div class="clear" style="height:60px"></div>
+	</div>
+
+         
+</body>
+</html>

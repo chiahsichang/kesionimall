@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="{$GetInstallDir}User/images/css.css" rel="stylesheet" />
+	<title>{$GetSiteTitle}-用户登录</title>
+	<script src="/ks_inc/jQuery.js" language="javascript" type="text/javascript"></script>
+	<script src="/KS_Inc/Kesion.Common.js" language="javascript" type="text/javascript"></script>
+
+	<style>
+		.fr{ display:none}
+		.end{border:0px;margin-top:0px}
+	</style>
+</head>
+<body style="overflow:hidden; background:#ECECEC">
+
+<script>
+function CheckIsLogin()
+	{
+	     jQuery("#nologin").css('display','none');
+		 jQuery("#haslogin").css('display','');
+		 jQuery("#haslogin").html("<img src='{$GetSiteUrl}user/images/loading.gif' border='0' />");
+		 jQuery.ajax({
+		  type:"POST",
+		  processData: false,
+		  datatype: "xml",
+		  url:"{$GetInstallDir}plus/ajaxs.ashx",
+		  data:"a=checkislogin",
+		  success:IsLogin
+		 });
+	}
+	function IsLogin(xml)
+	{
+		 var islogin=jQuery(xml).find("login islogin").text()
+		 if (islogin=='false')
+		 {
+		  jQuery.dialog.alert('登录失败，请重新登录!');
+		 }else{
+	       var comeurl='{$GetComeUrl}';
+		   if (comeurl==''){
+		    location.href='{$GetInstallDir}user/index.aspx';
+		   }else{
+		    location.href=comeurl
+		   }
+		 }
+	}
+
+function CheckLogin()
+{
+	     if (jQuery("#TxtUserName").val()=='' || jQuery("#TxtUserName").val()=='请输入您的账号')
+		 {
+		  jQuery.dialog.alert("请输入您的账号!",function(){
+		  jQuery("#TxtUserName").focus();
+		  });
+		  return false;
+		 }
+	     if (jQuery("#TxtPassWord").val()=='' || jQuery("#TxtPassWord").val()=='******')
+		 {
+		  jQuery.dialog.alert("请输入会员登录密码!",function(){
+		  jQuery("#TxtPassWord").focus();
+		  });
+		  return false;
+		 }
+		 if (jQuery("#TxtPassWord").val().length<6)
+		 {
+		  jQuery.dialog.alert("登录密码长度不能少于6位!",function(){
+		  jQuery("#TxtPassWord").focus();
+		  });
+		  return false;
+		 }
+		 if ( {$CheckVerifyCode} ){
+			 if (jQuery("#TxtVerifyCode").val()=='' || jQuery("#TxtVerifyCode").val()=='验证码')
+			 {
+			  jQuery.dialog.alert("请输入验证码!",function(){
+			  jQuery("#TxtVerifyCode").focus();
+			  });
+			  return false;
+			 }
+		 }
+		 var ExpiresDate=0;
+		 if (jQuery("#ExpiresDate").attr("checked")==true)  ExpiresDate=1;
+		 jQuery.ajax({
+		  type:"POST",
+		  processData: false,
+		  url:"{$GetInstallDir}plus/ajaxs.ashx",
+		  data:"a=checklogin&username="+jQuery("#TxtUserName").val()+"&password="+jQuery("#TxtPassWord").val()+"&ExpiresDate="+ExpiresDate+"&verifycode="+jQuery("#TxtVerifyCode").val(),
+		  success:function(xml)
+		  { 
+		    if (jQuery(xml).find("login success").text()=="True")
+			{
+			  CheckIsLogin()
+			}else{
+			 jQuery.dialog.alert(jQuery(xml).find("login message").text());
+			}
+		  }
+		 });
+	  }
+	 
+	</script>
+	
+		<div style=" background:#259CDD">
+		
+		<div class="reg_nav">
+          <div class="user_wrap">
+             <div class="l"><img src="{$GetSiteLogo}" /></div>
+			 
+            </div> 
+		</div>
+	</div>
+
+		
+		<div class="clear"></div>
+		<div class="login">
+			<div class="baiyunbg">
+			
+			<div class="l_m">
+			  <div class="ksad"><img src="/user/images/ksad.png" /></div>
+				 <script>
+				  jQuery(function(){
+				  jQuery('.text').focus(function(){
+				   jQuery(this).attr("style","border:1px solid #84D2FF");
+				  });
+				  jQuery('.text').blur(function(){
+				   jQuery(this).attr("style","border:1px solid #b7b7b7");
+				  });
+				  });
+				 </script>
+				 <script>
+				  jQuery(function(){
+
+				  jQuery('.text_yz').focus(function(){
+				   jQuery(this).attr("style","border:1px solid #84D2FF");
+				  });
+				  jQuery('.text_yz').blur(function(){
+				   jQuery(this).attr("style","border:1px solid #b7b7b7");
+				  });
+				  });
+				 </script>	
+				<div class="login_box">
+					<h4>用户登录</h4>
+					<input type="input" onfocus="this.value=(this.value=='请输入您的账号')?'':this.value" onblur="this.value=(this.value=='')?'请输入您的账号':this.value" name="TxtUserName" value="请输入您的账号" id="TxtUserName" class="username" ><br />
+					<input type="password" onfocus="this.value=(this.value=='请输入您的密码')?'':this.value" onblur="this.value=(this.value=='')?'请输入您的密码':this.value" name="TxtPassWord" value="请输入您的密码" id="TxtPassWord" class="password" ><br />
+					<span{$ShowVerify}><input type="input" onfocus="this.value=(this.value=='验证码')?'':this.value" onblur="this.value=(this.value=='')?'验证码':this.value" name="TxtVerifyCode" value="验证码" id="TxtVerifyCode" class="text_yz" > <img id="verifyimg" src="../plus/ValidateCode.aspx" border="0" style="cursor:hand;margin-top:10px" onClick="this.src='../plus/ValidateCode.aspx?t='+Math.random();" /></span><br /><div class="clear"></div>
+					<div class="cook">
+					  <div class="l"><input id="Cookies" type="checkbox" name="Cookies" style="outline:none;vertical-align:middle"> <label for="Cookies">&nbsp;记住我的登录信息</label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/user/ActivateUser.aspx">激活</a><a href="{=GetRewriteUrl(getpassword)}">忘记密码？</a>
+					  </div>
+					 
+					</div>
+					<div style="margin-top:10px;"><input name="Button1" value=""  class="btn-login" onClick="CheckLogin()" type="submit"  /></div>
+					<div class="clear"></div>
+					<div class="zc">
+						还没帐号？<a href="{=GetRewriteUrl(reg)}">免费注册</a>
+						快速登录：{$ShowApiLogin}
+					</div>
+				</div>
+				
+			</div>
+			</div>
+		</div>
+		
+		{KS_尾部通用}
+</body>
+</html>

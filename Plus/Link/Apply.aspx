@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="Kesion.NET.WebSite.FriendLink_Apply" Codebehind="Apply.aspx.cs" %>

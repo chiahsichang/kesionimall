@@ -1,0 +1,221 @@
+﻿/*通用样式*/
+*{margin:0;padding:0;word-wrap:break-word;}
+body{font:12px/1.75 "宋体", arial, sans-serif,'DejaVu Sans','Lucida Grande',Tahoma,'Hiragino Sans GB',STHeiti,SimSun,sans-serif;color:#444;}
+body{background:#D0EEF8;}
+html, body, h1, h2, h3, h4, ul, li, dl,input{  margin:0px;padding:0px;list-style-type:none }
+a{color:#333;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a img{border:none;} 
+div,ul,li,p,form{padding: 0px; margin: 0px;list-style-type: none;}
+em{font-style: normal;font-weight: normal;}
+table {padding: 0px; margin: 0px;list-style-type: none;}
+dt,dl,dd {padding: 0px; margin: 0px;list-style-type: none;}
+form{margin:0px;padding:0px;}
+tr {padding: 0px; margin: 0px;list-style-type: none;}
+h3,h4{padding:0px; font-size:14px; font-weight:bold;}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{display:block;*zoom:1}
+.clear {clear:both;height:0px; overflow:hidden;}
+.blank10{height:10px;overflow:hidden;}
+.dotline{border-bottom:#CCC 1px dashed;margin:8px;}
+
+.header{width:100%;margin:0px auto;background:#333; height:33px; color:#FFF;}
+.header a{ color:#FFF;}
+.header .top{width:951px;margin:0px auto;}
+.header .top .left{width:550px;float:left;text-align:left; line-height:33px;}
+.header .top .right{width:300px;float:right;text-align:right; line-height:33px;}
+.nav{font-size:14px;  text-indent:10px; height:40px; line-height:40px; border-bottom:1px solid #DADADA; background:#EFF8FA}
+
+.banner{ margin:0 auto; width:951px;background:url(my.jpg) no-repeat;height:190px; margin-top:15px;font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica;}
+.banner h1{font-size:30px;font-weight:600;color:#FFF;text-align:left;padding-top:20px;padding-left:50px;}
+.banner h2{font-size:12px;font-weight:normal;color:#FFF;text-align:left;padding-top:10px;padding-left:60px;}
+
+.menu{ background: #4DC5F3; height:45px; line-height:45px; border-bottom:#41BAEB solid 2px;font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica;}
+.menu ul{margin-top:2px;margin-left:5px;width:951px; margin:0px auto;}
+.menu li{float:left; padding:0 30px;text-align:center;}
+.menu a{font-size:16px;color:#FFF;}
+.menu a:hover{ text-decoration:none;}
+.mainbodyl .title,.mainbodym .title,.mainbodyr .title{font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica; font-size:16px;height:25px;line-height:25px;text-align:left;font-weight:bold;color:#333; height:40px; line-height:40px; font-weight:normal;padding: 0px 10px 0 30px; border-bottom:#E5C321 solid 1px; position:relative; background:#EFF8FA url(titbg2.png) no-repeat 8px center;}
+.mainbodyl .title,.mainbodyr .title{ background:#EFF8FA url(titbg.png) no-repeat 8px center;}
+.title span{ float:right; font-size:12px;}
+.title span a{ color:#C4BED4}
+.mainbody{width:951px; margin:10px auto; }
+.mainbodyl{width:200px;float:Left; }
+
+.mainbodyl1{width:200px;background:#FFF;}
+
+.box{padding:10px;height:100%;overflow:hidden;}
+
+.mainbodyl1 .box .userinfomenu{ }
+.mainbodyl1 .box .userinfomenu ul{}
+.mainbodyl1 .box .userinfomenu li{width:48%; float:left; text-align:center; background:url(blog_56.jpg) no-repeat; height:28px; line-height:28px; margin:2px 1px;}
+.mainbodyl1 .box .userinfomenu a{}
+.mainbodyl1 .box .userinfomenu a:hover{ color:red; text-decoration:none;}
+
+.userzl{}
+.userzl li{width:78px;margin:5px;float:left;border:#E5E5E5 1px solid;}
+
+.mainbodyl1 .box .ul_brief{clear:both;text-align:left;margin-top:10px;}
+.mainbodyl1 .box .ul_brief li{line-height:30px;}
+
+.mainbodym{width:525px;float:left;margin-left:10px;}
+.mainbodyr{width:206px;float:right;}
+
+.mainbodyl2{background:#FFF;margin-top:10px;}
+.friends{border-top:none; min-height:100px; _height:100px;}
+.friends ul{padding:10px;height:100%;overflow:hidden;}
+.friends li{width:33%;float:left;overflow:hidden; text-align:center; margin-bottom:15px; height:68px; }
+.friends li img{ min-width:72%; _width:72%;  height:40px; border-radius:50%;}
+.friends a.b{margin:5px;}
+.friends a.b img{width:40px;height:40px;border:#ccc 1px solid;padding:2px;}
+
+.ul_stats{}
+.ul_stats ul{padding:10px;text-align:left;line-height:24px;}
+.ul_stats ul li{ line-height:28px;}
+
+
+.mainbodymbox{background:#FFF; margin-bottom:10px; min-height:201px; _height:201px}
+.mainbodymbox .title{border-bottom:#DADADA solid 1px;}
+.dzwz{}
+.dzwz ul{padding:8px;}
+.dzwz .ul_recommend{text-align:left;}
+.dzwz .ul_recommend li{line-height:24px;background:url(dot.jpg) no-repeat 5px 10px;padding-left:15px;border-bottom:#E7E7E7 1px dashed; line-height:35px; font-size:14px;}
+.dzwz .ul_recommend span{color:#999; float:right;}
+
+.dzwz .ul_recommend span.titletips a{ font-size:18px; font-weight:bold;}
+.dzwz .ul_recommend span.titletips a:hover{ color:red; text-decoration:none;}
+
+.dzwz .ul_recommend .splittd a{ color:#555;}
+.dzwz .ul_recommend .splittd a:hover{ color:red; text-decoration:none;}
+
+
+.dzwz .ul_recommend .intro{ line-height:22px; color:#666;}
+
+
+
+.artlist{padding:10px;text-align:left;}
+.artlist .splittd span.titletips a{ color:green;}
+.artlist .splittd span.titletips a:hover{ color:red; text-decoration:none;}
+.artlist span.intro{ line-height:22px; color:#666;}
+.artlist li{ line-height:35px; font-size:14px; border-bottom:dashed 1px #E7E7E7}
+.artlist li span{ float:right; font-size:12px;}
+.artlist .splittd a{}
+.artlist .splittd a:hover{ color:red; text-decoration:none;}
+
+.artlist textarea{ padding:8px; line-height:24px;color:#999;}
+
+.xiangce{padding:10px;text-align:left; }
+.xiangce span.titletips{line-height:30px;}
+.xiangce span.titletips a.username{ color:green;}
+    .xiangce a {
+      
+        margin-left:8px;
+    }
+        .xiangce a img {
+            margin-left:6px;margin-top:5px;
+        }
+.xiangce a.more{line-height:30px; color:green;}
+.xiangce a.zp{}
+.xiangce a.zp:hover{}
+.xiangce a.zp img{width:95px;height:95px; border:#EEE solid 2px; padding:2px;}
+.xiangce a img:hover{text-decoration:none;border:red solid 2px; padding:2px;}
+
+.mainbodyr1{ background:#FFF;}
+.mainbodyr1 .title{}
+.note{padding:10px;line-height:24px;text-align:left; min-height:100px; _height:100px}
+.rili{background:#EFF8FA;padding:8px;line-height:24px;text-align:left;}
+
+.mainbodyr2box{ padding:10px; min-height:110px; _height:110px; background:#FFF;}
+.mainbodyr2box a{}
+.mainbodyr2box a:Hover{ color:red; text-decoration:none;}
+
+
+
+.mainbodyr2{background:#EFF8FA;margin-top:10px;}
+.mainbodyr2 .title{}
+.mainbodyr2 .title span{position:absolute;right:10px; top:0px;}
+.mainbodyr2 .title span a{ color:#fff; font-weight:normal;}
+
+
+.mainbody .blogmain{width:740px; float:right;background:#FFF; }
+.mainbody .blogmain .location{background:#EFF8FA;border:#B7E0EC 1px solid;font-size:12px;line-height:33px;text-align:left;padding-left:10px;}
+.mainbody .blogmain .location span{padding-right:10px;}
+.mainbody .blogmain .loglist{ background:#EFF8FA; margin-top:10px; padding:8px;}
+.mainbody .blogmain .loglist .t{ line-height:30px;}
+.mainbody .blogmain .loglist .t a{ font-size:14px; font-weight:bold;}
+.mainbody .blogmain .loglist .t a:hover{ color:red; text-decoration:none;}
+.mainbody .blogmain table{ margin:10px;}
+.mainbody .blogmain .loglist .intro{ line-height:24px; color:#999;}
+
+    .mainbody .blogmain .content {
+        margin:5px 10px 30px 10px;
+        text-align:center;
+		overflow:hidden;
+    }
+        .mainbody .blogmain .content .dp {
+            margin-bottom: 30px;
+        }
+
+
+
+
+.mainbody .blogmain .border{width:98%; padding:10px;background:#EFF8FA;margin-top:10px; height:100%; overflow:hidden;  }
+.mainbody .blogmain .title{ font-weight:bold; color:#555;font-size:14px; line-height:20px; height:20px;}
+.mainbody .blogmain li {padding:15px;border-bottom:#DDD dashed 1px;border-top: #FFF dashed 1px; clear:both; overflow:hidden }
+.mainbody .blogmain li span.date{ float:right; color:#999}
+.mainbody .blogmain .border .splittd{padding-left:15px;}
+.mainbody .blogmain .border .splittd a{}
+.mainbody .blogmain .border .splittd a:hover{ color:red; text-decoration:none;}
+
+.mainbody .blogmain .border span.tips{ color:#999; padding-left:15px;}
+
+.mainbody .blogmain .albumlist{background:#EFF8FA;margin-top:10px; padding:10px; height:100%; overflow:hidden;}
+.mainbody .blogmain .albumlist li{width:25%; float:left; text-align:center;}
+.mainbody .blogmain .albumlist .albumbg img{width:120px; height:100px;}
+.mainbody .blogmain .albumlist b a{ font-size:12px; font-weight:normal;}
+.mainbody .blogmain .albumlist b a:hover{ color:red; text-decoration:none;}
+
+
+.mainbody .blogmain .wzfl{background:#EFF8FA;border:#B7E0EC 1px solid;font-size:12px;line-height:33px;text-align:left;padding-left:10px; margin-top:10px;}
+.mainbody .blogmain .border strong{padding-left:15px; line-height:30px;}
+.mainbody .blogmain .border a{ color:green;}
+.mainbody .blogmain .border td{ padding-left:15px;}
+
+.mainbody .blogmain .xxcategory{background:#EFF8FA;border:#B7E0EC 1px solid;line-height:33px;text-align:left;padding-left:10px; margin-top:10px;}
+
+.mainbody .blogmain .comment_write_table{margin-top:10px;width:97%;}
+.mainbody .blogmain .comment_write_table .comment_write_title{ line-height:30px; padding:10px; border:#DDD solid 1px; background:#F8F8F8; }
+.mainbody .blogmain .comment_write_table .btn{ background:#2DA2A7; border:none; line-height:30px; color:#FFF;  padding:0 5px; font-size:14px; cursor:pointer; float:right; }
+.mainbody .blogmain .comment_write_table textarea{ padding:10px; line-height:24px; color:#999; border:#CCC solid 1px;}
+.mainbody .blogmain .comment_write_table .textbox{ border:#CCC solid 1px; height:35px;}
+/*分页样式*/
+#fenye{clear:both;margin:15px 10px 15px 10px;color:#999; text-align:right; float:right;}
+#fenye a{ display:block; float:left;text-decoration:none; font-size:14px;margin-left:5px;height:26px; text-align:center; line-height:26px;color:#666; background:#eee; border:#CCC solid 1px; padding:0}
+#fenye a img{ vertical-align:middle; margin-top:10px;}
+#fenye .prev,#fenye .next{width:26px; text-align:center;}
+#fenye a.curr{width:25px; background:#fff; text-decoration:underline;color:#00659c; font-family:Arial, Helvetica, sans-serif; text-align:center;font-weight:bold; }
+#fenye a.num{width:25px;}
+#fenye a:hover{color:#00659c; text-decoration:none;}
+#fenye span{ line-height:30px;padding-left:5px; font-family:Arial, Helvetica, sans-serif}
+#fenye span#totalpage{padding-left:0px}
+
+.blogmain .album {
+    margin-left:35px;
+    margin-top:20px;
+}
+ .blogmain .box {
+    width:153px;
+    height:153px;
+    float:left;
+    border:none;
+    background:url(albumbg.jpg) no-repeat;
+}
+.blogmain .album a {
+    float: left;
+    padding:20px;
+    
+}
+
+
+
+.copyright{margin:0px auto; margin-top:10px; line-height:35px;color:#000; text-align:center; border-top:#CCC solid 1px; background:#FFF;}

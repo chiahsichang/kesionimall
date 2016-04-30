@@ -1,0 +1,464 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>pk－{$GetSiteName}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="robots" content="all" />
+<link href="{$GetInstallDir}images/home.css" rel="stylesheet" />
+<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+<script src="{$GetInstallDir}ks_inc/Kesion.Common.js" type="text/javascript"></script>
+
+<script src="jquery.bindto.js"></script>
+<script>
+ var pkid={KS:PK:PKID};
+ var isLogin=false;
+ function CheckPKLogin()
+ { 
+    if (isLogin==true) return;
+     jQuery.ajax({
+			  url: "{$GetInstallDir}plus/ajaxs.ashx",
+			  cache: false,
+			  data: "a=checkpklogin&pkid=" + pkid,
+			  success: function(r){
+			        r=unescape(r);
+				  	var arrobj=r.split('|');
+					if (arrobj[0]!="success")
+					{
+						if (arrobj[0]=="login")
+						{
+						  showuserlogin();
+						}else{
+						$.dialog.alert(arrobj[1]);
+						}
+					}else{
+					  isLogin=true;
+					}
+			  }
+			  });
+
+ }
+
+function submitCheck(role){
+ var content=''
+ if (role==1)
+ {
+    if (jQuery("#agreeContent").val()=='')
+	{
+	  KesionJS.Alert("请输入您的想法!",'jQuery("#agreeContent").focus();');
+	   return;
+	}
+	content=jQuery("#agreeContent").val();
+ }else if(role==2){
+    if (jQuery("#argueContent").val()=='')
+	{
+	   KesionJS.Alert("请输入您的想法!",'jQuery("#argueContent").focus();');
+	   return;
+	}
+	content=jQuery("#argueContent").val();
+ }else{
+    if (jQuery("#otherContent").val()=='')
+	{
+	   KesionJS.Alert("请输入您的想法!",'jQuery("#otherContent").focus();');
+	   return;
+	}
+	content=jQuery("#otherContent").val();
+ }
+   $.ajax({
+			  url: "{$GetInstallDir}plus/ajaxs.ashx",
+			  cache: false,
+			  data: "a=savepkpost&pkid=" + pkid+"&content="+escape(content)+"&role="+role,
+			  success: function(r){
+			      r=unescape(r);
+				  var arrobj=r.split('|');
+				  if (arrobj[0]!="success")
+				  {
+				    	if (arrobj[0]=="login")
+						{
+						  showuserlogin();
+						}else{
+						KesionJS.Alert(arrobj[1],'');
+						}
+				  }else{
+				      KesionJS.Alert("恭喜,您的观点提交成功!",'');
+					  setpkimg();
+					  setpkgdlist();
+					  jQuery("#agreeContent").val('');
+					  jQuery("#argueContent").val('');
+					  jQuery("#otherContent").val('');
+				  }
+			  }
+	});
+	
+
+}
+
+//设置PK图片显示
+function setpkimg() {
+	var agreeNum = 0;
+	var argueNum = 0;
+	  $.ajax({
+			  url: "{$GetInstallDir}plus/ajaxs.ashx",
+			  cache: false,
+			  data: "a=getpkvotes&pkid=" + pkid,
+			  success: function(r){
+			    r=unescape(r)
+				var arr=r.split('|');
+			   agreeNum=parseInt(arr[0]);
+			   argueNum=parseInt(arr[1]);
+				$("#agreenum").html(agreeNum+"人支持");
+				$("#arguenum").html(argueNum+"人支持");
+			
+				var total = agreeNum + argueNum;
+				var h3Width = 70;
+				var imgAgreeSpan = imgArgueSpan = 300;
+				var imgAgree = imgArgue = imgAgreeSpan + h3Width;
+				
+				if (total != 0)	{
+					var totalSpan = imgAgreeSpan * 2;
+					imgAgreeSpan = Math.round(agreeNum / total * totalSpan);
+					imgAgree = imgAgreeSpan + h3Width;
+					imgArgueSpan = totalSpan - imgAgreeSpan;
+					imgArgue = imgArgueSpan + h3Width;
+				}
+			
+				$("#pk_yes").css("width", imgAgree);
+				$("#pk_no").css("width", imgArgue);
+				$("#img_agree").css("width", imgAgreeSpan);
+				$("#img_argue").css("width", imgArgueSpan);			  
+			  }
+      });
+
+
+
+}
+
+
+function setpkgdlist()
+{
+	jQuery.getScript("{$GetInstallDir}plus/ajaxs.ashx?a=getpkgdlist&role=1&pkid="+pkid);
+	jQuery.getScript("{$GetInstallDir}plus/ajaxs.ashx?a=getpkgdlist&role=2&pkid="+pkid);
+	jQuery.getScript("{$GetInstallDir}plus/ajaxs.ashx?a=getpkgdlist&role=3&pkid="+pkid);
+
+}
+function showagree(commentJsonVarStr___){
+	data=formattime(commentJsonVarStr___);
+	if (data.comments != null) {
+		//绑定模板
+		var node = jQuery(jQuery(".agreetpl").html()).bindTo(data,jQuery(".agreetpl").html());
+		//显示
+		jQuery("#agreecomm").html(node);
+	}
+		
+}
+
+function showargue(commentJsonVarStr___){
+	data=formattime(commentJsonVarStr___);
+	if (data.comments != null) {
+		//绑定模板
+		var node = jQuery(jQuery(".arguetpl").html()).bindTo(data,jQuery(".arguetpl").html());
+		//显示
+		jQuery("#arguecomm").html(node);
+	}
+}
+
+function showother(commentJsonVarStr___){
+	data=formattime(commentJsonVarStr___);
+	if (data.comments != null) {
+		//绑定模板
+		var node = jQuery(jQuery(".othertpl").html()).bindTo(data,jQuery(".othertpl").html());
+		//显示
+		jQuery("#othercomm").html(node);
+	}
+}
+
+
+
+//格式化时间
+function formattime(data){
+	var str = null;
+	if (data.comments != null) {
+		for(i=0; i<data.comments.length;i++) {
+			str = /^(\d+)\-(\d+)\-(\d+)(?:\s+(\d+):(\d+)(?::(\d+))?)?$/.exec(data.comments[i]['comment_date']);
+			data.comments[i]['comment_date'] = str[1]+'/'+str[2]+'/'+str[3]+' '+str[4]+':'+str[5];
+		}
+	}
+	return data;
+}
+
+$(document).ready(function(){
+	setpkimg();
+	setpkgdlist();
+});
+
+ 
+</script>
+<style type="text/css">
+a{color:#333; text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/*字体定义*/
+
+h3{font-size:12px
+}
+.Ared{color:#cc0001;}
+.Ayellow{color:#b19c05;}
+.Agreen{color:#009931;}
+
+.Agray{ color:#646464;}
+a.linkAred:link,a.linkAred:visited{color:#8f1d22}
+a.linkAred:hover{color:#8f1d22}
+.f14{ font-size:14px;  color:#2b2b2b}
+.f18{ font-size:18px; font-weight:bold; color:#185083}
+.blank01{ margin:0 auto; width:100%; height:10px; font-size:0; line-height:0 }
+
+
+/*顶部圆角*/
+.round{ margin:0 auto;width:950px;}
+
+/*留白区域定义*/
+.box_space{  width:932px; margin:0 auto; padding-left:18px;  background:#fff;}
+
+
+
+/*两列的样式*/
+.main{ margin:0 auto;width:800px; padding:18px 75px 10px 75px; background:#fff;  }
+.box{ width:798px; border:1px #d1d1d1 solid}
+.box_left{ float:left; width:370px; padding-left:15px;}
+.box_right{ float:right; width:370px; padding-right:15px;}
+.pk_box{ width:780px; border:1px #e4e4e4 solid; border-top:none;border-bottom:none;background:#fff;}
+.pk_box02{ width:756px;  padding:0 12px; border-top:1px dashed #ddd;background:#fff;}
+.title{ margin:10px 0 0 0; padding:10px;width:778px;  }
+.title h2{ font-size:20px; font-family:"黑体"; font-weight:normal;color:#004276}
+.title h4{ font-size:12px;color:#004276; line-height:22px; }
+
+.title02 { width:100%; padding:16px 0; text-align:center}
+.title02 h3{ font-size:14px;color:#2b2b2b; }
+
+.content{width:782px; padding:8px;border-top:1px #d1d1d1 solid; background:#f1f1f1}
+.round01{ margin:0 auto; width:782px; height:10px;}
+
+.pk{ padding:18px 20px; width:740px; background:#fff}
+.pk p{ width:305px; padding-top:8px; line-height:22px;color:#2b2b2b; font-size:14px;word-break:break-all;word-wrap:break-word;overflow:hidden;}
+
+.box01{ margin:6px auto 22px auto; width:740px; height:20px; }
+#pk_yes{ float:left; width:370px; padding-top:4px;}
+#pk_yes h3{ float:left; width:70px;  font-weight:normal; text-align:center; color:#2b2b2b}
+#pk_yes span{ float:left; width:300px; height:11px; background:url(../../images/pkt03.png) repeat-x}
+#pk_no{ float:right; width:370px;padding-top:4px;}
+#pk_no h3{ float:left; width:70px;font-weight:normal; text-align:center;color:#2b2b2b}
+#pk_no span{ float:left; width:300px; height:11px; background:url(../../images/pkt04.png) repeat-x}
+.input01{ margin:13px 0 0 16px; width:314px; height:51px; border:1px #d5d5d5 solid; }
+.input02{ margin:13px 0 0 16px; width:720px; height:53px; border:1px #d5d5d5 solid; }
+
+textarea.textLogin{ color:#666; font-size:12px;margin:13px 0 0 16px; width:314px; height:51px; border:1px #d5d5d5 solid;}
+textarea.tipLogin{ color:#f00;font-size:14px; text-align:center; background:#F7F4CC; line-height:51px;margin:13px 0 0 16px; width:314px; height:51px; border:1px #d5d5d5 solid;}
+
+textarea.textLogin2{ color:#666; font-size:12px;margin:13px 0 0 16px; width:720px; height:53px; border:1px #d5d5d5 solid;}
+textarea.tipLogin2{ color:#f00;font-size:14px; text-align:center; background:#F7F4CC; line-height:51px;margin:13px 0 0 16px; width:720px; height:53px; border:1px #d5d5d5 solid;}
+
+.content01{ padding:12px 0 10px 0; }
+.content01 p{ line-height:20px; word-break:break-all;word-wrap:break-word;overflow:hidden;}
+.more{ margin:0 auto 10px auto; padding-bottom:8px; width:750px; height:26px;  background:url(images/pk_line.gif) repeat-x bottom}
+.more span{ float:right;width:60px; height:26px; line-height:26px; text-align:right;  }
+.more span a{ line-height:20px;color:#004276;}
+
+
+</style>
+{KS_头部通用}
+
+<!--左侧主体框架 -->
+<div class="Dg">{KS_位置导航}</div>
+<div class="pkct">
+	<h4><span>{KS:PK:Title}</span>{KS:PK:Title}<em>({KS:PK:TimeLimit})</em> {KS:PK:NewsUrl}</h4>
+	<div class="pkctbox">
+		<div class="pkctbox_l">
+			<img src="images/pk_zf.gif" width="17" height="17" align="absmiddle" /> <span class="f14">正方</span>
+			<div class="l_intro">{KS:PK:ZFGD}</div>
+		</div>
+		<div class="pkctbox_c">
+			<img src="images/pk_pk.gif" width="88" height="127" />
+		</div>
+		<div class="pkctbox_r">
+			<img src="images/pk_ff.gif" width="17" height="17" align="absmiddle" /> <span class="f14">反方</span>
+			<div class="r_intro">{KS:PK:FFGD}</div>
+		</div>
+	</div>
+	  <div class="box01">
+	<div id="pk_yes"><h3 id="agreenum">0人支持</h3><span id="img_agree"></span></div>
+	<div id="pk_no"><span id="img_argue"></span><h3 id="arguenum">0人支持</h3></div>
+	</div>
+	<div style="padding:0px 100px">
+	  <table width="760" height="55" border="0" cellpadding="0" cellspacing="0" >
+        <tr>
+          <td width="14">&nbsp;</td>
+          <td width="350" valign="top"><table width="350" height="149" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td height="28" valign="bottom"><img src="images/pk_zczf.gif" width="107" height="28" /></td>
+            </tr>
+            <tr>
+              <td height="80" valign="top" style="background: url(images/pk_input_bj.gif) no-repeat top"><textarea name="agreeContent" id="agreeContent" class="textLogin" onclick="CheckPKLogin()" /></textarea></td>
+            </tr>
+            <tr>
+              <td height="38" align="center"><a href="#" onclick="submitCheck(1);return false;" /><img src="images/pk_button_tj.gif" width="70" height="23" border="0" /></a></td>
+            </tr>
+          </table></td>
+          <td width="51">&nbsp;</td>
+          <td width="350" valign="top"><table width="350" height="149" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td height="28" valign="bottom" align="right"><img src="images/pk_zcff.gif" width="107" height="28" /></td>
+            </tr>
+            <tr>
+              <td height="80" valign="top" style="background: url(images/pk_input_bj02.gif) no-repeat top"><textarea name="argueContent" id="argueContent" class="textLogin" onclick="CheckPKLogin()"/></textarea></td>
+            </tr>
+            <tr>
+              <td height="38" align="center"><a href="#" onclick="submitCheck(2);return false;"/><img src="images/pk_button_tj.gif" width="70" height="23" border="0" /></a></td>
+            </tr>
+          </table></td>
+          
+        </tr>
+      </table>
+      <div class="more" style="text-align:right; padding:0 0 1px;">
+        <table width="90" border="0" cellspacing="0" cellpadding="0" style="float:right;">
+          <tr>
+            <td width="28"><a href="#other_a"><img src="images/Pkno3.jpg" border="0" width="28" height="26" /></a></td>
+            <td width="72" align="left"><a href="#other_a">第三方观点</a></td>
+          </tr>
+        </table>
+        </div> 
+	  <div class="box_left">
+
+
+					<!--显示支持-->
+<!--支持模板-->
+<div class="agreetpl" style="display:none">
+<!--data-->
+<!--comments-->
+	  <table width="100%" height="86" border="0" cellpadding="0" cellspacing="0" bgcolor="#eeeeee" style="margin-top:10px;" >
+        <tr>
+          <td width="3%" height="20"></td>
+          <td width="93%" height="20" class="Agray"><span class="red">【{uname}】</span> {client_ip}&nbsp;&nbsp;发表：{comment_date} </td>
+          <td width="4%"></td>
+        </tr>
+        <tr>
+          <td height="59" bgcolor="#ffffff">&nbsp;</td>
+          <td width="93%" valign="top" bgcolor="#ffffff"><div class="content01"><p>{comment_contents}
+</p></div></td>
+          <td width="4%" bgcolor="#ffffff">&nbsp;</td>
+        </tr>
+      </table>
+<!--comments-->
+<!--data-->
+</div>
+<!--支持模板结束-->
+
+
+<!--显示支持-->
+<div id="agreecomm_nopass"></div>
+<div id="agreecomm"></div>
+
+	  <table width="100%" height="22" border="0" cellpadding="0" cellspacing="0" bgcolor="#eeeeee" >
+        <tr>
+          <td align="right"><a href="more.aspx?pkid={KS:PK:PKID}&role=1" target="_blank" class="Agray">更多>></a></td>
+        </tr>
+      </table>
+	  </div>
+	  <div class="box_right">
+
+<!--反对模板-->
+<div class="arguetpl" style="display:none">
+<!--data-->
+<!--comments-->
+	  <table width="100%" height="86" border="0" cellpadding="0" cellspacing="0" bgcolor="#eeeeee" style="margin-top:10px;" >
+        <tr>
+          <td width="3%" height="20"></td>
+          <td width="93%" height="20" class="Agray"><span class="Agreen">【{uname}】</span> {client_ip}&nbsp;&nbsp;发表：{comment_date} </td>
+          <td width="4%"></td>
+        </tr>
+        <tr>
+          <td height="59" bgcolor="#ffffff">&nbsp;</td>
+          <td width="93%" valign="top" bgcolor="#ffffff"><div class="content01"><p>{comment_contents}
+</p></div></td>
+          <td width="4%" bgcolor="#ffffff">&nbsp;</td>
+        </tr>
+      </table>
+<!--comments-->
+<!--data-->
+</div>
+<!--反对模板结束-->
+
+<!--显示反对-->
+<div id="arguecomm_nopass"></div>
+<div id="arguecomm"></div>
+
+	    <table width="100%" height="22" border="0" cellpadding="0" cellspacing="0" bgcolor="#eeeeee" >
+          <tr>
+            <td align="right"><a href="more.aspx?pkid={KS:PK:PKID}&role=2" target="_blank" class="Agray">更多&gt;&gt;</a></td>
+          </tr>
+        </table>
+	  </div>
+	  <div class="clear"></div>
+</div>
+</div>
+<div class="idx" style="padding:0px 100px;width:760px">	
+<div class="pk_box02"><div class="title02">
+<a name="other_a"></a>
+  <h3><img src="images/pk_kg.gif" width="17" height="17" align="absmiddle" /> 第三方观点</h3>
+</div>
+  <table width="100%" height="152" border="0" cellpadding="0" cellspacing="0" style=" background:url(images/pk_kg_bj.gif) no-repeat">
+    <tr>
+      <td width="757" height="118"><textarea name="otherContent" onclick="CheckPKLogin()" id="otherContent" class="input02"></textarea></td>
+    </tr>
+    <tr>
+      <td valign="top"><table width="753" height="44" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="619" height="44">&nbsp;</td>
+            <td width="27"></td>
+            <td width="41"></td>
+            <td width="66"><a href="#" onclick="submitCheck(3);return false;" /><img src="images/pk_button_tj.gif" width="70" height="23" border="0" /></a></td>
+          </tr>
+      </table></td>
+    </tr>
+  </table>
+
+<!--第三方模板-->
+<div class="othertpl" style="display:none">
+<!--data-->
+<!--comments-->
+  <table width="100%" height="104" border="0" cellpadding="0" cellspacing="0" bgcolor="#f3f3f3" style="margin-top:10px;" >
+    <tr>
+      <td width="1%" height="20">&nbsp;</td>
+      <td width="97%" class="Agray"><span class="Ayellow">【{uname}】</span> {client_ip}&nbsp;&nbsp;发表：{comment_date}</td>
+      <td width="2%">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="59" bgcolor="#ffffff">&nbsp;</td>
+      <td width="97%" valign="top" bgcolor="#ffffff"><div class="content01">
+          <p>{comment_contents} </p>
+      </div></td>
+      <td width="2%" bgcolor="#ffffff">&nbsp;</td>
+    </tr>
+  </table>
+<!--comments-->
+<!--data-->
+</div>
+<!--第三方模板结束-->
+</td>
+<!--显示第三方-->
+<div id="othercomm_nopass"></div>
+<div id="othercomm"></div>
+
+  <table width="100%" height="22" border="0" cellpadding="0" cellspacing="0" bgcolor="#eeeeee" >
+    <tr>
+      <td width="756" align="right"><a href="more.aspx?pkid={KS:PK:PKID}&role=3" target="_blank" class="Agray">更多&gt;&gt;</a></td>
+    </tr>
+  </table>
+</div>
+</div>
+
+{KS_尾部通用}
+</body>
+</html>

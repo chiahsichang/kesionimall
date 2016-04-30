@@ -1,0 +1,48 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{$GetSiteTitle}-团购-选择城市</title>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> 
+<link href="{$GetInstallDir}images/shop/css.css" rel="stylesheet" />
+<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+<script src="{$GetInstallDir}ks_inc/kesion.common.js" type="text/javascript"></script>
+<meta name="keywords" content="{$GetClass_Meta_KeyWord}" />
+<meta name="description" content="{$GetClass_Meta_Description}" />
+<!--[if IE 6]>
+<script src="{$GetInstallDir}ks_inc/iepng.js" type="text/javascript"></script>
+<script type="text/javascript">
+   EvPNG.fix('div, ul, img, li, input'); 
+</script>
+<![endif]-->
+</head>
+<body style="background:#fff">
+<!---列表主体-->
+<div class="cityhead"><div class="idx"><h4>切换您所在的城市...</h4><span>当前城市：<b>{KS:Field:showcurrcity}</b></span></div></div>
+<div class="nowcity">
+<b>热门城市：<img src="{$GetInstallDir}images/shop/hot02.png" align="texttop" style="margin-top:-5px" /></b><span>  <a href="?cityid=0&from=all">全国</a> <a href="?cityid=487">北京</a> 上海 深圳 广州 成都 西安 重庆 天津 武汉 南京</span>
+</div>
+
+  <div class="citybox">	
+	<h4>按拼音首字母选择</h4>
+		<style>
+		 .groupbuy_city_list{clear:both;margin-bottom:10px;}
+		 .groupbuy_city_list a{padding-right:10px;line-height:40px;font-size:14px;}
+		 .groupbuy_city_list dt{text-align:center;width:20px;height:25px;margin-right:10px;float:left;background:#f1f1f1;margin-top:8px}
+		 .groupbuy_city_list dt span{font-size:20px;color:brown;}
+		 .groupbuy_city_list dd{}
+		</style>
+		
+				<ul>
+				
+				[KS:ShowAllCity]
+				</ul>
+				 <div class="clear"></div>
+</div>
+               
+				 
+<div class="clear"></div>
+<div class="idx" style="text-align:center;padding:10px 0px; line-height:20px;color:#666;border-top:1px solid #ddd">{$getcopyright}</div>
+
+</body>
+</html>

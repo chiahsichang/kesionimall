@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="gb2312"?>
+<managemenu mainurl="FrameWork/Main.aspx">
+  <topitem role="sys" icoclass="n6" name="配置">
+		<leftitem role="sys01" icoclass="m1" name="基本设置">
+			<itemlist>
+			   <item>
+			     <name>网站基本信息设置</name>
+				 <url>System/KS.Config.aspx</url>
+			   </item>
+			   <item>
+			     <name>系统安全设置</name>
+				 <url>System/KS.Safe.aspx</url>
+			   </item>
+			   <item>
+			     <name>地区设置管理</name>
+				 <role>增加|删除|批量设置|更新字母</role>
+				 <url>System/KS.Area.aspx</url>
+			   </item>
+			   <item>
+			     <name>在线支付设置</name>
+				 <url>System/KS.PaymentPlat.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="sys02" icoclass="m2" name="其它配置">
+			<itemlist>
+			   <item>
+			     <name>伪静态规则管理</name>
+				 <url>System/KS.ReWriteRule.aspx</url>
+			   </item>
+			   <item>
+			     <name><![CDATA[账号通API&社交营销配置]]></name>
+				 <url>System/KS.AccountAPI.aspx</url>
+			   </item>
+			   <item>
+			     <name>短信接口API配置</name>
+				 <url>System/KS.SMSAPI.aspx</url>
+			   </item>
+			   <item>
+			     <name>数据字典</name>
+				 <url>System/KS.dictionary.aspx</url>
+			   </item>
+			   <item>
+			     <name>内部链接管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>System/KS.InnerLink.aspx</url>
+			   </item>
+			   <item>
+			     <name>我的工作台管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>System/KS.WorkTableManage.aspx</url>
+			   </item>
+			   <item>
+			     <name>管理显示条数管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>System/KS.PerPageManage.aspx</url>
+			   </item>
+
+			   
+			</itemlist>
+		</leftitem>
+		
+		<leftitem role="sys03" icoclass="m3" name="数据库操作">
+			<itemlist>
+			   <item>
+			     <name>数据库字段替换</name>
+				 <url>System/KS.DataReplace.aspx</url>
+			   </item>
+			   <item>
+			     <name>在线执行SQL语句</name>
+				 <url>System/KS.ExeSQL.aspx</url>
+			   </item>
+			    <item>
+			     <name>查看所有数据表</name>
+				 <url>System/KS.Data.Table.aspx</url>
+			   </item>
+			   
+			</itemlist>
+		</leftitem>
+		
+		<leftitem role="sys04" icoclass="m4" name="其它操作">
+			<itemlist>
+			   <item>
+			     <name>上传文件管理</name>
+				 <url>System/KS.UploadFiles.aspx</url>
+			   </item>
+			   <item>
+			     <name>操作日志管理</name>
+				 <url>System/KS.Log.aspx</url>
+			   </item>
+			 
+			   <item>
+			     <name>更新缓存操作</name>
+				 <url>System/KS.CleanCache.aspx</url>
+			   </item>
+			   <item>
+			     <name>查看服务器信息</name>
+				 <url>System/KS.SystemInfo.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+  </topitem>
+  
+  
+  <topitem role="content" icoclass="n3" name="内容" type="content">
+		<leftitem role="content01" icoclass="m5" name="功能选项">
+			<itemlist>
+			   <item>
+			     <name>栏目管理</name>
+				 <role>添加|编辑|删除|批量设置</role>
+				 <url>Content/KS.Class.aspx</url>
+			   </item>
+			   <item>
+			     <name>专题管理</name>
+				 <role>添加|编辑|删除|分类管理</role>
+				 <url>Content/KS.Special.aspx</url>
+			   </item>
+			   <item>
+			     <name>回收站管理</name>
+				 <role>还原|彻删|一键清空</role>
+				 <url>Content/KS.RecycleBin.aspx</url>
+			   </item>
+			   <item>
+			     <name>评论管理</name>
+				 <role>删除|审核</role>
+				 <url>Content/KS.Comment.aspx</url>
+			   </item>
+			   <item>
+			     <name>DIGG管理</name>
+				 <url>Content/KS.DiggList.aspx</url>
+			   </item>
+			   <item>
+			     <name>表情管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>Content/KS.Mood.aspx</url>
+			   </item>
+			   <item>
+			     <name>作者管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>Content/KS.Author.aspx</url>
+			   </item>
+			   <item>
+			     <name>来源管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>Content/KS.CopyFrom.aspx</url>
+			   </item>
+			   <item>
+			     <name>关键字Tags</name>
+				 <role>添加|编辑|删除</role>
+				 <url>Content/KS.KeyTags.aspx</url>
+			   </item>
+			   <item>
+			     <name>批量设置</name>
+				 <url>Content/KS.ContentBatch.Aspx</url>
+			   </item>
+			   <item>
+			     <name>下载服务器</name>
+				 <role>添加|编辑|删除</role>
+				 <url>Content/KS.DownServer.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		
+  </topitem>
+  
+  
+    <topitem role="mall" icoclass="n1" name="商城" type="shop">
+		
+		
+		<leftitem role="mall01" icoclass="m6" name="订单管理">
+			<itemlist>
+			   <item>
+			     <name>订单管理</name>
+				 <role>删|改|支付|发退货|结清|作废|导出|开发票|打印快递单|短信催款</role>
+				 <url>Shop/KS.ShopOrder.aspx</url>
+			   </item>
+			   <item>
+			     <name>发退货查询处理</name>
+				 <url>Shop/KS.ShopLogDelivery.aspx</url>
+			   </item>
+			   <item>
+			     <name>已开发票查询</name>
+				 <url>Shop/KS.ShopLogInvoice.aspx</url>
+			   </item>
+			   <item>
+			     <name>商品评价管理</name>
+				 <role>删除|审核</role>
+				 <url>Shop/KS.ShopComment.aspx</url>
+			   </item>
+			   <item>
+			     <name>商品咨询管理</name>
+				 <role>删除|审核|回复</role>
+				 <url>Shop/KS.ShopAsk.aspx</url>
+			   </item>
+			   <item>
+			     <name>购物车内商品管理</name>
+				 <url>Shop/KS.ShopCartGoods.aspx</url>
+			   </item>
+			   <item>
+			     <name>送货地址管理</name>
+				 <url>Shop/KS.ShopDeliveryAddress.aspx</url>
+			   </item>
+			   <item>
+			     <name>发票信息管理</name>
+				 <url>Shop/KS.ShopInvoiceInfo.aspx</url>
+			   </item>
+			   <item>
+			     <name>销售数据统计</name>
+				 <url>Shop/KS.ShopStats.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		
+		<leftitem role="mall02" icoclass="m7" name="营销&amp;促销">
+			<itemlist>
+			   <item>
+			      <name><![CDATA[  限时/限量抢购 ]]></name>
+				 <role>添加|编辑|删除|管理抢购商品</role>
+				 <url>Shop/KS.ShopLimitBuy.aspx</url>
+			   </item>
+			   <item>
+			     <name>团购管理</name>
+				 <role>添加|编辑|删除|团购分类</role>
+				 <url>Shop/KS.ShopGroupBuy.aspx</url>
+			   </item>
+			   <item>
+			     <name>竞价商品管理</name>
+				 <url>Shop/KS.ShopJingJiaPro.aspx</url>
+			   </item>
+			   <item>
+			     <name>全场促销</name>
+				 <url>Shop/KS.ShopPromotions.aspx</url>
+			   </item>
+			   <item>
+			     <name>优惠券管理</name>
+				 <role>添加|编辑|删除|发放</role>
+				 <url>Shop/KS.ShopCoupon.aspx</url>
+			   </item>
+			   <item>
+			     <name>预约码管理</name>
+				 <role>生成|编辑|删除|分类管理</role>
+				 <url>Shop/KS.ShopBookCode.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		
+		<leftitem role="mall03" icoclass="m1" name="功能配置">
+			<itemlist>
+			   <item>
+			     <name>商城系统参数配置</name>
+				 <url>Shop/KS.ShopConfig.Aspx</url>
+			   </item>
+			   <item>
+			     <name>商品栏目管理</name>
+				 <role>添加|编辑|删除|批量设置</role>
+				 <url>Content/KS.Class.aspx?from=shop</url>
+			   </item>
+			   <item>
+			     <name>商品属性批量设置</name>
+				 <url>Shop/KS.ShopBatch.Aspx</url>
+			   </item>
+			   <item>
+			     <name>商品规格管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>Shop/KS.ShopSpecial.aspx</url>
+			   </item>
+			   <item>
+			     <name>商品品牌管理</name>
+				 <role>添加|编辑|删除|商品管理</role>
+				 <url>Shop/KS.ShopBrand.aspx</url>
+			   </item>
+			   <item>
+			     <name>配送方式管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>Shop/KS.ShopDelivery.aspx</url>
+			   </item>
+			   <item>
+			     <name>支付方式管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>Shop/KS.ShopPaymentType.aspx</url>
+			   </item>
+			   <item>
+			     <name>物流公司管理</name>
+				 <role>添加|编辑|删除|快递单模板</role>
+				 <url>Shop/KS.ShopDeliveryCorp.aspx</url>
+			   </item>
+			   <item>
+			     <name>回收站管理</name>
+				 <role>还原|彻删|一键清空</role>
+				 <url>Shop/KS.ShopRecycleBin.aspx</url>
+			   </item>
+			   
+			</itemlist>
+		</leftitem>
+  </topitem>
+
+
+<topitem role="exam" icoclass="n4" name="考试" type="exam">
+		<leftitem role="exam01" icoclass="m9" name="模拟考试管理">
+			<itemlist>
+			   <item>
+			     <name>模拟试卷管理</name>
+				 <role>添加|编辑|删除|导入|设置属性</role>
+				 <url>exam/KS.SJ.aspx</url>
+			   </item>
+			   <item>
+			     <name>试卷题库管理</name>
+				 <role>添加|编辑|删除|批量导入</role>
+				 <url>exam/KS.SJTK.aspx</url>
+			   </item>
+			   <item>
+			     <name>手工选题组卷</name>
+				 <url>exam/KS.SJXTZJ.aspx</url>
+			   </item>
+			   <item>
+			     <name>试题纠错管理</name>
+				 <role>删除|导出|设置状态</role>
+				 <url>exam/KS.SJCorrection.aspx</url>
+			   </item>
+			   <item>
+			     <name>考试成绩管理</name>
+				 <role>删除|导出</role>
+				 <url>exam/KS.SJScore.aspx</url>
+			   </item>
+			   <item>
+			     <name>会员随机练习记录管理</name>
+				 <role>删除|导出</role>
+				 <url>exam/KS.SJTrainingRecord.aspx</url>
+			   </item>
+			   <item>
+			     <name>成绩统计排名及分析</name>
+				 <url>exam/KS.SJTotal.aspx</url>
+			   </item>
+			   <item>
+			     <name>考后心得管理</name>
+				 <role>删除|审核</role>
+				 <url>exam/KS.SJReviews.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="exam02" icoclass="m10" name="正规考试管理">
+			<itemlist>
+			   <item>
+			     <name>正规考试试卷管理</name>
+				 <role>添加|编辑|删除|导入|设置属性</role>
+				 <url>exam/KS.ZGSJ.aspx</url>
+			   </item>
+			   <item>
+			     <name>实时监控管理</name>
+				 <url>exam/KS.ZGMonitor.aspx</url>
+			   </item>
+			   <item>
+			     <name>试卷批改管理</name>
+				 <url>exam/KS.ZGSJPG.aspx</url>
+			   </item>
+			   <item>
+			     <name>准考证生成管理</name>
+				 <role>添加|编辑|删除|生成</role>
+				 <url>exam/KS.ZGCard.aspx</url>
+			   </item>
+			   <item>
+			     <name>正规考试记录管理</name>
+				 <role>删除|导出</role>
+				 <url>exam/KS.SJZGScore.aspx</url>
+			   </item>
+			   <item>
+			     <name>成绩排名及分析统计</name>
+				 <url>exam/KS.ZGSJTotal.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="exam03" icoclass="m1" name="考试系统配置">
+			<itemlist>
+			   <item>
+			     <name>系统参数设置</name>
+				 <url>exam/KS.SjConfig.aspx</url>
+			   </item>
+			   <item>
+			     <name>试卷分类管理</name>
+				 <role>添加|编辑|删除|排序</role>
+				 <url>exam/KS.SjCategory.aspx</url>
+			   </item>
+			   <item>
+			     <name>会计科目管理</name>
+				 <url>exam/KS.SJKM.aspx</url>
+			   </item>
+			   <item>
+			     <name>试卷类别管理</name>
+				 <url>exam/KS.SJType.aspx</url>
+			   </item>
+			   <item>
+			     <name>知识点管理</name>
+				 <url>exam/KS.SJKnowledge.aspx</url>
+			   </item>
+			   <item>
+			     <name>成绩等级管理</name>
+				 <url>exam/KS.SJCJD.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+  </topitem>
+  
+  
+  
+
+ <topitem role="ask" icoclass="n5" name="互动">
+		
+		<leftitem role="ask02" icoclass="m13" name="微社区系统">
+			<itemlist>
+			   <item>
+			     <name>微社区参数配置</name>
+				 <url>BBS/KS.BBSConfig.aspx</url>
+			   </item>
+			   <item>
+			     <name>微社区版面管理</name>
+				<role>添加|编辑|删除|排序</role>
+				 <url>BBS/KS.BBSCategory.aspx</url>
+			   </item>
+			   <item>
+			     <name>微社区话题管理</name>
+				 <role>编辑|删除|设置属性</role>
+				 <url>BBS/KS.BBSTopic.aspx</url>
+			   </item>
+			   <item>
+			     <name>审核话题回复</name>
+				 <url>BBS/KS.BBSReply.aspx?showType=1</url>
+			   </item>
+			   <item>
+			     <name>微社区等级管理</name>
+				 <url>BBS/KS.BBSRank.aspx</url>
+			   </item>
+			   <item>
+			     <name>微社区数据表管理</name>
+				 <url>BBS/KS.BBSTable.aspx</url>
+			   </item>
+			   
+			</itemlist>
+		</leftitem>
+		
+<leftitem role="ask03" icoclass="m14" name="空间门户系统">
+			<itemlist>
+			   <item>
+			     <name>个人空间管理</name>
+				 <role>编辑|删除|设置|分类|模板</role>
+				 <url>Space/KS.Blog.aspx</url>
+			   </item>
+			   <item>
+			     <name>空间博文管理</name>
+				 <role>编辑|删除|设置|分类|评论</role>
+				 <url>Space/KS.UserBlog.aspx</url>
+			   </item>
+			   <item>
+			     <name>空间相册管理</name>
+				 <role>编辑|删除|设置|分类|评论</role>
+				 <url>Space/KS.UserPhoto.aspx</url>
+			   </item>
+			   <item>
+			     <name>空间留言管理</name>
+				 <url>Space/KS.BlogMessage.aspx</url>
+			   </item>
+			   <item>
+			     <name>系统参数设置</name>
+				 <url>Space/KS.BlogConfig.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>		
+</topitem>
+  
+  
+  <topitem role="model" icoclass="n7" name="模型">
+		<leftitem role="model01" icoclass="m15" name="模型管理">
+			<itemlist>
+			   <item>
+			     <name>模型管理首页</name>
+				 <url>Model/ks.model.aspx</url>
+			   </item>
+			   <item>
+			     <name>添加新模型</name>
+				 <url>Model/ks.model.aspx?action=add</url>
+			   </item>
+			   <item>
+			     <name>模型导入管理</name>
+				 <url>Model/KS.ModelExportOrImport.aspx?action=import</url>
+			   </item>
+			   <item>
+			     <name>模型导出管理</name>
+				 <url>Model/KS.ModelExportOrImport.aspx?action=export</url>
+			   </item>
+			   
+			</itemlist>
+		</leftitem>
+		<leftitem role="model02" icoclass="m3" name="数据统计">
+			<itemlist>
+			    <item>
+			     <name>按模型数据统计</name>
+				 <url>Model/KS.ModelCount.aspx?action=CountByModel</url>
+			   </item>
+			    <item>
+			     <name>按栏目/月份统计</name>
+				 <url>Model/KS.ModelCount.aspx?action=CountByClassAndMonth</url>
+			   </item>
+			    <item>
+			     <name>按栏目/录入者统计</name>
+				 <url>Model/KS.ModelCount.aspx?action=CountByClassAndInputer</url>
+			   </item>
+			    <item>
+			     <name>按录入者/月份统计</name>
+				 <url>Model/KS.ModelCount.aspx?action=CountByInputerAndMonth</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+  </topitem>
+
+
+ <topitem role="label" icoclass="n2" name="风格">
+		<leftitem role="label01" icoclass="m17" name="标签管理">
+			<itemlist>
+			   <item>
+			     <name>入门标签（函数）</name>
+				 <url>Label/KS.Label.aspx?LabelType=1</url>
+			   </item>
+			   <item>
+			     <name>中级标签（样式）</name>
+				 <url>Label/KS.Label.aspx?LabelType=2</url>
+			   </item>
+			   <item>
+			     <name>高级标签（SQL）</name>
+				 <url>Label/KS.Label.aspx?LabelType=3</url>
+			   </item>
+			   <item>
+			     <name>自定义静态标签</name>
+				 <url>Label/KS.Label.aspx?LabelType=4</url>
+			   </item>
+			   <item>
+			     <name>分页样式管理</name>
+				 <url>Label/KS.Label.PageStyle.aspx</url>
+			   </item>
+			   <item>
+			     <name>标签参数说明</name>
+				 <url>Label/KS.Label.Param.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="label02" icoclass="m18" name="网站JS管理">
+			<itemlist>
+			    <item>
+			     <name>自定义静态JS</name>
+				 <url>Label/KS.JSLabel.aspx?LabelType=5</url>
+			   </item>
+			    <item>
+			     <name>智能样式JS（SQL）</name>
+				 <url>Label/KS.JSLabel.aspx?LabelType=6</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="label03" icoclass="m19" name="模板管理">
+			<itemlist>
+			    <item>
+			     <name>模板管理</name>
+				 <url>Label/KS.Template.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="label04" icoclass="m20" name="生成HTML管理">
+			<itemlist>
+			    <item>
+			     <name>生成首页</name>
+				 <url>Refresh/KS.RefreshIndex.aspx</url>
+			   </item>
+			    <item>
+			     <name>生成栏目/内容页</name>
+				 <url>Refresh/KS.RefreshHtml.aspx</url>
+			   </item>
+			    <item>
+			     <name>生成专题操作</name>
+				 <url>Refresh/KS.RefreshSpecial.aspx</url>
+			   </item>
+			    <item>
+			     <name>搜索引擎Sitemap生成</name>
+				 <url>Refresh/KS.RefreshSiteMap.aspx</url>
+			   </item>
+			    <item>
+			     <name>一键快速发布</name>
+				 <url>Refresh/KS.RefreshQuick.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+  </topitem>
+
+
+ <topitem role="sub" icoclass="n8" name="应用">
+		<leftitem role="sub01" icoclass="m21" name="友情链接">
+			<itemlist>
+			   <item>
+			     <name>友情链接管理</name>
+				 <role>添加|编辑|删除|设置</role>
+				 <url>Common/KS.Link.aspx</url>
+			   </item>
+			   <item>
+			     <name>分类管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>Common/KS.LinkClass.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="sub02" icoclass="m22" name="公告管理">
+			<itemlist>
+			   <item>
+			     <name>所有公告管理</name>
+				 <role>编辑|删除</role>
+				 <url>Common/KS.Announce.aspx</url>
+			   </item>
+			   <item>
+			     <name>添加新公告</name>
+				 <url>Common/KS.Announce.aspx?action=Add</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="sub03" icoclass="m23" name="投票调查">
+			<itemlist>
+			   <item>
+			     <name>投票主题管理</name>
+				 <role>编辑|删除</role>
+				 <url>Common/KS.Vote.aspx</url>
+			   </item>
+			   <item>
+			     <name>新增投票主题</name>
+				 <url>Common/KS.Vote.aspx?Action=Add</url>
+			   </item>
+			   <item>
+			     <name>投票记录管理</name>
+				 <url>Common/KS.VoteLog.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="sub04" icoclass="m24" name="PK管理">
+			<itemlist>
+			   <item>
+			     <name>PK主题管理</name>
+				 <role>编辑|删除</role>
+				 <url>Common/KS.PKZT.aspx</url>
+			   </item>
+			   <item>
+			     <name>新增PK主题</name>
+				 <url>Common/KS.PKZT.aspx?action=Add</url>
+			   </item>
+			   <item>
+			     <name>PK网友意见管理</name>
+				 <url>Common/KS.PKZTYJ.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="sub05" icoclass="m25" name="自定义表单">
+			<itemlist>
+			   <item>
+			     <name>表单项目管理</name>
+				 <role>编辑|删除|创建模板</role>
+				 <url>Common/KS.Form.aspx</url>
+			   </item>
+			   <item>
+			     <name>新增表单项目</name>
+				 <url>Common/KS.Form.aspx?Action=Add</url>
+			   </item>
+			   <item>
+			     <name>表单代码调用</name>
+				 <url>Common/KS.FormCode.aspx</url>
+			   </item>
+			   <item>
+			     <name>提交记录查看</name>
+				 <url>Common/KS.FormRecord.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="sub06" icoclass="m26" name="广告管理">
+			<itemlist>
+			   <item>
+			     <name>广告位分类</name>
+				 <url>Common/KS.AdClass.aspx</url>
+			   </item>
+			   <item>
+			     <name>广告位管理</name>
+				 <url>Common/KS.Adboard.aspx</url>
+			   </item>
+			   <item>
+			     <name>管理所有广告</name>
+				 <url>Common/KS.Advertise.aspx</url>
+			   </item>
+			   <item>
+			     <name>添加新广告</name>
+				 <url>Common/KS.Advertise.aspx?Action=Add</url>
+			   </item>
+			   <item>
+			     <name>生成所有广告位</name>
+				 <url>Common/KS.AdCreateJS.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="sub07" icoclass="m27" name="采集管理">
+			<itemlist>
+			   <item>
+			     <name>采集项目管理</name>
+				 <role>采集|编辑|删除</role>
+				 <url>Collect/KS.CollectItem.aspx</url>
+			   </item>
+			   <item>
+			     <name>添加采集项目</name>
+				 <url>Collect/KS.CollectItem.aspx?action=Add</url>
+			   </item>
+			   <item>
+			     <name>过滤规则管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>Collect/KS.CollectFilter.aspx</url>
+			   </item>
+			   <item>
+			     <name>添加过滤规则</name>
+				 <url>Collect/KS.CollectFilter.aspx?action=Add</url>
+			   </item>
+			   <item>
+			     <name>采集历史记录</name>
+				 <url>Collect/KS.CollectHistory.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+</topitem>
+
+
+
+ <topitem role="user" icoclass="n10" name="会员">
+		<leftitem role="user01" icoclass="m28" name="会员管理">
+			<itemlist>
+			   <item>
+			     <name>所有会员管理</name>
+				 <role>编辑|删除|设置状态|充值</role>
+				 <url>User/KS.User.aspx</url>
+			   </item>
+			   <item>
+			     <name>添加新用户</name>
+				 <url>User/KS.UserAdd.aspx</url>
+			   </item>
+			   
+			   <item>
+			     <name>用户组管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>User/KS.UserGroup.aspx</url>
+			   </item>
+			   <item>
+			     <name>用户部门管理</name>
+				 <role>添加|编辑|删除|排序</role>
+				 <url>User/KS.UserDepartMent.aspx</url>
+			   </item>
+			   <item>
+			     <name>会员字段管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>model/ks.fieldbyfile.aspx?noteid=1</url>
+			   </item>
+			   <item>
+			     <name>会员表单管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>User/KS.UserForm.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		
+    <leftitem role="user02" icoclass="m1" name="管理员">
+			<itemlist>
+			   <item>
+			     <name>管理员管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>User/KS.Admin.aspx</url>
+			   </item>
+			   <item>
+			     <name>管理员工作计划</name>
+				 <role>添加|编辑|删除</role>
+				 <url>User/KS.AdminPlan.aspx</url>
+			   </item>
+			</itemlist>
+	</leftitem>		
+	<leftitem role="user03" icoclass="m29" name="财务管理">
+			<itemlist>
+			   <item>
+			     <name>充值卡管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>User/KS.CsEpCardItem.aspx</url>
+			   </item>
+			 
+			   <item>
+			     <name>收费套餐包管理</name>
+				 <role>添加|编辑|删除</role>
+				 <url>User/KS.FeePackages.aspx</url>
+			   </item>
+			   <item>
+			     <name>在线充值记录管理</name>
+				 <url>User/KS.LogRecharge.aspx</url>
+			   </item>
+			   <item>
+			     <name>消费明细管理</name>
+				 <url>User/KS.LogMoney.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>		
+	<leftitem role="user04" icoclass="m30" name="消息管理">
+			<itemlist>
+			  <item>
+			     <name>手机短信发送管理</name>
+				 <url>User/KS.LogSms.aspx</url>
+			   </item>
+			   <item>
+			     <name>站内短消息管理</name>
+				 <url>User/KS.UserMessage.aspx</url>
+			   </item>
+			   <item>
+			     <name>发送邮件管理</name>
+				 <url>User/KS.UserMail.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>		
+</topitem>
+
+
+
+</managemenu>

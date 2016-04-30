@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="Kesion.NET.WebSite.Shop_GroupBuyIndex" Codebehind="GroupBuyIndex.aspx.cs" %>

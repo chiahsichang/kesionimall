@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="Kesion.NET.WebSite.Admin_Label_GetFields" Codebehind="KS.GetFields.aspx.cs" %>

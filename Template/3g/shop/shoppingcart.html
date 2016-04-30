@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head> 
+<title>我的购物车</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="max-age=1700">
+<meta name="viewport" content="user-scalable=no, width=device-width">
+<meta name="MobileOptimized" content="320">
+<meta name="author" content="kesion.com">
+<meta name="format-detection" content="telephone=no">
+<link href="images/style.css" rel="stylesheet" type="text/css">
+<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+<script src="{$GetInstallDir}ks_inc/kesion.common.js" type="text/javascript"></script>
+<script src="{$GetSiteUrl}shop/js/shop.detail.js"></script>
+<script src="{$GetInstallDir}ks_inc/validecoupon.js"></script>
+<SCRIPT language=JavaScript type=text/JavaScript> 
+function showimg(src){	window.open(src);}
+</SCRIPT>
+ <style type="text/css">
+  body{font-size:12px}
+  td{font-size:12px}
+  .ShoppingCart{background:#e5e5e5; line-height:24px; font-family:SimSun}
+  .ShoppingCart .tdbg td{background:#fff;padding:10px 0px; text-align:center}
+  .ShoppingCart .tdbg td.align_Left{ text-align:left;padding-left:15px}
+  .ShoppingCart .Thead,.ShoppingCart .Tfoot{text-align:center;background:#fafafa;padding:10px }
+  .ShoppingCart .price{color:#ff3300}
+  .prolist{margin:5px}
+  .prolist ul{margin:0px;padding:0px}
+  .prolist ul li{width:100px;height:80px;float:left;list-style-type:none;}
+  #changeSucTip{background: url(/sysimg/shop/cartTipBottom.gif) bottom no-repeat;height:80px;padding-bottom:4px;}
+  #changeSucTip #tipContent{border:#ff9900 1px solid;background:#fffddd;border-bottom:none;height:77px;}
+  #changeSucTip #tipTitle{margin-top:10px;text-align:center;}
+  #changeSucTip #priceSpan{color:red;}
+  .gwcbox #couponnum{border:1px solid #ccc;margin-left:10px; height:20px; line-height:20px}
+  table{ font-family:SimSun}
+  .couponbtn{background:#f60;border:1px solid #e00;color:#fff;font-weight:bold;}
+  .coupontxt{border:1px solid #ddd; height:22px; line-height:22px;padding:0px 5px}
+ </style>
+</head>
+
+<body>
+
+
+{KS_3G_底部导航}
+<div class="navmain">
+	<div class="fl">
+		<a href="javascript:;" onClick="history.back()" class="returnbtn">&nbsp;</a>
+	</div>
+	<div class="fr">
+		<a href="#" onClick="openShutManager(this,'ejlmbox')" class="openmore" title="展开栏目">&nbsp;</a>
+	</div>
+	购物车
+</div>
+{KS_3G_通用栏目导航}
+
+<div style="width:290px;margin:0 auto;margin-top:15px;color:#999; line-height:24px;">
+<img src="images/cartnav-cart.gif"/>
+
+
+<div class="gwcts">
+	   <style>
+	    .gwcts .t{color:green;font-weight:bold}
+		.gwcts .m{color:brown;}
+	   </style>
+	   <script>
+	     if ("{=getshopcommonconfig(43)}"=="1"){
+	       var cxarr='{=getshopcommonconfig(44)}'.split('§');
+	       document.write('<span>本商场活动进行中：</span><br/>');
+		   for(var ci=0;ci<cxarr.length;ci++){
+		     var carr=cxarr[ci].split('|');
+			 document.write((ci+1)+'、购买满<span class=\'t\'>'+carr[0]+'</span>元，减免<span  class=\'m\'>'+carr[1]+'</span>元；<br/>');
+		   }
+		} else{
+		  document.write('<span>温馨提示：</span>交易过程中请勿随意接收卖家发送的可疑文件，请勿点击不明来源的链接，付款前请务必详细核对支付信息！'); 
+		}</script>
+		
+	</div>
+
+<div class="clear blank10"></div>
+{$KS:Field:ShowShoppingCart}
+</div>
+<div style="height:60px;"></div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Announce.aspx.cs" Inherits="Kesion.NET.WebSite.Plus.Announce" %>

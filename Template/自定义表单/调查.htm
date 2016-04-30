@@ -1,0 +1,95 @@
+<html>
+<head><title>{$FormName}</title>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<style type="text/css">
+BODY {
+	MARGIN: 0px; BACKGROUND-COLOR: #ffffff
+}
+TD {
+	FONT-SIZE: 9pt; COLOR: #3c3c3c; LINE-HEIGHT: 20px; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+A {
+	COLOR: #333333; LINE-HEIGHT: 18px; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #333333; LINE-HEIGHT: 18px; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #0066cc
+}
+
+.p14 {
+	FONT-SIZE: 14px; LINE-HEIGHT: 22px
+}
+INPUT {
+	FONT: 9pt 宋体
+}
+TEXTAREA {
+	FONT: 9pt 宋体
+}
+.blue {
+	COLOR: #0066cc; TEXT-DECORATION: none
+}
+.bluebold1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #5eb9f6; TEXT-DECORATION: none
+}
+.border{margin:10px;width:90%;border:1px solid #efefef;background:#D2EAF7;}
+.tdbg{background:#fff;}
+.lefttdbg{background:#5eb9f6;font-weight:bold;width:150px;}
+
+</style>
+</head>
+<body>
+  <table cellSpacing=0 cellPadding=0 width=760 align=center border=0>
+    <tr>
+      <td width=800 height=10></td>
+    </tr>
+    <tr>
+      <td background=/sysimg/form/bg_top.gif height=30>
+        <table height=20 cellSpacing=0 cellPadding=0 width=760 border=0>
+          <tr>
+            <td class=blue align=left>
+            <div class=blue align=center>本表单有效期为：{$FormBeginDate}至{$FormExpireDate}</div></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td height=10></td>
+    </tr>
+  </table>
+  <table cellSpacing=0 cellPadding=0 width=760 align=center bgColor=#e1f5ff border=0>
+    <tr>
+      <td vAlign=top align=right height=15><img height=15 src="/sysimg/form/bar_3.gif" width=760></td>
+    </tr>
+    <tr>
+      <td vAlign=top align=right height=200>
+        <table cellSpacing=0 cellPadding=0 width=720 align=center border=0>
+          <tr>
+            <td vAlign=top background=/sysimg/form/bar_1.gif height=50>
+              <table height=30 cellSpacing=0 cellPadding=0 width="50%" border=0>
+                <tr>
+                  <td width="10%">&nbsp;</td>
+                  <td class=bluebold vAlign=bottom width="90%">自定义表单</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr align=middle>
+            <td background=/sysimg/form/bar_bg.gif colSpan=2 height=250 valign="top">{$FormContent}</td>
+          </tr>
+          <tr>
+            <td colSpan=2><img height=12 src="/sysimg/form/bar_2.gif" width=720></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td vAlign=top align=right height=15><img height=15 src="/sysimg/form/bar_4.gif" width=760></td>
+    </tr>
+  </table>
+    </td><td width="1" bgcolor="#BABABA"></td>
+	</tr>
+	</table>
+</body>
+</html>

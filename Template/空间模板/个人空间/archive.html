@@ -1,0 +1,137 @@
+﻿ {KS:loadfile("header.html")}
+	
+<script type="text/javascript">
+
+    lastScrollY = 0;
+    function heartBeat() {
+        var diffY;
+        if (document.documentElement && document.documentElement.scrollTop)
+            diffY = document.documentElement.scrollTop;
+        else if (document.body)
+            diffY = document.body.scrollTop
+        else
+        {/*Netscape stuff*/ }
+        percent = .1 * (diffY - lastScrollY);
+        if (percent > 0) percent = Math.ceil(percent);
+        else percent = Math.floor(percent);
+        document.getElementById("full").style.top = parseInt(document.getElementById("full").style.top) + percent
+        + "px";
+        lastScrollY = lastScrollY + percent;
+    }
+    window.setInterval("heartBeat()", 1);
+
+</script>
+
+	{KS:loadfile("left.html")}
+	  
+	  <!--右边-->
+      <div class="blogmain">
+          <div class="nav">
+              <!--<p><a href="#">首页</a> >> <a href="#">博文</a></p>-->
+              <p>[KS:BlogNavStr]</p>
+          </div>
+          <div class="content">
+              [Blog type="Article"]
+	                <h1>{KS:Field:Title}</h1>
+			        <div class="dp">{KS:Field:AddDate}<span>点击数(<font>{KS:Field:Hit}</font>)</span>
+			        </div>
+			        <div class="clear"></div>
+			        <div class="ct">
+				        <div class="ct_box">
+					        {KS:Field:Contents}
+				        </div>
+                    </div>
+              [/Blog]
+
+          
+          <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0" class="comment_write_table" style="float:left; ">
+            <script type="text/javascript">
+                $(function () {
+                    $("#Content").val("每个人都有自己的观点......");
+                    $("#Content").focus(function () {
+                        if ($(this).val() == '每个人都有自己的观点......') {
+                            $(this).val("");
+                        }
+                    }).blur(function () {
+                        if ($(this).val() == '') {
+                            $(this).val("每个人都有自己的观点......");
+                        }
+                    });
+                });
+                function CheckForm() {
+                    if ($("#Content").val() == "每个人都有自己的观点......") {
+                        alert("请输入你的评论内容！");
+                        $("#Content").focus();
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
+              <iframe src="about:blank" name="hidframe" style="display:none"></iframe>
+
+            <form name="msgform" action="/space/?{KS:Field:UserId}/blog/archive/comment" method="post" target="hidframe" >
+              <input type="hidden" value="{KS:Field:OurUserName}" name="UserName">
+              <input type="hidden" value="{KS:Field:OurUserId}" name="UserId">
+              <input type="hidden" value="{KS:Field:BlogID}" name="blogId">
+              <input type="hidden" value="" name="scontent">
+              <tr>
+                <td class="comment_write_title" style="text-align:left;"><span style='font-weight:bold;font-size:14px;'>发表您的观点:</span><br/>
+                    你的观点：<input type="text" readonly="readonly" style="height:20px; color:#777; width:458px;" name="title" value="{KS:Field:Title}" id="title" /><br />
+                  <textarea class="msgtextarea" cols='70' rows='4' style="width:500px;" id="Content" name="Content" ></textarea>
+                  <br/>
+                  昵称：
+                  <input name="AnounName" readonly maxlength="100" type="text" value="{KS:Field:OurUserName}" id="AnounName" style="background:#FBFBFB;color:#999;border:1px solid #ccc;width:100px;height:20px;line-height:20px"/>
+                  &nbsp;<br/>
+                <input type="submit" onClick="return (CheckForm());"  name="SubmitComment" value="OK了，提交留言" class="btn"/></td>
+              </tr>
+            </form>
+          </table>
+
+        <table border="0" align="center"  width="97%" style="float:left;">
+            [Loop Times="8"]
+            <tr>
+
+            <td style="padding:10px;border-bottom: #DDD 1px dashed;text-align:left" colspan="2">{KS:Field:Content}
+                
+                {KS:IF [Field:Replay]}
+                    <div style="text-indent:10px; width:70%; float:right;"><h5>下面为来自主人的回复（{KS:Field:ReplayDate}）:</h5>
+                        <div>{KS:Field:Replay}</div>
+                    </div>
+                {/KS:IF}
+
+                <div style="text-align:right; clear:both;">({KS:Field:AnounName} 发表于：{KS:Field:AddTime})  </div>
+            </td>
+
+              
+        </tr>
+            [/Loop]
+            <tr><td colspan="2"><div class="fyys">[KS:PageStr]</div></td></tr>
+
+        </table>
+
+          </div>
+	  </div>
+    
+   </div>
+
+<script>
+    lastScrollY = 0;
+    function heartBeat() {
+        var diffY;
+        if (document.documentElement && document.documentElement.scrollTop)
+            diffY = document.documentElement.scrollTop;
+        else if (document.body)
+            diffY = document.body.scrollTop
+        else
+        {/*Netscape stuff*/ }
+        percent = .1 * (diffY - lastScrollY);
+        if (percent > 0) percent = Math.ceil(percent);
+        else percent = Math.floor(percent);
+        document.getElementById("full").style.top = parseInt(document.getElementById("full").style.top) + percent
+        + "px";
+        lastScrollY = lastScrollY + percent;
+    }
+    window.setInterval("heartBeat()", 1);
+    </script>
+
+ {KS:loadfile("footer.html")}

@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="True" Inherits="Kesion.NET.WebSite.Index" Codebehind="Index.aspx.cs" %>

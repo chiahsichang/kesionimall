@@ -1,0 +1,22 @@
+﻿ {KS:loadfile("header.html")}
+	
+	{KS:loadfile("left.html")}
+
+	  <!--右边-->
+      <div class="blogmain">
+          <div class="nav">
+              <!--<p><a href="#">首页</a> >> <a href="#">博文</a></p>-->
+              <p>[KS:BlogNavStr]</p>
+          </div>
+          <div class="album">
+	          [Loop Times="0"]
+                      <div class="box"><a class="zp" href="{KS:Field:BlogAlbumUrl}" target="_blank"><img title="{$Field(Title,text,25,...,2,)}" src="{KS:Field:PhotoUrl}" width="100" height="100" border=0></a></div>
+		      [/Loop]
+           </div>
+          <div class="clear"></div>
+				<div class="fyys">[KS:PageStr]</div>
+	  </div>
+    
+   </div>
+
+ {KS:loadfile("footer.html")}

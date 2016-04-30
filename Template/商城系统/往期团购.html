@@ -1,0 +1,136 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{$GetSiteName}--团购首页-[KS:SearchTitle]</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> 
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<link href="{$GetInstallDir}images/shop/style.css" rel="stylesheet" />
+<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+<script src="{$GetInstallDir}ks_inc/kesion.common.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	//=点击展开关闭效果=
+	function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+	var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+	var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+	var openTip = oOpenTip || "";
+	var shutTip = oShutTip || "";
+	if(targetObj.style.display!="none"){
+	   if(shutAble) return;
+	   targetObj.style.display="none";
+	   if(openTip  &&  shutTip){
+		sourceObj.innerHTML = shutTip;
+	   }
+	} else {
+	   targetObj.style.display="block";
+	   if(openTip  &&  shutTip){
+		sourceObj.innerHTML = openTip;
+	   }
+	}
+	}
+	</script>
+<!--[if IE 6]>
+<script src="{$GetInstallDir}ks_inc/iepng.js" type="text/javascript"></script>
+<script type="text/javascript">
+   EvPNG.fix('div, ul, img, li, input'); 
+</script>
+<![endif]-->
+</head>
+<body style="background:#F0F0F0">
+
+<style>
+.logomain .right{ float:left; padding-top:42px; margin:0 }
+.logomain .right .changecity{ float:left; height:30px; width:148px; padding-top:13px;}
+.logomain .sc{ float:left; margin:0 }
+</style>
+
+{KS_T02商城头部}
+
+	<div class="clear blank10"></div>
+	<div class="mainbox" style="position:relative">		
+		<div class="cityqh">
+		
+		{KS:Field:showchangecity}
+		
+		</div>	
+	</div>
+	
+<div class="wrap">
+		<div class="idx"><img src="http://i2.didaimg.com/static/team/2012/1231/13569377846241.jpg" width="100%" /></div>
+    	<div class="clear blank10"></div>
+	    <div class="class_quickout">
+		<script type="text/javascript">
+                var p=location.search;
+                function gofilter(v,id){
+                    var parr=p.split(',');
+                    var nstr='';
+                    for (var i=0;i<parr.length;i++){
+                        if (parr[i].split('-')[0].toLowerCase()!=id.toLowerCase()){
+                         if (nstr==''){ nstr=parr[i]; }else{ nstr+=','+parr[i]; }
+                        }
+                        }
+                        if(v){nstr+=","+id+"-1";}
+                        location.href=nstr;
+                }
+        </script>
+	<div class="tuanbox">
+		 <ul>
+		{KS:Filter("分类","ClassID")}
+		{KS:Filter("选择价格","price","fw","￥500-1000|￥1000-1500|￥1500-2000|￥2000-2500|￥2500以上","500-1000|1000-1500|1500-2000|2000-2500|2500-1000000" )}
+		</ul>
+	</div>
+	<div class="clear blank10"></div>
+	<div class="tuantit">
+		<h4><a href="{$GetGroupBuyIndexUrl}">团购进行中</a></h4><h4 class="curr"><a href="{$getgroupbuyhistoryurl}">往期团购</a></h4>
+		
+		  <div class="r">{KS:Order("默认ID|id asc","销量<img src="/images/shop/bottom.png" />|HasSellNum Desc","价格<img src="/images/shop/top.png" />|price asc","更新时间<img src="/images/shop/bottom.png" />|adddate desc")}</div>
+		 <div class="clear"></div>
+	</div>	
+	
+	<div class="clear"></div>
+	
+	
+	<!--团购 begin-->
+	
+	<div class="wqtgcontent">
+	
+		<div class="tgl">
+	
+			  <div class="wqtgbox">
+				  <ul>
+					 [Loop Times="12"]
+        
+                     
+				  <li>
+					<div class="li_overbg"></div>
+				   <div class="tgimg"><a title="{$Field(subject,text,0,...,2,)}"  href="{KS:Field:groupbuyurl}"><img  src="{$Field(photourl,text,0,...,2,)}"></a> </div>
+				   <h2><a title="{$Field(subject,text,0,...,2,)}"  href="{KS:Field:groupbuyurl}"><b style="color:#e00;padding-right:5px">[{KS:Field:discount}折]</b>{$Field(subject,text,28,,2,)}</a></h2>
+				   <div class="clear blank10"></div>
+				   <div class="pricebox">
+						
+					   <div class="price"><font>￥{KS:Field:Price(2)}</font><em>￥{KS:Field:Price_original(2)}</em></div>
+						<span id="buy" class="r"> <a href="{KS:Field:groupbuyurl}" class="groupbuybtn02">去看看</a></span>
+				   </div>
+                    <div class="clear blank10"></div>
+                       <div class="pricebox01">
+                       		<div class="l">最近成交<span><strong>{KS:Field:hassellnum}</strong></span>人</div>
+                            <div class="r">漳州市芗城区{KS:Field:Province}{KS:Field:City}</div>
+                       </div>
+				  </li>
+				  [/loop]
+				  </ul>
+			  </div>
+			  <div class="clear blank10"></div>
+				 [KS:PageStr]
+			  
+		  </div>
+	
+	</div>
+	<!--团购 end-->
+	
+	
+	
+	{KS_商城底部通用}
+</div>
+</body>
+</html>

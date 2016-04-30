@@ -1,0 +1,101 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Kesion.NET.WebSite.User3G" Codebehind="User.master.cs" %>
+<%@ Import Namespace="Kesion.Publics" %>
+<%@ Import Namespace="Kesion.Components" %>
+<%@ Import Namespace="Kesion.Cache" %>
+<%@ Import Namespace="Kesion.BLL" %>
+<!DOCTYPE html>
+<html>
+<head> 
+<title>会员中心</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="max-age=1700">
+<meta name="viewport" content="user-scalable=no, width=device-width">
+<meta name="MobileOptimized" content="320">
+<meta name="author" content="kesion.com">
+<meta name="format-detection" content="telephone=no">
+<link href="<%=MyCache.GetCacheConfig(0)+MyCache.GetCacheConfig(73) %>/images/style.css" rel="stylesheet" type="text/css">
+<script src="<%=MyCache.GetCacheConfig(0) %>ks_inc/jquery.js"></script>
+<script src="<%=MyCache.GetCacheConfig(0) %>ks_inc/lhgdialog.js"></script>
+<script src="<%=MyCache.GetCacheConfig(0) %>KS_Inc/DatePicker/WdatePicker.js"></script>
+<script src="<%=MyCache.GetCacheConfig(0) %>editor/ckeditor.js"></script>
+<style>
+.d_default{display:none}
+</style>
+</head>
+
+<body>
+
+<div style=" background:#f1f1f1 url(<%=MyCache.GetCacheConfig(0)+MyCache.GetCacheConfig(73) %>/images/3gmainbg.png) repeat-y;min-height:600px; ">
+<div class="botmain">
+	<ul>
+		<li><a href="/3g/index.aspx" title="首页" class="a_home">首页</a></li>
+		<li><a href="/3g/user.aspx" title="会员" class="a_user">会员</a></li>
+		<li><a href="/3g/exam.aspx" title="考试" class="a_weibo">考试</a></li>
+		<li><a href="/3g/shop.aspx" title="商城" class="a_club">商城</a></li>
+		<li><a href="javascript:location.reload();void(0);" title="刷新" class="a_shxin">刷新</a></li>
+	</ul>
+</div>
+<div class="navmain">
+	<div class="fl">
+		<a href="javascript:;" onClick="history.back()" class="returnbtn">&nbsp;</a>
+	</div>
+	<div class="fr">
+		<a href="#" onClick="openShutManager(this,'ejlmbox')" class="openmore" title="展开栏目">&nbsp;</a>
+	</div>
+	用户信息
+</div>
+<script type="text/javascript"> 
+//===========================点击展开关闭效果====================================
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = shutTip; 
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = openTip; 
+   }
+}
+}
+</script>
+<div class="submain" id="ejlmbox" style="display:none;">
+	<div class="lmupbg">&nbsp;</div>
+	<ul>
+		<li><a href="/3g">首页</a></li>
+		 <li><a href="/3g/list.aspx?id=823">读新闻</a></li>
+		 <li><a href="/3g/list.aspx?id=829">赏图片</a></li>
+		 <li><a href="/3g/list.aspx?id=830">挑应用</a></li>
+		 <li><a href="/3g/shop.aspx">逛商城</a></li>
+		 <li><a href="/3g/exam.aspx">考试吧</a></li>
+		 <div class="clear"></div>
+	</ul>
+</div>
+<div class="clear"></div>
+
+<div class="usermain">
+	<div class="userheader">
+		<a <%=Request.RawUrl.ToString().ToLower().IndexOf("user.aspx")!=-1?" class='curr'":""%> href="<%=MyCache.GetCacheConfig(0)+MyCache.GetCacheConfig(73) %>/user.aspx">主页</a>
+		<a <%=Request.RawUrl.ToString().ToLower().IndexOf("userinfo.aspx")!=-1?" class='curr'":""%> href="<%=MyCache.GetCacheConfig(0)+MyCache.GetCacheConfig(73) %>/userinfo.aspx">资料</a>
+		<a <%=Request.RawUrl.ToString().ToLower().IndexOf("payonline.aspx")!=-1?" class='curr'":""%> href="<%=MyCache.GetCacheConfig(0)+MyCache.GetCacheConfig(73) %>/payonline.aspx">充值</a>
+		<a <%=Request.RawUrl.ToString().ToLower().IndexOf("order.aspx")!=-1?" class='curr'":""%> href="<%=MyCache.GetCacheConfig(0)+MyCache.GetCacheConfig(73) %>/order.aspx">订单</a>
+		<a <%=Request.RawUrl.ToString().ToLower().IndexOf("examscore.aspx")!=-1?" class='curr'":""%> href="<%=MyCache.GetCacheConfig(0)+MyCache.GetCacheConfig(73) %>/exam/examscore.aspx">考场</a>
+	</div>
+	<div class="rightct">
+		 <form id="form1" runat="server">
+			<asp:contentplaceholder id="KSContent" runat="server">
+			</asp:contentplaceholder>
+		</form>
+	</div>	
+	<div class="clear"></div>
+</div>
+
+
+</body>
+</html>

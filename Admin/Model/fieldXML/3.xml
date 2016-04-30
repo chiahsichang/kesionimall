@@ -1,0 +1,328 @@
+﻿<?xml version="1.0"?>  
+<Model>
+<Field Name="Area" OrderID="14" ParentFieldID="0" ManageItem="0"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>选择城市</FieldAlias>
+  <Tips />
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>350</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt />
+  <MaxFileSize />
+  <DefaultValue>
+  </DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar />
+  <InputItem>1</InputItem>
+  <ContributionItem>0</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>0</CollectItem>
+  <MustFillItem>0</MustFillItem>
+</Field>
+<Field Name="Title" OrderID="0" ParentFieldID="0" ManageItem="1"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>标题</FieldAlias>
+  <Tips>
+  </Tips>
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>350</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt>
+  </AllowFileExt>
+  <MaxFileSize>
+  </MaxFileSize>
+  <DefaultValue>
+  </DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar>Basic</ToolBar>
+  <InputItem>1</InputItem>
+  <ContributionItem>1</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>0</CollectItem>
+  <MustFillItem>1</MustFillItem>
+</Field>
+<Field Name="ClassID" OrderID="1" ParentFieldID="0" ManageItem="0"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>所属栏目</FieldAlias>
+  <Tips />
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>350</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt />
+  <MaxFileSize />
+  <DefaultValue>
+  </DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar />
+  <InputItem>1</InputItem>
+  <ContributionItem>1</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>0</CollectItem>
+  <MustFillItem>0</MustFillItem>
+</Field>
+<Field Name="Attribute" OrderID="2" ParentFieldID="0" ManageItem="0"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>特殊属性</FieldAlias>
+  <Tips>
+  </Tips>
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>350</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt>
+  </AllowFileExt>
+  <MaxFileSize>
+  </MaxFileSize>
+  <DefaultValue>0000001</DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar>Basic</ToolBar>
+  <InputItem>1</InputItem>
+  <ContributionItem>0</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>0</CollectItem>
+  <MustFillItem>0</MustFillItem>
+</Field>
+<Field Name="TurnUrl" OrderID="3" ParentFieldID="0" ManageItem="0"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>转向链接</FieldAlias>
+  <Tips />
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>350</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt />
+  <MaxFileSize />
+  <DefaultValue>
+  </DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar />
+  <InputItem>1</InputItem>
+  <ContributionItem>1</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>1</CollectItem>
+  <MustFillItem>0</MustFillItem>
+</Field>
+<Field Name="KeyTags" OrderID="4" ParentFieldID="0" ManageItem="0"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>关键字TAGS</FieldAlias>
+  <Tips />
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>350</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt />
+  <MaxFileSize />
+  <DefaultValue>
+  </DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar />
+  <InputItem>1</InputItem>
+  <ContributionItem>0</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>0</CollectItem>
+  <MustFillItem>0</MustFillItem>
+</Field>
+<Field Name="CopyFrom" OrderID="5" ParentFieldID="0" ManageItem="0"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>来源</FieldAlias>
+  <Tips />
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>350</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt />
+  <MaxFileSize />
+  <DefaultValue>
+  </DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar />
+  <InputItem>1</InputItem>
+  <ContributionItem>0</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>0</CollectItem>
+  <MustFillItem>0</MustFillItem>
+</Field>
+<Field Name="Author" OrderID="6" ParentFieldID="0" ManageItem="0"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>作者</FieldAlias>
+  <Tips />
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>350</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt />
+  <MaxFileSize />
+  <DefaultValue>
+  </DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar />
+  <InputItem>1</InputItem>
+  <ContributionItem>0</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>0</CollectItem>
+  <MustFillItem>0</MustFillItem>
+</Field>
+<Field Name="AddDate" OrderID="7" ParentFieldID="0" ManageItem="1"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>更新时间</FieldAlias>
+  <Tips />
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>350</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt />
+  <MaxFileSize />
+  <DefaultValue>
+  </DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar />
+  <InputItem>1</InputItem>
+  <ContributionItem>0</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>0</CollectItem>
+  <MustFillItem>0</MustFillItem>
+</Field>
+<Field Name="Intro" OrderID="8" ParentFieldID="0" ManageItem="0"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>简要介绍</FieldAlias>
+  <Tips>
+  </Tips>
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>350</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt>
+  </AllowFileExt>
+  <MaxFileSize>
+  </MaxFileSize>
+  <DefaultValue>
+  </DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar>Basic</ToolBar>
+  <InputItem>1</InputItem>
+  <ContributionItem>1</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>0</CollectItem>
+  <MustFillItem>0</MustFillItem>
+</Field>
+<Field Name="Content" OrderID="9" ParentFieldID="0" ManageItem="0"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>具体内容</FieldAlias>
+  <Tips>
+  </Tips>
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>350</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt>
+  </AllowFileExt>
+  <MaxFileSize>
+  </MaxFileSize>
+  <DefaultValue>
+  </DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar>Basic</ToolBar>
+  <InputItem>1</InputItem>
+  <ContributionItem>1</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>0</CollectItem>
+  <MustFillItem>0</MustFillItem>
+</Field>
+<Field Name="DefaultPic" OrderID="10" ParentFieldID="0" ManageItem="0"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>首页图片</FieldAlias>
+  <Tips />
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>350</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt />
+  <MaxFileSize />
+  <DefaultValue>
+  </DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar />
+  <InputItem>1</InputItem>
+  <ContributionItem>0</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>0</CollectItem>
+  <MustFillItem>0</MustFillItem>
+</Field>
+<Field Name="Priority" OrderID="11" ParentFieldID="0" ManageItem="0"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>优先级</FieldAlias>
+  <Tips />
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>50</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt />
+  <MaxFileSize />
+  <DefaultValue>
+  </DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar />
+  <InputItem>1</InputItem>
+  <ContributionItem>0</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>0</CollectItem>
+  <MustFillItem>0</MustFillItem>
+</Field>
+<Field Name="Hits" OrderID="12" ParentFieldID="0" ManageItem="0"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>点击数</FieldAlias>
+  <Tips />
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>50</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt />
+  <MaxFileSize />
+  <DefaultValue>
+  </DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar />
+  <InputItem>1</InputItem>
+  <ContributionItem>0</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>0</CollectItem>
+  <MustFillItem>0</MustFillItem>
+</Field>
+<Field Name="Inputer" OrderID="13" ParentFieldID="0" ManageItem="0"  GroupID="0">
+  <Disabled>true</Disabled>
+  <FieldAlias>录入者</FieldAlias>
+  <Tips />
+  <FieldType>0</FieldType>
+  <FieldLevel>0</FieldLevel>
+  <FieldWidth>350</FieldWidth>
+  <FieldHeight>100</FieldHeight>
+  <AllowFileExt />
+  <MaxFileSize />
+  <DefaultValue>
+  </DefaultValue>
+  <Options>
+  </Options>
+  <ToolBar />
+  <InputItem>1</InputItem>
+  <ContributionItem>0</ContributionItem>
+  <SearchItem>0</SearchItem>
+  <CollectItem>0</CollectItem>
+  <MustFillItem>0</MustFillItem>
+</Field>  </Model>

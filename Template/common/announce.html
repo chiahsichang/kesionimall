@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="{$GetInstallDir}images/home.css" rel="stylesheet" />
+	<title>{KS:Field:Title}-公告</title>
+	<!--鼠标滑动特效start--> 
+	<script src="{$GetInstallDir}ks_inc/jquery.js" type="text/javascript"></script>
+	<script src="{$GetInstallDir}ks_inc/kesion.common.js" type="text/javascript"></script>
+	<!--鼠标滑动特效end--> 
+<style type="text/css">
+
+	.tagslist{width:950px;margin:0 auto;margin-top:5px; background:#fff; padding:15px; line-height:22px;color:#666;}
+	.tagslist h3{margin-top:10px;border-top:1px dashed #ddd;color:#555; height:58px; line-height:45px;font-weight:normal;font-size:31px;}
+	.tagslist h3 a{ line-height:40px;}
+	.tagslist h2{font-size:12px;font-weight:normal;padding-top:5px;}
+	.tagslist a{ line-height:24px;color:#1472b4; font-family:Arial, Helvetica, sans-serif}
+	.tagslist li:hover{background:#fafafa}
+	.tagslist li{border-bottom:1px dotted #d5d5d5;padding:10px; line-height:22px}
+	.tagslist li a.title{font-size:14px;color:#0F5BB1; float:left;font-weight:bold; text-decoration:underline; line-height:24px; height:30px}
+
+</style>
+</head>
+<body style="background:#f5f5f5">
+	<div style="background:#fff">{KS_头部通用}</div>
+	
+		<div class="Dg">{KS_位置导航}</div>
+		<div class="tagslist">
+			<div style="color:#333"><b>{KS:Field:Title}</b> 发布时间:{KS:Field:AddDate} 作者：{KS:Field:Author}</div>
+			{KS:Field:Content}
+		</div>
+		
+{KS_尾部通用}
+</body>
+</html>

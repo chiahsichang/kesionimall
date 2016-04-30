@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="Kesion.NET.WebSite.Plus_FormRecord" Codebehind="FormRecord.aspx.cs" %>

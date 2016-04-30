@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head> 
+<title>考试频道-{$GetSJClassName} </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-control" content="max-age=1700">
+<meta name="viewport" content="user-scalable=no, width=device-width">
+<meta name="MobileOptimized" content="320">
+<meta name="author" content="kesion.com">
+<meta name="format-detection" content="telephone=no">
+<link href="{$GetSiteUrl}3g/images/style.css" rel="stylesheet" type="text/css">
+<script src="{$GetSiteUrl}ks_inc/jquery.js"></script>
+<script src="{$GetSiteUrl}ks_inc/kesion.common.js"></script>
+<style>
+.lmbg .lmbgtit{ background:url({$GetSiteUrl}3g/images/tit07.png) no-repeat 50% 50%;}
+</style>
+
+</head>
+
+<body>
+{KS_3G_底部导航}
+<div class="navmain">
+	<div class="fl">
+		<a href="javascript:;" onClick="history.back()" class="returnbtn">&nbsp;</a>
+	</div>
+	<div class="fr">
+		<a href="#" onClick="openShutManager(this,'ejlmbox')" class="openmore" title="展开栏目">&nbsp;</a>
+	</div>
+	考试吧
+</div>
+{KS_3G_通用栏目导航}
+
+<!--
+<div class="shopbanner"><img src="http://images.china.cn/attachement/jpg/site1000/20130315/c80aa925ad6512ad1a9f2a.jpg" /></div>
+-->
+<div class="exammainsx">
+	<ul>
+		<li><a href="#" onClick="openShutManager(this,'fleibox01')"><span id="type1">分类筛选</span><img src="../../../3G/images/bot.png" align="texttop" style="margin:7px 0px 0px 5px" /></a></li>
+		<li><a href="#" onClick="openShutManager(this,'fleibox02')"><span id="type2">类型筛选</span><img src="../../../3G/images/bot.png" align="texttop" style="margin:7px 0px 0px 5px" /></a></li>
+	</ul>	
+	<div id="fleibox01" style="display:none;">
+		{$GetSearchByClass}
+	</div>
+	<div id="fleibox02" style="display:none;">
+		{$GetSearchByType}
+	</div>
+</div>
+
+<script>
+$(document).ready(function(){
+  if ($("#fleibox01").find("a.curr").html()!='不限'){
+    $("#type1").html($("#fleibox01").find("a.curr").html());
+  }else{
+   $("#type1").html('分类筛选');
+  }
+  if ($("#fleibox02").find("a.curr").html()!='全部试卷'){
+    $("#type2").html($("#fleibox02").find("a.curr").html());
+  }else{
+   $("#type2").html('类型筛选');
+  }
+});
+</script>
+
+
+
+<div class="clear"></div>
+
+
+<div class="exammain02">
+		<ul>
+		
+		[Loop Times="10"]
+		
+			
+				<li><div class="l"></div><div class="l"><span>[{KS:Field:SJClassName}]</span><span class="title"><a href="exam/confirm.aspx?id={KS:Field:ID}">{$Field(Title,text,0,...,2,)}</a></span><div class="clear" style="height:5px;"></div>共有{KS:Field:TestHits}人作答 总分<font>{KS:Field:Score}</font>分</div></li>	
+		[/loop]
+		
+		
+		</ul>
+		<div style="clear: both"></div>
+		 <div class="fenyexinxi">[KS:PageStr3]</div>
+</div>
+<div style="height:60px;"></div>	  
+</body>
+</html>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="gb2312"?>
+<usermenu mainurl="main.aspx">
+
+
+    <topitem role="mall" icoclass="n1" name="商城频道" type="shop">
+		
+		
+		<leftitem role="mall01" icoclass="m6" name="我的交易">
+			<itemlist>
+			   <item>
+			     <name>已买到的宝贝</name>
+				 <url>Shop/myorder.aspx</url>
+			   </item>
+			   <item>
+			     <name>我参与的竞价</name>
+				 <url>Shop/myjingjia.aspx</url>
+			   </item>
+			   <item>
+			     <name>送货地址管理</name>
+				 <url>Shop/MyAddress.aspx</url>
+			   </item>
+			   <item>
+			     <name>发票信息管理</name>
+				 <url>Shop/MyInvoice.aspx</url>
+			   </item>
+			   <item>
+			     <name>优惠券管理</name>
+				 <url>Shop/MyCoupon.aspx</url>
+			   </item>
+			   <item>
+			     <name>商品评价管理</name>
+				 <url>Shop/MyComment.aspx</url>
+			   </item>
+			   <item>
+			     <name>商品咨询管理</name>
+				 <url>Shop/MyMallAsk.aspx</url>
+			   </item>
+			   <item>
+			     <name>我收藏的宝贝</name>
+				 <url>Favorite.Aspx?flag=2</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		
+		<leftitem role="mall02" icoclass="m7" name="商家中心">
+			<itemlist>
+			   <item>
+			      <name><![CDATA[  发 布 团 购 ]]></name>
+				 <url>Shop/MyGroupBuy.aspx?action=add</url>
+			   </item>
+			   <item>
+			     <name>团购管理</name>
+				 <url>Shop/MyGroupBuy.aspx</url>
+			   </item>
+			   <item>
+			     <name>团购订单管理</name>
+				 <url>Shop/MyGroupBuyOrder.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		
+  </topitem>
+
+
+  <topitem role="sys" icoclass="n6" name="账号信息">
+		<leftitem role="sys01" icoclass="m1" name="账号设置">
+			<itemlist>
+			   <item>
+			     <name>修改我的资料</name>
+				 <url>basic/editinfo.aspx</url>
+			   </item>
+			   <item>
+			     <name>手机绑定</name>
+				 <url>basic/MobileBind.aspx</url>
+			   </item>
+			   <item>
+			     <name>账号通设置</name>
+				 <url>basic/ApiBind.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="sys02" icoclass="m4" name="空间门户">
+			<itemlist>
+			   <item>
+			     <name>门户设置</name>
+				 <url>Space/BlogEdit.aspx</url>
+			   </item>
+			   <item>
+			     <name>博文管理</name>
+				 <url>Space/UserBlog.aspx</url>
+			   </item>
+			   <item>
+			     <name>相册管理</name>
+				 <url>Space/UserPhoto.aspx</url>
+			   </item>
+			   <item>
+			     <name>留言管理</name>
+				 <url>Space/UserMessage.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		
+		<leftitem role="sys03" icoclass="m4" name="财务信息">
+			<itemlist>
+			   <item>
+			     <name>充值业务</name>
+				 <url>payonline.aspx</url>
+			   </item>
+			   <item>
+			     <name>兑换{=GetCacheConfig(49)}</name>
+				 <url>basic/ExchangePoint.aspx</url>
+			   </item>
+			   <item>
+			     <name>消费明细</name>
+				 <url>basic/logmoney.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+  </topitem>
+  
+  
+  <topitem role="content" icoclass="n3" name="内容管理" type="content">
+		<leftitem role="content01" icoclass="m5" name="功能选项">
+			<itemlist>
+			   <item>
+			     <name>发布信息</name>
+				 <url>PostInfo.aspx</url>
+			   </item>
+			   <item>
+			     <name>管理信息</name>
+				 <url>PostManage.aspx</url>
+			   </item>
+			   <item>
+			     <name>待审核信息</name>
+				 <url>PostManage.aspx?s=0</url>
+			   </item>
+			   <item>
+			     <name>已审核信息</name>
+				 <url>PostManage.aspx?s=1</url>
+			   </item>
+			   <item>
+			     <name>草稿信息</name>
+				 <url>PostManage.aspx?s=2</url>
+			   </item>
+			   <item>
+			     <name>退稿信息</name>
+				 <url>PostManage.aspx?s=3</url>
+			   </item>
+			   
+			</itemlist>
+		</leftitem>
+		
+  </topitem>
+  
+  
+
+<topitem role="exam" icoclass="n4" name="考试频道" type="exam">
+		<leftitem role="exam01" icoclass="m9" name="练习考场">
+			<itemlist>
+			   <item>
+			     <name>我的练习考场</name>
+				 <url>exam/MyTraining.aspx</url>
+			   </item>
+			   <item>
+			     <name>定制练习考场</name>
+				 <url>exam/MyTraining.aspx?action=open</url>
+			   </item>
+			   <item>
+			     <name>套卷练习成绩</name>
+				 <url>exam/MyExamTJ.aspx</url>
+			   </item>
+			   <item>
+			     <name>随机强化练习记录</name>
+				 <url>exam/MyTrainRecord.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="exam02" icoclass="m10" name="正规考试">
+			<itemlist>
+			   <item>
+			     <name>考试列表</name>
+				 <url>exam/MyExamSJ.aspx</url>
+			   </item>
+			   <item>
+			     <name>我的考试记录</name>
+				 <url>exam/MyExamRecord.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+		<leftitem role="exam03" icoclass="m1" name="我的记录">
+			<itemlist>
+			   <item>
+			     <name>我收藏的试题</name>
+				 <url>exam/MyExamCTB.aspx?flag=1</url>
+			   </item>
+			   <item>
+			     <name>我的错题本</name>
+				 <url>exam/MyExamCTB.aspx</url>
+			   </item>
+			</itemlist>
+		</leftitem>
+  </topitem>
+  
+  
+  <topitem role="other" icoclass="n4" name="互动其它">
+		<leftitem role="other" icoclass="m9" name="收藏评论">
+			<itemlist>
+			   <item>
+			     <name>我的收藏夹</name>
+				 <url>Favorite.aspx</url>
+			   </item>
+			   <item>
+			     <name>我的评论</name>
+				 <url>Comment.aspx</url>
+			   </item>
+
+            </itemlist>
+	</leftitem>
+		<leftitem role="other02" icoclass="m9" name="问吧论坛">
+			<itemlist>
+
+			   <item>
+			     <name>我的帖子</name>
+				 <url>Club/MyTopic.aspx</url>
+			   </item>
+            </itemlist>
+	</leftitem>
+</topitem>
+  
+  
+
+
+</usermenu>

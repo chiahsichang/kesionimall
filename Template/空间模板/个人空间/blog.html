@@ -1,0 +1,31 @@
+﻿ {KS:loadfile("header.html")}
+
+
+	{KS:loadfile("left.html")}
+	  
+	  <!--右边-->
+      <div class="blogmain">
+          <div class="nav">
+              <!--<p><a href="#">首页</a> >> <a href="#">博文</a></p>-->
+              <p>[KS:BlogNavStr]</p>
+          </div>
+	        [Loop Times="0"]
+				    <li><!-- /space/?{KS:Field:UserID}/blog/ -->
+                    <span class="date">{$Field(AddDate,date,YY-MM-DD)}</span>
+				    <a href="{KS:Field:BlogArticleUrl}" class="title">{$Field(Title,text,50,...,2,)}</a>
+				    <div class="type" style=" clear:both;color:#999; text-indent:15px;">
+				    {$Field(Contents,text,130,...,2,)}<br/>
+
+				    分类：{$Field(ClassID,url,1,2)}&nbsp;
+				    关键字：{$Field(Tags,text,0,...,2,)}<br/>
+				    </div>
+
+				    </li>
+		    [/Loop]
+          <div class="clear"></div>
+				<div class="fyys">[KS:PageStr]</div>
+	  </div>
+    
+   </div>
+
+ {KS:loadfile("footer.html")}

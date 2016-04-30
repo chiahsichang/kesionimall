@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="{$GetInstallDir}images/shop/style.css" rel="stylesheet" />
+	<title>{$GetSiteTitle}-所有公告</title>
+	<script src="{$GetSiteUrl}/ks_inc/jquery.js" language="javascript"></script>
+	<script src="{$GetInstallDir}ks_inc/kesion.common.js"></script>
+	<style>
+	.tagslist{width:1180px;margin:0 auto;margin-top:5px; background:#fff; padding:10px 15px;}
+	.tagslist h3{font-family:"\5FAE\8F6F\96C5\9ED1";margin-top:10px;border-top:1px dashed #ddd;color:#555; height:58px; line-height:45px;font-weight:normal;font-size:31px;}
+	.tagslist h3 a{ line-height:40px;}
+	.tagslist h2{font-size:12px;font-weight:normal;border-bottom:1px solid #ddd; height:35px; line-height:35px;padding-left:10px}
+	.tagslist a{ line-height:24px;color:#1472b4; font-family:Arial, Helvetica, sans-serif}
+	.tagslist li:hover{background:#fafafa}
+	.tagslist li{border-bottom:1px dotted #d5d5d5;padding:10px; line-height:22px}
+	.tagslist li a.title{font-size:14px;color:#0F5BB1; float:left;font-weight:bold; text-decoration:underline; line-height:24px; height:30px}
+	.tagslist li span.date{padding-left:20px;color:#666; float:right; line-height:24px}
+
+	</style>
+</head>
+<body style="background:#f5f5f5">
+	<div style="background:#fff">{KS_T02商城头部}</div>
+		<div class="Dg">{KS_位置导航}</div>
+		<div class="tagslist">
+			<h2>共有<font color="#009933">[KS:RecordCount]</font> 条公告</h2>
+			<ul>
+				[Loop Times="10"]
+				 <li>
+					 <span class="date">{$Field(AddDate,date,YY-MM-DD)}</span><a href="{KS:Field:AnnounceUrl}" target="_blank" class="title">{$Field(Title,text,30,...,2,)}</a>
+					 <div class="clear"></div>
+					 <div style="color:#999;">
+					 {$Field(Content,text,100,...,2,)}<br/>
+					 </div>
+				 </li>
+				
+				[/Loop]
+			</ul>
+			[KS:PageStr]
+		
+	</div>
+{KS_商城底部通用}
+</body>
+</html>

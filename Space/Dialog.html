@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>{KS:Field:BlogName}-{$GetSiteTitle}</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="robots" content="all" />
+<meta http-equiv="x-ua-compatible" content="ie=emulateie7"/>
+<script src="{$GetInstallDir}ks_inc/jquery.js" language="javascript"></script>
+<script src='{$GetInstallDir}space/skin/blog2/lhgdialog/lhgcore.lhgdialog.min.js'></script>
+        <script type="text/javascript">
+
+            $(function () {
+
+                $.dialog({
+                    title: '该博文用户设置了密码',
+                    id: 'testID',
+                    content: "<p style='font-size:14px;'>请输入博文密码：</p><input type='password' name='psw' id='psw' style='height:20px;' />",
+                    max: false,
+                    min: false,
+                    width: '300px',
+                    height: '140px',
+                    icon: 'confirm.gif',
+                    button: [
+                        {
+                            name: '确定',
+                            callback: function () {
+                                var psw = document.getElementById("psw").value;
+                                //var hrf = document.location.href;
+
+                                //$("form").attr("action", hrf);
+                                //$("#key").attr("", psw);
+
+
+                                location.href = "{KS:Field:currentUrl}" + "&key=" + $("#psw").val();
+
+                            }
+                        },
+                        {
+                            name: '取消',
+							callback: function () {
+							 location.href="{$GetInstallDir}space/?{KS:Field:UserID}/blog";
+							}
+                        }
+                    ]
+                });
+
+            });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

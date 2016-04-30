@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head> 
+<title>{$GetClassName} {$GetSiteName}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-control" content="max-age=1700">
+<meta name="viewport" content="user-scalable=no, width=device-width">
+<meta name="MobileOptimized" content="320">
+<meta name="author" content="kesion.com">
+<meta name="format-detection" content="telephone=no">
+<link href="{$GetSiteUrl}3g/images/style.css" rel="stylesheet" type="text/css">
+<script src="{$GetSiteUrl}ks_inc/jquery.js"></script>
+<script src="{$GetSiteUrl}ks_inc/kesion.common.js"></script>
+<style>
+.lmbg .lmbgtit{ background:url({$GetSiteUrl}3g/images/tit07.png) no-repeat 50% 50%;}
+</style>
+
+</head>
+
+<body>
+{KS_3G_底部导航}
+<div class="navmain">
+	<div class="fl">
+		<a href="javascript:;" onClick="history.back()" class="returnbtn">&nbsp;</a>
+	</div>
+	<div class="fr">
+		<a href="#" onClick="openShutManager(this,'ejlmbox')" class="openmore" title="展开栏目">&nbsp;</a>
+	</div>
+	逛商城
+</div>
+{KS_3G_通用栏目导航}
+
+<!--<div class="shopbanner"><img src="http://market.360buy.com/hd/campaign/activities20110425/images/ribai06.jpg" /></div>-->
+<div class="mygwcbtn">
+   <ul class="shopnav">
+      <li>
+         <a href="/3g/limitbuyindex.aspx"><i class="c1"><img src="/3g/images/nav3.png"></i><em>抢购</em></a>
+         <a href="/3g/groupbuyindex.aspx"><i class="c5"><img src="/3g/images/nav4.png"></i><em>团购</em></a>
+         <a href="/3g/shoppingcart.aspx"><i class="c6"><img src="/3g/images/nav2.png"></i><em>购物车</em><strong><script src='/shop/GetCartNum.aspx'></script></strong></a>
+         <a href="/3g/order.aspx"><i class="c8"><img src="/3g/images/nav1.png"></i><em>订单</em></a>
+      </li>
+   </ul>
+</div>
+
+<div class="shopmain01">
+	{KS:Filter("选择分类","ClassID")}
+	{KS:Filter("选择价格","price","fw","￥500-1000|￥1000-1500|￥1500-2000|￥2000-2500|￥2500以上","500-1000|1000-1500|1500-2000|2000-2500|2500-1000000" )}
+	<div class="clear blank10"></div>
+	<div class="pxfsbox"><span>排序方式：</span>{KS:Order("默认ID<img src="../images/shop/bottom.png" />|i.infoid desc","销量<img src="../images/shop/bottom.png" />|i.HasSold Desc","价格<img src="../images/shop/top.png" />|price asc","更新时间<img src="../images/shop/bottom.png" />|adddate desc")}</div>
+<div class="clear"></div>
+</div>		
+<div class="shopmain02">
+	   <ul>
+	  [Loop Times="10"]
+						<li><a href="{$Field(InfoID,url,1,3)}"><img class="img" onerror="this.src='{$GetInstallDir}sysimg/nopic.gif';" src="{$Field(DefaultPic,text,0,...,2,/sysimg/nopic.gif)}" align="left"/></a>
+						<DIV class="clear"></DIV>
+							<div class="intro">
+								<div class="title"><a href="{$Field(InfoID,url,1,3)}" >{$Field(title,text,24,,2,)} </a></div>
+								<span>{KS:Field:price_Member(2)} 元</span>
+
+								<a href="shoppingcart.aspx?id={$Field(InfoID,url,0,4)}" class="ljgmbtn">立即购买</a>
+							</div>
+							<div class="clear"></div>
+						</li>
+	[/Loop]	
+		</ul>
+		<div class="clear"></div>
+		<div class="fenyexinxi">[KS:PageStr3]</div>
+	<div style="height:60px"></div>  
+ </div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>得到栏目URL参数设置</title>
+<script language="javascript">
+function OK() {
+    var Val;
+    if (document.myform.num.value == '') {
+        alert('栏目ID号不能留空!');
+        document.myform.num.focus();
+        return false;
+    }
+    Val = '{=GetClassUrl('+document.myform.num.value+')}';  
+    parent.frames['main'].InsertLabel(Val);
+}
+</script>
+<script src="../../../ks_inc/jquery.js"></script>
+<script src="../../../ks_inc/kesion.common.js"></script>
+<link href="../../../admin/images/style.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body scroll="auto">
+<form name="myform">
+  <table  width='96%' border='0'  align='center' cellpadding='2' cellspacing='1'>
+<tr>
+<td>
+<FIELDSET align="center">
+ <LEGEND align=left>栏目URL参数设置</LEGEND>
+ <table  width='100%' border='0'  align='center' cellpadding='2' cellspacing='1'>
+  <tr >
+    <td width="40%" align="right"><div align="center">栏目ClassID号：</div></td>
+    <td width="60%" ><input name="num" class="textbox" style="width:100px;" type="text" id="num" value="" size="6">
+    </td>
+  </tr>
+  
+</table>
+</FIELDSET>
+</td>
+</tr>
+<tr><td>
+<div align="center">
+<br>
+<input TYPE='button' value=' 确 定(O) ' class="button"  accesskey="O" onCLICK='OK()'>
+<input type="button" value=" 取 消(C) " class="button"  accesskey="C" onClick="parent.box.close();">
+</div></td></tr></table>
+</form>
+</body>
+</html>
+ 

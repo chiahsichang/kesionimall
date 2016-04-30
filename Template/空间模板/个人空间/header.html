@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{KS:Field:BlogName}-{$GetSiteTitle}</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="robots" content="all" />
+
+<script src="{$GetInstallDir}ks_inc/jquery.js" language="javascript"></script>
+<script src="{$GetInstallDir}ks_inc/kesion.common.js" language="javascript"></script>
+<script src="{$GetInstallDir}space/js/ks.space.js" language="javascript"></script>
+<script src="{$GetInstallDir}space/js/ks.space.page.js" language="javascript"></script>
+
+<link href="{$GetInstallDir}space/skin/blog2/style.css" type=text/css rel=stylesheet>
+
+
+<link href="{$GetInstallDir}Space/skin/blog2/calendar.css" rel="stylesheet" />
+<script src="{$GetInstallDir}Space/skin/blog2/jquery.easyui.min.js"></script>
+
+</head>
+<body>
+
+<div class="header">
+  <div class="top">
+   <div class="left">{$GetTopUserLogin}</div>
+   <div class="right"> |   {$JS_HomePage}   |  {$JS_Collection}</div>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<div class="menu clearfix">
+     {KS:BlogNav}
+</div>    
+
+ <div class="banner">
+		<h1>{KS:Field:BlogName}</h1>
+		<h2>{KS:Field:Descript}</h2>
+		<div class="clear"></div>
+		 
+	</div>

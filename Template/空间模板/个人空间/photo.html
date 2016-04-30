@@ -1,0 +1,116 @@
+﻿ {KS:loadfile("header.html")}
+	
+	{KS:loadfile("left.html")}
+
+	  <!--右边-->
+      <div class="blogmain">
+          <div class="nav">
+              <!--<p><a href="#">首页</a> >> <a href="#">博文</a></p>-->
+              <p>[KS:BlogNavStr]</p>
+          </div>
+           <style>
+		  .album{margin: 10px !important;}
+		  .album li{width:100%; border:none !important; text-align:center ; padding:0 !important;}
+		  .album li a{ float:none !important}
+		  .album li img{ display:block; margin:0 auto; max-width:100%; _width:100%}
+		  </style>
+          <div class="album">
+	        
+			 
+                [Loop times="1000" type="photo"]
+                    <li>
+					  <a class="fancybox" href="{KS:Field:PicUrls}"  rel="prettyPhoto[gallery1]">
+					  <img src="{KS:Field:PhotoUrl}" />
+                     </a>
+					 <br/>
+					 {KS:Field:title}
+                    </li>
+                [/Loop]
+				
+				
+				<link rel="stylesheet" href="/ks_inc/prettyPhoto/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+				 <script src="/ks_inc/prettyPhoto/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+				 <script type="text/javascript" charset="utf-8">
+						$(document).ready(function(){
+							 $(".album a[rel^='prettyPhoto']").prettyPhoto({theme:'dark_square'});
+						});
+				</script>
+
+				
+             <div style="clear:both"></div>
+
+
+               <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0" class="comment_write_table" style="float:left; ">
+            <script type="text/javascript">
+                $(function () {
+                    $("#Content").val("每个人都有自己的观点......");
+                    $("#Content").focus(function () {
+                        if ($(this).val() == '每个人都有自己的观点......') {
+                            $(this).val("");
+                        }
+                    }).blur(function () {
+                        if ($(this).val() == '') {
+                            $(this).val("每个人都有自己的观点......");
+                        }
+                    });
+                });
+                function CheckForm() {
+                    if ($("#Content").val() == "每个人都有自己的观点......") {
+                        alert("请输入你的评论内容！");
+                        $("#Content").focus();
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
+                   <iframe src="about:blank" name="hidframe" style="display:none"></iframe>
+                   
+            <form name="msgform" action="/space/?{KS:Field:UserId}/album/photo/comment" method="post" target="hidframe">
+              <input type="hidden" value="{KS:Field:OurUserName}" name="UserName">
+              <input type="hidden" value="{KS:Field:OurUserId}" name="UserId">
+              <input type="hidden" value="{KS:Field:PicID}" name="blogId">
+              <input type="hidden" value="" name="scontent">
+              <tr>
+                <td class="comment_write_title" style="text-align:left;"><span style='font-weight:bold;font-size:14px;'>发表您的观点:</span>
+                  <input type="text" readonly="readonly" style="height:20px; color:#777; width:458px;" name="title" value="{KS:Field:Title}" id="title" />
+				   <div style="clear:both"></div>
+                  <textarea class="msgtextarea" cols='70' rows='4' style="width:500px;" id="Content" name="Content" ></textarea>
+                  <div style="clear:both"></div>
+                  昵称：
+                  <input name="AnounName" readonly maxlength="100" type="text" value="{KS:Field:OurUserName}" id="AnounName" style="background:#FBFBFB;color:#999;border:1px solid #ccc;width:100px;height:20px;line-height:20px"/>
+                  &nbsp;<br/>
+                <input type="submit" onClick="return CheckForm();"  name="SubmitComment" value="OK了，提交留言" class="btn"/></td>
+              </tr>
+            </form>
+          </table>
+
+               <table border="0" align="center"  width="97%" style="float:left; margin:0px;">
+                [Loop Times="8" type="comment"]
+                <tr>
+                 <td style="padding:10px;border-bottom: #DDD 1px dashed;text-align:left" colspan="2">{KS:Field:Content}
+                
+                    {KS:IF [Field:Replay]}
+                        <div style="text-indent:10px; width:70%; float:right;"><h5>下面为来自主人的回复（{KS:Field:ReplayDate}）:</h5>
+                            <div>{KS:Field:Replay}</div>
+                        </div>
+                    {/KS:IF}
+
+                    <div style="text-align:right; clear:both;">({KS:Field:AnounName} 发表于：{KS:Field:AddTime})  </div>
+                 </td>
+              </tr>
+                [/Loop]
+              <tr><td colspan="2"><div class="fyys">[KS:PageStr]</div></td></tr>
+            </table>
+
+		
+		
+		
+		
+           </div>
+          <div class="clear"></div>
+			
+	  </div>
+    
+   </div>
+
+ {KS:loadfile("footer.html")}

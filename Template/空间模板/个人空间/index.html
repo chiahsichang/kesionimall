@@ -1,0 +1,91 @@
+﻿ {KS:loadfile("header.html")}
+
+	  {KS:loadfile("left.html")}
+	  
+	  <!--中间-->
+      <div class="mainbodym">
+
+		 <div class="mainbodymbox">
+		    <div class="title"><span><a href="#">更多>></a></span>最新日志</div>
+			<div class="dzwz">
+			  <ul class="ul_recommend">
+				    
+				    {KS_博文排行}
+				</ul>
+			</div>
+		 </div>
+	  
+	  <div class="clear"></div>
+	  
+		
+		<div class="mainbodymbox">
+		    <div class="title"><span><a href="#">更多>></a></span>最新相册集</div>
+			 <div class="xiangce"><!-- {KS_最新相册1} -->
+				
+                 {KS_最新相册}
+                
+
+			 </div>
+			</div>
+	 
+	  <div class="clear"></div>
+
+		<div class="mainbodymbox">
+		    <div class="title">最新留言</div>
+			 <div class="artlist">
+				<ul>
+                    {KS_最新留言}
+				</ul>
+			 </div>
+			</div>
+			
+		 </div>
+		 
+	  
+	  <!--右边-->
+      <div class="mainbodyr">
+		 <div class="mainbodyr1">
+		    <div class="title">空间公告</div>
+			<div class="note">
+                {KS:Field:Announce}
+			</div>
+		 </div>
+		 
+		 <div class="clear"></div>
+		 
+		 
+		 <div class="clear"></div>
+		 <div class="mainbodyr2">
+		    <div class="title">高级日历</div>
+			<div class="rili">
+                <script>
+                    $(function () { 
+                        $('#calendar').calendar({
+                            onSelect: function (date) {
+                                location.href = "/space/?{KS:Field:UserID}/blog?date=" + date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
+                            }
+                        });
+                    });
+                </script>
+    
+                <div id="calendar" style="width:180px;height:200px;"></div>  
+
+			</div>
+		 </div>
+
+	  <div class="clear"></div>
+	   
+		 <div class="mainbodyr2">
+		    <div class="title">最新评论</div>
+			<div class="mainbodyr2box">
+				<ul>
+                    {KS_最新评论}
+				</ul>
+			</div>
+		 </div>
+
+
+	  </div>
+   </div>
+
+ {KS:loadfile("footer.html")}

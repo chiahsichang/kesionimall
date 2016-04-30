@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="Kesion.NET.WebSite.AjaxLabel" Codebehind="AjaxLabel.aspx.cs" %>

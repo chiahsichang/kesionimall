@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>自动编号变量样式预览</title>
+	<link href="../../admin/style/Admin_Style.CSS" rel="stylesheet" type="text/css" />
+ <style type="text/css">
+  body{font-size:9pt;}
+ .STYLE1 {color: #FF0000}
+ </style>
+</head>
+<body scroll="auto">
+    <div style="margin:10PX">
+      变量<span class="STYLE1">{$AutoID}</span>：0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 <br />
+	  变量<span class="STYLE1">{$Auto(0)}</span>：1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 <br />
+	  变量<span class="STYLE1">{$Auto(1)}</span>：a b c d e f g h i j k l m n o p q r s t u v w x y z <br />
+      变量<span class="STYLE1">{$Auto(2)}</span>：A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br />
+      变量<span class="STYLE1">{$Auto(3)}</span>：① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇<br />
+      变量<span class="STYLE1">{$Auto(4)}</span>：Ⅰ Ⅱ Ⅲ Ⅳ Ⅴ Ⅵ Ⅶ Ⅷ Ⅸ Ⅹ Ⅺ Ⅻ<br />
+      变量<span class="STYLE1">{$Auto(5)}</span>：一 二 三 四 五 六 七 八 九 十 十一 十二 十三 十四 十五 十六 十七 十八 十八 十九 二十<br />
+      变量<span class="STYLE1">{$Auto(6)}</span>：壹 贰 叁 肆 伍 陆 柒 捌 玖 拾<br />      
+      &nbsp;
+	  <br />
+	  <div style="text-align:center">
+      <input type="button" name="Submit" accesskey="O" class="button" onmouseover="this.className='button_on';" onmouseout="this.className='button';" onclick="parent.box.close()" value="关闭取消(C)"  />
+	  </div>
+</div>   
+</body>
+</html>
